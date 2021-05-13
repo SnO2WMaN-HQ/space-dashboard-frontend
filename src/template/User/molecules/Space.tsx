@@ -28,7 +28,7 @@ export const Space: React.VFC<{
     )}
   >
     <NextLink href={`/spaces/${id}`}>
-      <a className={clsx('text-lg')}>{title}</a>
+      <a className={clsx('text-lg', 'font-bold')}>{title}</a>
     </NextLink>
     <div className={clsx('mt-1', 'grid', 'grid-cols-2')}>
       <div className={clsx('col-start-1', 'flex', 'items-center')}>

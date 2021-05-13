@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
 import {Profile} from './organisms/Profile';
-import {Following, Hosting} from './organisms/Space/Container';
+import {Following, Hosting} from './organisms/Spaces/Container';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;

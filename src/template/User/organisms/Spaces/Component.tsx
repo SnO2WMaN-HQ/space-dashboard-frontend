@@ -28,7 +28,7 @@ export const Component: React.VFC<{
       'shadow-sm',
     )}
   >
-    <p className={clsx('font-bold')}>{i18n.title}</p>
+    <p className={clsx('px-2', 'font-bold')}>{i18n.title}</p>
     <div className={clsx('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
       {spaces.map(({title, id, openDate, followingUsers}) => (
         <Space
