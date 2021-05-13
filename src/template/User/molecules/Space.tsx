@@ -27,9 +27,11 @@ export const Space: React.VFC<{
       'shadow-md',
     )}
   >
-    <NextLink href={`/spaces/${id}`}>
-      <a className={clsx('text-lg', 'font-bold')}>{title}</a>
-    </NextLink>
+    <h3>
+      <NextLink href={`/spaces/${id}`}>
+        <a className={clsx('text-lg', 'font-bold')}>{title}</a>
+      </NextLink>
+    </h3>
     <div className={clsx('mt-1', 'grid', 'grid-cols-2')}>
       <div className={clsx('col-start-1', 'flex', 'items-center')}>
         <FontAwesomeIcon

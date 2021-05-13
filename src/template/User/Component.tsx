@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {Profile} from './organisms/Profile';
-import {Following, Hosting} from './organisms/Spaces/Container';
+import {SectionProfile} from './organisms/SectionProfile';
+import {Following, Hosting} from './organisms/SectionSpaces/Container';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
@@ -19,7 +19,7 @@ export const Component: React.FC<ComponentProps> = ({
     <main className={clsx(className, 'bg-gray-200', 'py-4')}>
       {children}
       <div className={clsx('w-full', 'px-2')}>
-        <Profile
+        <SectionProfile
           className={clsx('w-full')}
           {...{displayName, picture, uniqueName}}
         />
