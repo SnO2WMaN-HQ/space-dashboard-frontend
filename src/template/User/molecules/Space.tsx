@@ -3,8 +3,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
-import {DateText} from '../../../components/atoms/DateText';
-import {Users} from './Users';
+import {DateText} from '~/components/atoms/DateText';
+import {Users} from '~/template/Space/molecules/Users';
 
 export const Space: React.VFC<{
   className?: string;

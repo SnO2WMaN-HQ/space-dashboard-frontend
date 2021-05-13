@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIcon} from '~/components/atoms/UserIcon';
 
 export const Profile: React.VFC<{
@@ -11,6 +12,7 @@ export const Profile: React.VFC<{
   return (
     <section
       className={clsx(
+        className,
         'px-4',
         'py-2',
         'flex',
@@ -34,7 +36,7 @@ export const Profile: React.VFC<{
         )}
       >
         <h1 className={clsx('text-lg', 'font-bold')}>{displayName}</h1>
-        <span className={clsx('text-gray-500')}>@{uniqueName}</span>
+        <UniqueName className={clsx('text-gray-500')} uniqueName={uniqueName} />
       </div>
     </section>
   );

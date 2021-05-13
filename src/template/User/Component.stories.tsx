@@ -36,9 +36,9 @@ Primary.args = {
         picture: random.icon(),
       },
       followingUsers: {
-        count: 8,
+        count: 16,
         hasMore: true,
-        nodes: Array.from({length: 7}).map((_, j) => ({
+        nodes: Array.from({length: 11}).map((_, j) => ({
           displayName: `Test User ${j + 1}`,
           uniqueName: `testuser${j + 1}`,
           picture: random.icon(j + 1),
@@ -58,9 +58,9 @@ Primary.args = {
         picture: random.icon(),
       },
       followingUsers: {
-        count: 8,
+        count: 16,
         hasMore: true,
-        nodes: Array.from({length: 7}).map((_, j) => ({
+        nodes: Array.from({length: 11}).map((_, j) => ({
           displayName: `Test User ${j + 1}`,
           uniqueName: `testuser${j + 1}`,
           picture: random.icon(j + 1),

@@ -32,7 +32,16 @@ export const Users: React.VFC<{
   usersCount: number;
   hasMore: boolean;
 }> = ({className, users, usersCount, hasMore}) => (
-  <div className={clsx(className, 'grid', 'grid-cols-8')}>
+  <div
+    className={clsx(
+      className,
+      'grid',
+      'grid-cols-6',
+      'sm:grid-cols-8',
+      'md:grid-cols-12',
+      'gap-y-2',
+    )}
+  >
     {users.map(({picture, uniqueName, displayName}) => (
       <div
         key={uniqueName}
