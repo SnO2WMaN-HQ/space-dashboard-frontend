@@ -1,0 +1,9 @@
+# output
+.next/
+dist/
+
+# codegen
+codegen/
+
+# root GraphQL schema
+schema.graphql
