@@ -6,11 +6,14 @@ import {
   BlockFollowingUsers,
   BlockHostingUser,
   BlockMinutes,
+  BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
 import {FollowButton} from '../FollowButton';
 
 export type ComponentProps = {
   className?: string;
+  id: string;
+
   title: string;
   description?: string;
   minutesUrl?: string;
@@ -26,6 +29,7 @@ export type ComponentProps = {
 
 export const Component: React.VFC<ComponentProps> = ({
   className,
+  id,
   description,
   minutesUrl,
   title,
@@ -38,13 +42,13 @@ export const Component: React.VFC<ComponentProps> = ({
     className={clsx(
       className,
       'bg-white',
-      'px-6',
-      'py-4',
+      'px-4',
+      'py-3',
       'rounded-md',
       'shadow-md',
     )}
   >
-    <p className={clsx('text-2xl', 'font-bold')}>{title}</p>
+    <BlockTitle className={clsx()} {...{id, title}} />
     <BlockDetails
       className={clsx('mt-2')}
       {...{

@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
 import {
   BlockDetails,
   BlockFollowingUsers,
   BlockHostingUser,
+  BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
 
 export const FollowingSpace: React.VFC<{
@@ -28,11 +28,7 @@ export const FollowingSpace: React.VFC<{
       'shadow-md',
     )}
   >
-    <p>
-      <NextLink href={`/spaces/${id}`}>
-        <a className={clsx('text-lg', 'font-bold')}>{title}</a>
-      </NextLink>
-    </p>
+    <BlockTitle className={clsx()} {...{id, title}} />
     <BlockDetails className={clsx('mt-1')} {...{openDate}} />
     <BlockHostingUser className={clsx('mt-4')} {...{user: hostedUser}} />
     <BlockFollowingUsers

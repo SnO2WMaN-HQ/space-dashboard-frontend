@@ -3,6 +3,7 @@ import {Component} from './Component';
 
 export type ContainerProps = {
   className?: string;
+  id: string;
   title: string;
   description?: string;
   minutesUrl?: string;
