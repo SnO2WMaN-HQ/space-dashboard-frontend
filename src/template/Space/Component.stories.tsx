@@ -33,9 +33,8 @@ Primary.args = {
     picture: random.icon(),
   },
   followingUsers: {
-    count: 24,
-    hasMore: true,
-    nodes: Array.from({length: 23}).map((_, j) => ({
+    pageInfo: {hasMore: true, endCursor: 'A'},
+    users: Array.from({length: 23}).map((_, j) => ({
       displayName: `Test User ${j + 1}`,
       uniqueName: `testuser${j + 1}`,
       picture: random.icon(j + 1),

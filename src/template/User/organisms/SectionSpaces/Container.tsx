@@ -3,50 +3,32 @@ import {Component} from './Component';
 
 export const Hosting: React.VFC<{
   className?: string;
+  pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
   spaces: {
-    className?: string;
     id: string;
     title: string;
     openDate: string;
     followingUsers: {
-      nodes: {uniqueName: string; displayName: string; picture: string}[];
-      count: number;
       hasMore: boolean;
+      users: {uniqueName: string; displayName: string; picture: string}[];
     };
   }[];
-  spacesCount: number;
 }> = ({...props}) => {
-  return (
-    <Component
-      {...props}
-      i18n={{
-        title: `ホストする予定のスペースが${props.spacesCount}件あります`,
-      }}
-    />
-  );
+  return <Component {...props} i18n={{title: `ホストする予定のスペース`}} />;
 };
 
 export const Following: React.VFC<{
   className?: string;
+  pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
   spaces: {
-    className?: string;
     id: string;
     title: string;
     openDate: string;
     followingUsers: {
-      nodes: {uniqueName: string; displayName: string; picture: string}[];
-      count: number;
       hasMore: boolean;
+      users: {uniqueName: string; displayName: string; picture: string}[];
     };
   }[];
-  spacesCount: number;
 }> = ({...props}) => {
-  return (
-    <Component
-      {...props}
-      i18n={{
-        title: `入る予定のスペースが${props.spacesCount}件あります`,
-      }}
-    />
-  );
+  return <Component {...props} i18n={{title: `気になっているスペース`}} />;
 };

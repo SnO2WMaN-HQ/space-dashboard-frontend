@@ -12,9 +12,8 @@ export const Space: React.VFC<{
   title: string;
   openDate: string;
   followingUsers: {
-    nodes: {uniqueName: string; displayName: string; picture: string}[];
-    count: number;
     hasMore: boolean;
+    users: {uniqueName: string; displayName: string; picture: string}[];
   };
 }> = ({className, id, title, openDate, followingUsers}) => (
   <div
@@ -46,8 +45,7 @@ export const Space: React.VFC<{
     </div>
     <Users
       className={clsx('mt-4')}
-      users={followingUsers.nodes}
-      usersCount={followingUsers.count}
+      users={followingUsers.users}
       hasMore={followingUsers.hasMore}
     />
   </div>

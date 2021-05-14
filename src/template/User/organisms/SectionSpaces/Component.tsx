@@ -6,18 +6,15 @@ export const Component: React.VFC<{
   className?: string;
   i18n: Record<'title', string>;
   spaces: {
-    className?: string;
     id: string;
     title: string;
     openDate: string;
     followingUsers: {
-      nodes: {uniqueName: string; displayName: string; picture: string}[];
-      count: number;
       hasMore: boolean;
+      users: {uniqueName: string; displayName: string; picture: string}[];
     };
   }[];
-  spacesCount: number;
-}> = ({className, i18n, spaces, spacesCount}) => (
+}> = ({className, i18n, spaces}) => (
   <section
     className={clsx(
       className,
@@ -34,12 +31,7 @@ export const Component: React.VFC<{
         <Space
           className={clsx('w-full')}
           key={id}
-          {...{
-            id,
-            title,
-            openDate,
-            followingUsers,
-          }}
+          {...{id, title, openDate, followingUsers}}
         />
       ))}
     </div>

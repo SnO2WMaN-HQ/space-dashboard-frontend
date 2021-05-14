@@ -1,11 +1,10 @@
+import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
 
-export const More: React.VFC<{className?: string; more: number}> = ({
-  className,
-  more,
-}) => (
+export const More: React.VFC<{className?: string}> = ({className}) => (
   <div
     className={clsx(
       className,
@@ -18,20 +17,19 @@ export const More: React.VFC<{className?: string; more: number}> = ({
       'rounded-full',
     )}
   >
-    <span
+    <FontAwesomeIcon
+      icon={faEllipsisH}
+      fixedWidth
       className={clsx('text-white', 'text-sm', 'font-bold', 'leading-none')}
-    >
-      +{more}
-    </span>
+    />
   </div>
 );
 
 export const Users: React.VFC<{
   className?: string;
   users: {uniqueName: string; displayName: string; picture: string}[];
-  usersCount: number;
   hasMore: boolean;
-}> = ({className, users, usersCount, hasMore}) => (
+}> = ({className, users, hasMore}) => (
   <div
     className={clsx(
       className,
@@ -55,7 +53,7 @@ export const Users: React.VFC<{
     ))}
     {hasMore && (
       <div className={clsx('flex', 'justify-center', 'items-center')}>
-        <More className={clsx('w-8', 'h-8')} more={usersCount - users.length} />
+        <More className={clsx('w-8', 'h-8')} />
       </div>
     )}
   </div>

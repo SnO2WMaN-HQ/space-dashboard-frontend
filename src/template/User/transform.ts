@@ -5,30 +5,28 @@ export type TransformedProps = {
   displayName: string;
   picture: string;
   hostedSpaces: {
-    count: number;
-    nodes: {
+    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    spaces: {
       id: string;
       title: string;
       openDate: string;
       hostedUser: {uniqueName: string; displayName: string; picture: string};
       followingUsers: {
-        count: number;
         hasMore: boolean;
-        nodes: {uniqueName: string; displayName: string; picture: string}[];
+        users: {uniqueName: string; displayName: string; picture: string}[];
       };
     }[];
   };
   followingSpaces: {
-    count: number;
-    nodes: {
+    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    spaces: {
       id: string;
       title: string;
       openDate: string;
       hostedUser: {uniqueName: string; displayName: string; picture: string};
       followingUsers: {
-        count: number;
         hasMore: boolean;
-        nodes: {uniqueName: string; displayName: string; picture: string}[];
+        users: {uniqueName: string; displayName: string; picture: string}[];
       };
     }[];
   };
@@ -39,8 +37,10 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
   displayName: user.displayName,
   picture: user.picture,
   hostedSpaces: {
-    count: user.hostedSpaces.length,
-    nodes: user.hostedSpaces.map(({space}) => ({
+    pageInfo: user.hostedSpaces.pageInfo.endCursor
+      ? {hasMore: true, endCursor: user.hostedSpaces.pageInfo.endCursor}
+      : {hasMore: false},
+    spaces: user.hostedSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,
@@ -50,19 +50,20 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
         picture: user.picture,
       },
       followingUsers: {
-        count: space.followingUsers.length,
-        hasMore: false,
-        nodes: space.followingUsers.map(({user: followingUser}) => ({
-          uniqueName: followingUser.uniqueName,
-          displayName: followingUser.displayName,
-          picture: followingUser.picture,
+        hasMore: space.followingUsers.pageInfo.hasNextPage,
+        users: space.followingUsers.edges.map(({node: {user}}) => ({
+          uniqueName: user.uniqueName,
+          displayName: user.displayName,
+          picture: user.picture,
         })),
       },
     })),
   },
   followingSpaces: {
-    count: user.followingSpaces.length,
-    nodes: user.followingSpaces.map(({space}) => ({
+    pageInfo: user.followingSpaces.pageInfo.endCursor
+      ? {hasMore: true, endCursor: user.followingSpaces.pageInfo.endCursor}
+      : {hasMore: false},
+    spaces: user.followingSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,
@@ -72,12 +73,11 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
         picture: space.hostUser.user.picture,
       },
       followingUsers: {
-        count: space.followingUsers.length,
-        hasMore: false,
-        nodes: space.followingUsers.map(({user: followingUser}) => ({
-          uniqueName: followingUser.uniqueName,
-          displayName: followingUser.displayName,
-          picture: followingUser.picture,
+        hasMore: space.followingUsers.pageInfo.hasNextPage,
+        users: space.followingUsers.edges.map(({node: {user}}) => ({
+          uniqueName: user.uniqueName,
+          displayName: user.displayName,
+          picture: user.picture,
         })),
       },
     })),

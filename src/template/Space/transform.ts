@@ -17,9 +17,8 @@ export type TransformedProps = {
     picture: string;
   };
   followingUsers: {
-    count: number;
-    hasMore: boolean;
-    nodes: {uniqueName: string; displayName: string; picture: string}[];
+    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    users: {uniqueName: string; displayName: string; picture: string}[];
   };
 };
 
@@ -39,9 +38,10 @@ export const transform = ({space}: SpacePagesQuery): TransformedProps => ({
     picture: space.hostUser.user.picture,
   },
   followingUsers: {
-    count: space.followingUsers.length,
-    hasMore: false,
-    nodes: space.followingUsers.map(({user: followingUser}) => ({
+    pageInfo: space.followingUsers.pageInfo.endCursor
+      ? {hasMore: true, endCursor: space.followingUsers.pageInfo.endCursor}
+      : {hasMore: false},
+    users: space.followingUsers.edges.map(({node: {user: followingUser}}) => ({
       uniqueName: followingUser.uniqueName,
       displayName: followingUser.displayName,
       picture: followingUser.picture,

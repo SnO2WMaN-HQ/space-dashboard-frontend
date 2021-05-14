@@ -25,8 +25,8 @@ Primary.args = {
   uniqueName: 'testuser1',
   picture: random.icon(),
   hostedSpaces: {
-    count: 2,
-    nodes: Array.from({length: 2}).map((_, i) => ({
+    pageInfo: {endCursor: '1', hasMore: true},
+    spaces: Array.from({length: 2}).map((_, i) => ({
       id: `${i}`,
       title: `タイトル ${i}`,
       openDate: '2020-01-01',
@@ -36,9 +36,8 @@ Primary.args = {
         picture: random.icon(),
       },
       followingUsers: {
-        count: 16,
         hasMore: true,
-        nodes: Array.from({length: 11}).map((_, j) => ({
+        users: Array.from({length: 11}).map((_, j) => ({
           displayName: `Test User ${j + 1}`,
           uniqueName: `testuser${j + 1}`,
           picture: random.icon(j + 1),
@@ -47,8 +46,8 @@ Primary.args = {
     })),
   },
   followingSpaces: {
-    count: 2,
-    nodes: Array.from({length: 2}).map((_, i) => ({
+    pageInfo: {endCursor: '1', hasMore: true},
+    spaces: Array.from({length: 2}).map((_, i) => ({
       id: `${i}`,
       title: `タイトル ${i}`,
       openDate: '2020-01-01',
@@ -58,9 +57,8 @@ Primary.args = {
         picture: random.icon(),
       },
       followingUsers: {
-        count: 16,
         hasMore: true,
-        nodes: Array.from({length: 11}).map((_, j) => ({
+        users: Array.from({length: 11}).map((_, j) => ({
           displayName: `Test User ${j + 1}`,
           uniqueName: `testuser${j + 1}`,
           picture: random.icon(j + 1),

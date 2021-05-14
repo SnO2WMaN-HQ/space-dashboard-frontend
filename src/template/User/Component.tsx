@@ -27,13 +27,13 @@ export const Component: React.FC<ComponentProps> = ({
       <div className={clsx('mt-4', 'px-2')}>
         <Hosting
           className={clsx('w-full')}
-          spaces={hostedSpaces.nodes}
-          spacesCount={hostedSpaces.count}
+          spaces={hostedSpaces.spaces}
+          pageInfo={hostedSpaces.pageInfo}
         />
         <Following
           className={clsx('w-full', 'mt-4')}
-          spaces={followingSpaces.nodes}
-          spacesCount={followingSpaces.count}
+          spaces={followingSpaces.spaces}
+          pageInfo={followingSpaces.pageInfo}
         />
       </div>
     </main>

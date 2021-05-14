@@ -8,6 +8,7 @@ import React from 'react';
 import {DateText} from '~/components/atoms/DateText';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {FollowButton} from './FollowButton';
 import {Users} from './Users';
 
 export const Space: React.VFC<{
@@ -26,9 +27,8 @@ export const Space: React.VFC<{
     picture: string;
   };
   followingUsers: {
-    nodes: {uniqueName: string; displayName: string; picture: string}[];
-    count: number;
-    hasMore: boolean;
+    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    users: {uniqueName: string; displayName: string; picture: string}[];
   };
 }> = ({
   className,
@@ -76,6 +76,7 @@ export const Space: React.VFC<{
         </div>
       )}
     </div>
+    {!finished && <FollowButton className={clsx('mt-4', 'w-full')} />}
     {description && (
       <div className={clsx('mt-4')}>
         <h2 className={clsx('font-bold')}>説明文</h2>
@@ -127,9 +128,8 @@ export const Space: React.VFC<{
       <h2 className={clsx('font-bold')}>気になっているアカウント</h2>
       <Users
         className={clsx('mt-2')}
-        users={followingUsers.nodes}
-        usersCount={followingUsers.count}
-        hasMore={followingUsers.hasMore}
+        users={followingUsers.users}
+        hasMore={followingUsers.pageInfo.hasMore}
       />
     </div>
   </div>
