@@ -20,7 +20,7 @@ export const SectionProfile: React.VFC<{
         'rounded-sm',
       )}
     >
-      <h1 className={clsx('text-xl', 'font-bold')}>プロフィール</h1>
+      <p className={clsx('text-xl', 'font-bold')}>プロフィール</p>
       <div className={clsx('mt-2', 'flex')}>
         <div className={clsx('flex', 'items-center', 'justify-center')}>
           <div className={clsx('w-16', 'h-16')}>

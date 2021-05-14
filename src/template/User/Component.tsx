@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
+import {SectionFollowingSpaces} from './organisms/SectionFollowingSpaces';
+import {SectionHostedSpaces} from './organisms/SectionHostedSpaces';
 import {SectionProfile} from './organisms/SectionProfile';
-import {Following, Hosting} from './organisms/SectionSpaces/Container';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
@@ -25,12 +26,12 @@ export const Component: React.FC<ComponentProps> = ({
         />
       </div>
       <div className={clsx('mt-4', 'px-2')}>
-        <Hosting
+        <SectionHostedSpaces
           className={clsx('w-full')}
           spaces={hostedSpaces.spaces}
           pageInfo={hostedSpaces.pageInfo}
         />
-        <Following
+        <SectionFollowingSpaces
           className={clsx('w-full', 'mt-4')}
           spaces={followingSpaces.spaces}
           pageInfo={followingSpaces.pageInfo}
