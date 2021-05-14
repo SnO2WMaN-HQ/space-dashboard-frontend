@@ -13,15 +13,25 @@ export const SectionProfile: React.VFC<{
     <section
       className={clsx(
         className,
-        'px-4',
-        'py-2',
-        'bg-white',
+        'px-2',
+        'py-4',
+        'bg-gray-50',
         'shadow-sm',
         'rounded-sm',
       )}
     >
-      <p className={clsx('text-xl', 'font-bold')}>プロフィール</p>
-      <div className={clsx('mt-2', 'flex')}>
+      <p className={clsx('px-2', 'font-bold')}>プロフィール</p>
+      <div
+        className={clsx(
+          'mt-2',
+          'flex',
+          'bg-white',
+          'px-4',
+          'py-3',
+          'rounded-md',
+          'shadow-md',
+        )}
+      >
         <div className={clsx('flex', 'items-center', 'justify-center')}>
           <div className={clsx('w-16', 'h-16')}>
             <UserIcon {...{displayName, picture}} />

@@ -5,7 +5,7 @@ export type TransformedProps = {
   displayName: string;
   picture: string;
   hostedSpaces: {
-    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    pageInfo: {hasMore: boolean; endCursor?: string};
     spaces: {
       id: string;
       title: string;
@@ -18,7 +18,7 @@ export type TransformedProps = {
     }[];
   };
   followingSpaces: {
-    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    pageInfo: {hasMore: boolean; endCursor?: string};
     spaces: {
       id: string;
       title: string;
@@ -37,9 +37,12 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
   displayName: user.displayName,
   picture: user.picture,
   hostedSpaces: {
-    pageInfo: user.hostedSpaces.pageInfo.endCursor
-      ? {hasMore: true, endCursor: user.hostedSpaces.pageInfo.endCursor}
-      : {hasMore: false},
+    pageInfo: {
+      hasMore: user.hostedSpaces.pageInfo.hasNextPage,
+      ...(user.hostedSpaces.pageInfo.endCursor
+        ? {endCursor: user.hostedSpaces.pageInfo.endCursor}
+        : {}),
+    },
     spaces: user.hostedSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,
@@ -60,9 +63,12 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
     })),
   },
   followingSpaces: {
-    pageInfo: user.followingSpaces.pageInfo.endCursor
-      ? {hasMore: true, endCursor: user.followingSpaces.pageInfo.endCursor}
-      : {hasMore: false},
+    pageInfo: {
+      hasMore: user.followingSpaces.pageInfo.hasNextPage,
+      ...(user.followingSpaces.pageInfo.endCursor
+        ? {endCursor: user.followingSpaces.pageInfo.endCursor}
+        : {}),
+    },
     spaces: user.followingSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,

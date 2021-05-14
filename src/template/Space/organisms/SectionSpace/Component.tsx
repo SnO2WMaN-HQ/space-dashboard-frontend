@@ -16,7 +16,7 @@ export type ComponentProps = {
     picture: string;
   };
   followingUsers: {
-    pageInfo: {hasMore: false} | {hasMore: true; endCursor: string};
+    pageInfo: {hasMore: boolean; endCursor?: string};
     users: {
       uniqueName: string;
       displayName: string;

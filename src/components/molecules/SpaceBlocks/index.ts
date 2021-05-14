@@ -3,3 +3,4 @@ export {BlockDetails} from './BlockDetails';
 export {BlockFollowingUsers} from './BlockFollowingUsers';
 export {BlockHostingUser} from './BlockHostingUser';
 export {BlockMinutes} from './BlockMinutes';
+export {BlockTitle} from './BlockTitle';

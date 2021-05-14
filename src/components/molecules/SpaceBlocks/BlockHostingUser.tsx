@@ -21,7 +21,7 @@ export const BlockHostingUser: React.VFC<{
       </div>
       <div
         className={clsx(
-          'ml-2',
+          'ml-4',
           'flex-grow',
           'flex',
           'flex-col',
