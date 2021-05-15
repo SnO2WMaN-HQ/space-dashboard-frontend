@@ -9,7 +9,10 @@ export const BlockFollowingUsers: React.VFC<{
   hasMore: boolean;
 }> = ({className, users, hasMore}) => (
   <div className={clsx(className)}>
-    <p className={clsx('font-bold')}>気になっているアカウント</p>
+    <p className={clsx('font-bold')}>
+      {users.length === 0 && '気になっているアカウントはいません'}
+      {users.length > 0 && '気になっているアカウント'}
+    </p>
     <div
       className={clsx(
         'mt-2',
