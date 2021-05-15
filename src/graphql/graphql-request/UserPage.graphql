@@ -1,0 +1,80 @@
+query AllUserPages {
+  allUsers {
+    uniqueName
+  }
+}
+
+query UserPage($unique: ID!) {
+  user(uniqueName: $unique) {
+    uniqueName
+    displayName
+    picture
+    hostedSpaces(first: 5) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        node {
+          space {
+            id
+            title
+            openDate
+            followingUsers(first: 11) {
+              pageInfo {
+                endCursor
+                hasNextPage
+              }
+              edges {
+                node {
+                  user {
+                    uniqueName
+                    displayName
+                    picture
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    followingSpaces(first: 5) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        node {
+          space {
+            id
+            title
+            openDate
+            hostUser {
+              user {
+                uniqueName
+                displayName
+                picture
+              }
+            }
+            followingUsers(first: 11) {
+              pageInfo {
+                endCursor
+                hasNextPage
+              }
+              edges {
+                node {
+                  user {
+                    uniqueName
+                    displayName
+                    picture
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
