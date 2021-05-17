@@ -14,7 +14,7 @@ export const Component: React.FC<ComponentProps> = ({
   minutesUrl,
   finished,
   openDate,
-  hostedUser,
+  hostUser,
   followingUsers,
 }) => {
   return (
@@ -29,7 +29,7 @@ export const Component: React.FC<ComponentProps> = ({
             minutesUrl,
             finished,
             openDate,
-            hostedUser,
+            hostUser,
             followingUsers,
           }}
         />

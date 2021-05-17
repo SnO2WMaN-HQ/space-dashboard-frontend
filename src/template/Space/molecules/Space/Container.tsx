@@ -9,7 +9,7 @@ export type ContainerProps = {
   minutesUrl?: string;
   finished: boolean;
   openDate: string;
-  hostedUser: {
+  hostUser: {
     uniqueName: string;
     displayName: string;
     picture: string;

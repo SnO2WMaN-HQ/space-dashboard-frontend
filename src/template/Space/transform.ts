@@ -11,7 +11,7 @@ export type TransformedProps = {
 
   openDate: string;
 
-  hostedUser: {
+  hostUser: {
     uniqueName: string;
     displayName: string;
     picture: string;
@@ -32,7 +32,7 @@ export const transform = ({space}: SpacePagesQuery): TransformedProps => ({
   ...{...(space.description ? {description: space.description} : {})},
 
   finished: space.finished,
-  hostedUser: {
+  hostUser: {
     uniqueName: space.hostUser.user.uniqueName,
     displayName: space.hostUser.user.displayName,
     picture: space.hostUser.user.picture,

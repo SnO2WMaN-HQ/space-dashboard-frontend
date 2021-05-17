@@ -10,7 +10,7 @@ export type ComponentProps = {
   minutesUrl?: string;
   finished: boolean;
   openDate: string;
-  hostedUser: {
+  hostUser: {
     uniqueName: string;
     displayName: string;
     picture: string;
@@ -32,7 +32,7 @@ export const Component: React.VFC<ComponentProps> = ({
   title,
   minutesUrl,
   followingUsers,
-  hostedUser,
+  hostUser,
   openDate,
 }) => {
   return (
@@ -56,7 +56,7 @@ export const Component: React.VFC<ComponentProps> = ({
             finished,
             openDate,
             followingUsers,
-            hostedUser,
+            hostUser,
           }}
         />
       </div>
