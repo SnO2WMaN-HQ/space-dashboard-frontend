@@ -6,7 +6,7 @@ import {SectionHostedSpaces} from './organisms/SectionHostedSpaces';
 import {SectionProfile} from './organisms/SectionProfile';
 import {TransformedProps} from './transform';
 
-export type ComponentProps = Merge<TransformedProps, {className?: string}>;
+export type ComponentProps = Merge<{className?: string}, TransformedProps>;
 export const Component: React.FC<ComponentProps> = ({
   children,
   className,

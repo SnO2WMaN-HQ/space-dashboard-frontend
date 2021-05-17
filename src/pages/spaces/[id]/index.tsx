@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -10,27 +11,22 @@ import React from 'react';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
 import {TemplateLoadingPage} from '~/template/Loading';
-import {TemplateUserPage, transform, TransformedProps} from '~/template/User';
+import {TemplateSpacePage, transform, TransformedProps} from '~/template/Space';
 
-export type UrlQuery = {unique: string};
+export type UrlQuery = {id: string};
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
-    .AllUserPages()
-    .then(({allUsers}) =>
-      allUsers.map(({uniqueName}) => ({params: {unique: uniqueName}})),
-    )
-    .then((paths) => ({
-      paths,
-      fallback: true,
-    }));
+    .AllSpacePages()
+    .then(({allSpaces}) => allSpaces.map(({id}) => ({params: {id}})))
+    .then((paths) => ({paths, fallback: true}));
 };
 
 export const getStaticProps: GetStaticProps<TransformedProps, UrlQuery> =
   async ({params}) => {
-    if (!params?.unique) throw new Error('Invalid parameters.');
+    if (!params?.id) throw new Error('Invalid parameters.');
     return graphqlSdk
-      .UserPage({unique: params.unique})
+      .SpacePages({id: params.id})
       .then((data) => transform(data))
       .then((props) => ({props, revalidate: 10}))
       .catch(() => ({notFound: true}));
@@ -40,18 +36,19 @@ export type PageProps = Merge<
   {className?: string},
   InferGetStaticPropsType<typeof getStaticProps>
 >;
-export const Page: NextPage<PageProps> = (props) => {
+export const Page: NextPage<PageProps> = ({className, ...props}) => {
   const router = useRouter();
 
-  if (router.isFallback) return <TemplateLoadingPage />;
+  if (router.isFallback)
+    return <TemplateLoadingPage className={clsx(className)} />;
   return (
     <>
       <Head>
         <title>
-          {props.displayName}(@{props.uniqueName}) / twISS
+          {props.hostedUser.displayName}の『{props.title}』/ twISS
         </title>
       </Head>
-      <TemplateUserPage {...props} />
+      <TemplateSpacePage className={clsx(className)} {...props} />
     </>
   );
 };

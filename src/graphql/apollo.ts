@@ -4,13 +4,9 @@ import {
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
-import {API_GRAPHQL_ENDPOINT} from '~/configs/env';
 
 export const createApolloClient = () => {
-  const httpLink = createHttpLink({
-    uri: API_GRAPHQL_ENDPOINT,
-    credentials: 'include',
-  });
+  const httpLink = createHttpLink({uri: '/api/graphql'});
 
   const client = new ApolloClient({
     connectToDevTools: process.browser,
