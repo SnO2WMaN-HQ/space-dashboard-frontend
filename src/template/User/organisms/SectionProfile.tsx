@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIcon} from '~/components/atoms/UserIcon';
@@ -9,6 +10,8 @@ export const SectionProfile: React.VFC<{
   displayName: string;
   picture: string;
 }> = ({className, displayName, uniqueName, picture}) => {
+  const {t} = useTranslation('user');
+
   return (
     <section
       className={clsx(
@@ -20,7 +23,9 @@ export const SectionProfile: React.VFC<{
         'rounded-sm',
       )}
     >
-      <p className={clsx('px-2', 'font-bold')}>プロフィール</p>
+      <p className={clsx('px-2', 'font-bold')}>
+        {t('user:section.profile.title')}
+      </p>
       <div
         className={clsx(
           'mt-2',

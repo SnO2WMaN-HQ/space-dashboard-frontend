@@ -1,12 +1,14 @@
 import {faCircleNotch} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
 
 export type ComponentProps = {
   className?: string;
 };
 export const Component: React.FC<ComponentProps> = ({children, className}) => {
+  const {t} = useTranslation();
   return (
     <main
       className={clsx(
@@ -32,7 +34,7 @@ export const Component: React.FC<ComponentProps> = ({children, className}) => {
           'font-bold',
         )}
       >
-        ロード中です
+        {t('loading')}
       </span>
     </main>
   );

@@ -4,8 +4,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {DateText} from '~/components/atoms/DateText';
 
@@ -41,7 +41,7 @@ export const BlockDetails: React.VFC<ComponentProps> = ({
             icon={faExclamationCircle}
           />
           <span className={clsx('ml-1', 'text-sm', 'text-red-500')}>
-            {t('space_details_finished')}
+            {t('finished_space')}
           </span>
         </div>
       )}

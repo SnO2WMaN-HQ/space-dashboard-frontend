@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 
 export const DateText: React.VFC<{className: string; date: string}> = ({
   className,
@@ -9,7 +9,7 @@ export const DateText: React.VFC<{className: string; date: string}> = ({
   const {t} = useTranslation();
   return (
     <time className={clsx(className)}>
-      {t('format:open_date', {date: new Date(date)})}
+      {t('format.open_date', {date: new Date(date)})}
     </time>
   );
 };

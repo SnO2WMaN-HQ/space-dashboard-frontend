@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
 
@@ -11,7 +11,7 @@ export const BlockHostUser: React.VFC<{
   const {t} = useTranslation();
   return (
     <div className={clsx(className)}>
-      <p className={clsx('font-bold')}>{t('space_host_user')}</p>
+      <p className={clsx('font-bold')}>{t('space_block.host_user.title')}</p>
       <div className={clsx('mt-2', 'flex', 'px-0', 'sm:px-2')}>
         <div className={clsx('w-16', 'h-16')}>
           <UserIconLink

@@ -14,8 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": ".",
-    "paths": {"~/*": ["./src/*"], "~~/*": ["./*"]}
+    "paths": {
+      "~/*": ["./src/*"],
+      "~~/*": ["./*"]}
   },
   "include": ["next-env.d.ts", "types/next-auth.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules","storybook-static"]
 }

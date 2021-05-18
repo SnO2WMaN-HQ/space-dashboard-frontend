@@ -4,14 +4,17 @@ import {
   InferGetStaticPropsType,
   NextPage,
 } from 'next';
+import {useTranslation} from 'next-i18next';
+import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateUserPage, transform, TransformedProps} from '~/template/User';
+// eslint-disable-next-line import/extensions
+import nextI18NextConfig from '~~/next-i18next.config.js';
 
 export type UrlQuery = {
   unique: string;
@@ -30,12 +33,24 @@ export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<TransformedProps, UrlQuery> =
-  async ({params}) => {
+  async ({locale, params}) => {
     if (!params?.unique) throw new Error('Invalid parameters.');
+
     return graphqlSdk
       .UserPage({unique: params.unique})
       .then((data) => transform(data))
-      .then((props) => ({props, revalidate: 10}))
+      .then(async (props) => ({
+        props: {
+          ...props,
+          ...(locale &&
+            (await serverSideTranslations(
+              locale,
+              ['common', 'user'],
+              nextI18NextConfig,
+            ))),
+        },
+        revalidate: 10,
+      }))
       .catch(() => ({notFound: true}));
   };
 
@@ -52,7 +67,7 @@ export const Page: NextPage<PageProps> = (props) => {
     <>
       <Head>
         <title>
-          {t('title:user', {
+          {t('title.user', {
             uniqueName: props.uniqueName,
             displayName: props.displayName,
           })}

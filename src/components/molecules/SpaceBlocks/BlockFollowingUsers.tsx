@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 import {MoreUserIcon} from '~/components/atoms/MoreUserIcon';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
 
@@ -9,11 +9,11 @@ export const BlockFollowingUsers: React.VFC<{
   users: {uniqueName: string; displayName: string; picture: string}[];
   hasMore: boolean;
 }> = ({className, users, hasMore}) => {
-  const {t} = useTranslation();
+  const {t} = useTranslation('common');
   return (
     <div className={clsx(className)}>
       <p className={clsx('font-bold')}>
-        {t('space_following_users', {count: users.length})}
+        {t('space_block.following_users.title', {count: users.length})}
       </p>
       <div
         className={clsx(

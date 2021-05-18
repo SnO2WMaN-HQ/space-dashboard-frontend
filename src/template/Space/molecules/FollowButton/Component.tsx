@@ -1,6 +1,6 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
 
 export type ComponentProps = {
   className?: string;
@@ -39,7 +39,8 @@ export const Component: React.VFC<ComponentProps> = ({className, followed}) => {
           'tracking-widest',
         )}
       >
-        {t('follow_button_text', {context: followed ? 'followed' : 'notyet'})}
+        {!followed && t('follow_space')}
+        {followed && t('unfollow_space')}
       </span>
     </button>
   );

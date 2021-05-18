@@ -1,0 +1,55 @@
+{
+  "title": {
+    "timeline": "タイムライン / twISS",
+    "user": "{{displayName}}(@{{uniqueName}}) / twISS",
+    "space": "{{hostName}}の『{{title}}』 / twISS",
+    "loading": "$t(common:loading) / twISS"
+  },
+
+  "format": {
+    "open_date": "{{date, YYYY年M月D日}}"
+  },
+
+  "signin": "ログイン",
+  "signout": "ログアウト",
+  "loading": "ロード中",
+  "host": "ホスト",
+
+  "minutes": "議事録",
+  "minutes_url": "議事録",
+
+  "description": "説明",
+
+  "host_user": "ホストしているユーザー",
+  "host_user_prural": "ホストしているユーザー",
+
+  "following_user": "気になっているユーザー",
+  "following_user_plural": "気になっているユーザー",
+
+  "hosted_space": "ホストしているスペース",
+  "hosted_space_prural": "ホストしているスペース",
+
+  "following_space": "気になっているスペース",
+  "following_space_plural": "気になっているスペース",
+
+  "finished_space": "終了したスペース",
+
+  "follow_space": "気になる",
+  "unfollow_space": "解除",
+
+  "space_block": {
+    "following_users": {
+      "title_0": "$t(common:following_user)はいません",
+      "title": "$t(common:following_user)"
+    },
+    "host_user": {
+      "title": "$t(common:host_user)"
+    },
+    "minutes": {
+      "title": "$t(common:minutes_url)"
+    },
+    "description": {
+      "title": "$t(common:description)"
+    }
+  }
+}
