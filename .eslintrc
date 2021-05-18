@@ -3,10 +3,13 @@
   "extends": [
     "plugin:@shopify/typescript",
     "plugin:@shopify/react",
+    "plugin:@shopify/graphql",
     "plugin:@shopify/prettier"
   ],
   "rules": {
-    "import/order":0,
+    "@typescript-eslint/array-type": [2, {"defaultOption": "array"}],
+    "import/order": 0,
+    "graphql/required-fields": 0,
     "jsx-a11y/anchor-is-valid": [
       2,
       {
