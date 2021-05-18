@@ -7,12 +7,15 @@ import {
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateUserPage, transform, TransformedProps} from '~/template/User';
 
-export type UrlQuery = {unique: string};
+export type UrlQuery = {
+  unique: string;
+};
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
@@ -42,13 +45,17 @@ export type PageProps = Merge<
 >;
 export const Page: NextPage<PageProps> = (props) => {
   const router = useRouter();
+  const {t} = useTranslation();
 
   if (router.isFallback) return <TemplateLoadingPage />;
   return (
     <>
       <Head>
         <title>
-          {props.displayName}(@{props.uniqueName}) / twISS
+          {t('title:user', {
+            uniqueName: props.uniqueName,
+            displayName: props.displayName,
+          })}
         </title>
       </Head>
       <TemplateUserPage {...props} />

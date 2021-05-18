@@ -3,7 +3,9 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 
-export type ComponentProps = {className?: string};
+export type ComponentProps = {
+  className?: string;
+};
 export const Component: React.FC<ComponentProps> = ({children, className}) => {
   return (
     <main

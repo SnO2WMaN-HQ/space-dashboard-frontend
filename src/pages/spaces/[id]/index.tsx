@@ -8,6 +8,7 @@ import {
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
 import {TemplateLoadingPage} from '~/template/Loading';
@@ -38,6 +39,7 @@ export type PageProps = Merge<
 >;
 export const Page: NextPage<PageProps> = ({className, ...props}) => {
   const router = useRouter();
+  const {t} = useTranslation();
 
   if (router.isFallback)
     return <TemplateLoadingPage className={clsx(className)} />;
@@ -45,7 +47,10 @@ export const Page: NextPage<PageProps> = ({className, ...props}) => {
     <>
       <Head>
         <title>
-          {props.hostedUser.displayName}の『{props.title}』/ twISS
+          {t('title:space', {
+            hostName: props.hostUser.displayName,
+            title: props.title,
+          })}
         </title>
       </Head>
       <TemplateSpacePage className={clsx(className)} {...props} />

@@ -3,7 +3,7 @@ import React from 'react';
 import {
   BlockDetails,
   BlockFollowingUsers,
-  BlockHostingUser,
+  BlockHostUser,
   BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
 
@@ -30,7 +30,7 @@ export const FollowingSpace: React.VFC<{
   >
     <BlockTitle className={clsx()} {...{id, title}} />
     <BlockDetails className={clsx('mt-1')} {...{openDate}} />
-    <BlockHostingUser className={clsx('mt-4')} {...{user: hostedUser}} />
+    <BlockHostUser className={clsx('mt-4')} {...{user: hostedUser}} />
     <BlockFollowingUsers
       className={clsx('mt-4')}
       {...{users: followingUsers.users, hasMore: followingUsers.hasMore}}

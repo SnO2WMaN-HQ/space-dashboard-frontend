@@ -4,7 +4,7 @@ import {
   BlockDescription,
   BlockDetails,
   BlockFollowingUsers,
-  BlockHostingUser,
+  BlockHostUser,
   BlockMinutes,
   BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
@@ -20,7 +20,7 @@ export type ComponentProps = {
 
   finished: boolean;
   openDate: string;
-  hostedUser: {uniqueName: string; displayName: string; picture: string};
+  hostUser: {uniqueName: string; displayName: string; picture: string};
   followingUsers: {
     hasMore: boolean;
     users: {uniqueName: string; displayName: string; picture: string}[];
@@ -35,7 +35,7 @@ export const Component: React.VFC<ComponentProps> = ({
   title,
   finished,
   openDate,
-  hostedUser,
+  hostUser,
   followingUsers,
 }) => (
   <div
@@ -61,7 +61,7 @@ export const Component: React.VFC<ComponentProps> = ({
       <BlockDescription className={clsx('mt-4')} {...{description}} />
     )}
     {minutesUrl && <BlockMinutes className={clsx('mt-4')} {...{minutesUrl}} />}
-    <BlockHostingUser className={clsx('mt-4')} {...{user: hostedUser}} />
+    <BlockHostUser className={clsx('mt-4')} {...{user: hostUser}} />
     <BlockFollowingUsers
       className={clsx('mt-4')}
       {...{users: followingUsers.users, hasMore: followingUsers.hasMore}}
