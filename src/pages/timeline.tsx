@@ -6,12 +6,11 @@ import Error from 'next/error';
 import Head from 'next/head';
 import React from 'react';
 import {usePersonaPageQuery} from '~/graphql/apollo';
+import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplatePersonalPage, transform} from '~/template/Personal';
-// eslint-disable-next-line import/extensions
-import nextI18NextConfig from '~~/next-i18next.config.js';
 
-export type UrlQuery = Record<string, never>;
+export type UrlQuery = {[key: string]: never};
 export const getServerSideProps = async ({
   locale,
 }: GetServerSidePropsContext<UrlQuery>) => {
@@ -21,7 +20,7 @@ export const getServerSideProps = async ({
         (await serverSideTranslations(
           locale,
           ['common', 'user'],
-          nextI18NextConfig,
+          NextI18nextConfig,
         ))),
     },
   };

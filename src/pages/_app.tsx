@@ -6,9 +6,8 @@ import {AppProps} from 'next/app';
 import React from 'react';
 import {RecoilRoot} from 'recoil';
 import {createApolloClient} from '~/graphql/apollo';
+import {NextI18nextConfig} from '~/i18n';
 import '~/styles/index.css';
-// eslint-disable-next-line import/extensions
-import nextI18NextConfig from '~~/next-i18next.config.js';
 
 export const App: React.FC<AppProps> = ({Component, pageProps}) => {
   const {user} = pageProps;
@@ -24,4 +23,4 @@ export const App: React.FC<AppProps> = ({Component, pageProps}) => {
   );
 };
 
-export default appWithTranslation(App, nextI18NextConfig);
+export default appWithTranslation(App, NextI18nextConfig);

@@ -11,10 +11,9 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
+import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateUserPage, transform, TransformedProps} from '~/template/User';
-// eslint-disable-next-line import/extensions
-import nextI18NextConfig from '~~/next-i18next.config.js';
 
 export type UrlQuery = {
   unique: string;
@@ -46,7 +45,7 @@ export const getStaticProps: GetStaticProps<TransformedProps, UrlQuery> =
             (await serverSideTranslations(
               locale,
               ['common', 'user'],
-              nextI18NextConfig,
+              NextI18nextConfig,
             ))),
         },
         revalidate: 10,
