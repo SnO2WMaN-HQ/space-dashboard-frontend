@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+yarn run codegen
+
+start-storybook -p 6006 -s ./public
