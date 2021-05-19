@@ -1,1 +1,1 @@
-schema: ${API_GRAPHQL_ENDPOINT:./schema.graphql}
+schema: ${API_GRAPHQL_SCHEMA:./schema.graphql}
