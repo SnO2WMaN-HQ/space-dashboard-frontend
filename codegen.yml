@@ -1,5 +1,5 @@
 generates:
-  ./src/graphql/schema.graphql:
+  ./schema.graphql:
     schema: ${API_GRAPHQL_SCHEMA:./schema.graphql}
     plugins:
       - schema-ast
