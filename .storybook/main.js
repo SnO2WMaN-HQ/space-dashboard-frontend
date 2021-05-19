@@ -8,25 +8,31 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-postcss',
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+        },
+      },
+    },
   ],
   // eslint-disable-next-line require-await
   webpackFinal: async (config) => {
-    // add tsconfig-paths-webpack-plugin
+    config.node = {
+      ...config.node,
+      fs: 'empty',
+    };
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'next-i18next': 'react-i18next',
+    };
+
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
       new TsconfigPathsPlugin({configFile: tsconfig}),
     ];
-
-    // replace postcss-loader for postcss 8
-    const cssRule = config.module.rules.find((rule) =>
-      'test.css'.match(rule.test),
-    );
-    const loaderIndex = cssRule.use.findIndex((loader) => {
-      const loaderString = typeof loader === 'string' ? loader : loader.loader;
-      return loaderString.includes('postcss-loader');
-    });
-    cssRule.use[loaderIndex] = 'postcss-loader';
 
     return config;
   },
