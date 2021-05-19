@@ -20,6 +20,8 @@ type Mutation {
   createSpace(title: String!, description: String, minutesUrl: String, openDate: LocalDate!, hostUserId: ID!): Space!
   updateSpace(id: ID!, title: String, description: String, minutesUrl: String): Space!
   finishSpace(id: ID!): Space!
+  createUser(uniqueName: ID!, displayName: String!, picture: String!): User!
+  updateUser(id: ID!, uniqueName: ID!, displayName: String!, picture: String!): User!
   followSpace(userId: ID!, spaceId: ID!): Following!
 }
 
@@ -36,9 +38,9 @@ type PageInfo {
 type Query {
   space(id: ID!): Space!
   allSpaces: [Space!]!
-  user(uniqueName: ID!): User!
+  user(id: ID, uniqueName: ID): User!
   allUsers: [User!]!
-  currentUser: User!
+  currentUser: User
 }
 
 type Space {
@@ -71,7 +73,6 @@ type User {
   uniqueName: ID!
   displayName: String!
   picture: String!
-  twitterUrl: String!
   hostedSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserHostedSpacesArgsOrderBy = {openDate: DESC}): UserHostedSpacesConnection!
   followingSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserFollowingSpacesArgsOrderBy = {updatedAt: DESC}): UserFollowingSpacesConnection!
   isFollowingSpace(spaceId: String!): Boolean!
