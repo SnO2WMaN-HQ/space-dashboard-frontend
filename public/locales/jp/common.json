@@ -1,6 +1,7 @@
 {
   "title": {
     "timeline": "タイムライン / twISS",
+    "signup": "ユーザー登録 / twISS",
     "user": "{{displayName}}(@{{uniqueName}}) / twISS",
     "space": "{{hostName}}の『{{title}}』 / twISS",
     "loading": "$t(common:loading) / twISS"
@@ -10,8 +11,14 @@
     "open_date": "{{date, YYYY年M月D日}}"
   },
 
+  "unique_name": "スクリーンネーム",
+  "display_name": "ハンドルネーム",
+
   "signin": "ログイン",
   "signout": "ログアウト",
+
+  "signup": "ユーザー登録",
+
   "loading": "ロード中",
   "host": "ホスト",
 
