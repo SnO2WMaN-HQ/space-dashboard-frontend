@@ -1,0 +1,12 @@
+mutation ($uniqueName: ID!, $displayName: String!, $picture: String!) {
+  createUser(
+    uniqueName: $uniqueName
+    displayName: $displayName
+    picture: $picture
+  ) {
+    id
+    uniqueName
+    displayName
+    picture
+  }
+}
