@@ -2,6 +2,7 @@ const dayjs = require('dayjs');
 
 module.exports = {
   i18n: {
+    defaultNS: 'common',
     defaultLocale: 'jp',
     locales: ['jp'],
     serializeConfig: false,

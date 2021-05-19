@@ -2,4 +2,4 @@
 
 yarn run codegen
 
-build-storybook
+build-storybook -s ./public
