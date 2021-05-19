@@ -2,6 +2,7 @@
   "name": "@bo2kshelf/main-frontend",
   "private": true,
   "scripts": {
+    "prebuild": "run-s codegen",
     "build": "next build",
     "dev": "next dev",
     "start": "next start",
