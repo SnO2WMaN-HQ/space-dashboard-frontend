@@ -1,0 +1,15 @@
+{
+  "section": {
+    "hosted_spaces": {
+      "title_0": "$t(common:following_space)はありません",
+      "title": "$t(common:following_space)"
+    },
+    "following_spaces": {
+      "title_0": "$t(common:following_space)はありません",
+      "title": "$t(common:following_space)"
+    },
+    "profile": {
+      "title": "プロフィール"
+    }
+  }
+}

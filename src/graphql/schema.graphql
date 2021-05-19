@@ -1,0 +1,106 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Following {
+  space: Space!
+  user: User!
+}
+
+type Hosting {
+  space: Space!
+  user: User!
+}
+
+"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
+scalar LocalDate
+
+type Mutation {
+  createSpace(title: String!, description: String, minutesUrl: String, openDate: LocalDate!, hostUserId: ID!): Space!
+  updateSpace(id: ID!, title: String, description: String, minutesUrl: String): Space!
+  finishSpace(id: ID!): Space!
+  followSpace(userId: ID!, spaceId: ID!): Following!
+}
+
+enum OrderBy {
+  ASC
+  DESC
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
+
+type Query {
+  space(id: ID!): Space!
+  allSpaces: [Space!]!
+  user(uniqueName: ID!): User!
+  allUsers: [User!]!
+  currentUser: User!
+}
+
+type Space {
+  id: ID!
+  finished: Boolean!
+  title: String!
+  description: String
+  minutesUrl: String
+  hostUser: Hosting!
+  followingUsers(after: String, first: Int!, orderBy: SpaceFollowingUsersArgsOrderBy = {updatedAt: DESC}): SpaceFollowingUsersConnection!
+  openDate: LocalDate!
+}
+
+input SpaceFollowingUsersArgsOrderBy {
+  updatedAt: OrderBy = DESC
+}
+
+type SpaceFollowingUsersConnection {
+  edges: [SpaceFollowingUsersEdge!]!
+  pageInfo: PageInfo!
+}
+
+type SpaceFollowingUsersEdge {
+  cursor: String!
+  node: Following!
+}
+
+type User {
+  id: ID!
+  uniqueName: ID!
+  displayName: String!
+  picture: String!
+  twitterUrl: String!
+  hostedSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserHostedSpacesArgsOrderBy = {openDate: DESC}): UserHostedSpacesConnection!
+  followingSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserFollowingSpacesArgsOrderBy = {updatedAt: DESC}): UserFollowingSpacesConnection!
+  isFollowingSpace(spaceId: String!): Boolean!
+}
+
+input UserFollowingSpacesArgsOrderBy {
+  updatedAt: OrderBy = DESC
+}
+
+type UserFollowingSpacesConnection {
+  edges: [UserFollowingSpacesEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserFollowingSpacesEdge {
+  cursor: String!
+  node: Following!
+}
+
+input UserHostedSpacesArgsOrderBy {
+  openDate: OrderBy = DESC
+}
+
+type UserHostedSpacesConnection {
+  edges: [UserHostedSpacesEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserHostedSpacesEdge {
+  cursor: String!
+  node: Hosting!
+}

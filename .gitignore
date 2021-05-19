@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# env
+.env.local
+!.env.local.example
+
+# output
+.next/
+dist/
+
+# cache
+.eslintcache
+.stylelintcache
+
+# storybook
+storybook-static/
+
+# VSCode
+.vscode/*
+!.vscode/extensions.json

@@ -1,0 +1,12 @@
+# output
+.next/
+dist/
+
+# codegen
+codegen/
+
+# storybook
+storybook-static/
+
+# root GraphQL schema
+schema.graphql

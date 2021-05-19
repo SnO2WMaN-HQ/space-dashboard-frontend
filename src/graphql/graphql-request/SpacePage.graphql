@@ -1,0 +1,39 @@
+query AllSpacePages {
+  allSpaces {
+    id
+  }
+}
+
+query SpacePages($id: ID!) {
+  space(id: $id) {
+    id
+    finished
+    openDate
+    title
+    description
+    minutesUrl
+    hostUser {
+      user {
+        uniqueName
+        displayName
+        picture
+      }
+    }
+    followingUsers(first: 23) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+      edges {
+        cursor
+        node {
+          user {
+            uniqueName
+            displayName
+            picture
+          }
+        }
+      }
+    }
+  }
+}
