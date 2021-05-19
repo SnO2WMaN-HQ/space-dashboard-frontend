@@ -14,7 +14,7 @@
     "codegen": "gql-gen",
     "codegen:dev": "yarn run codegen --watch",
     "storybook:build": "scripty",
-    "storybook:dev": "start-storybook -s ./public",
+    "storybook:dev": "scripty",
     "ts-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -66,10 +66,10 @@
     "eslint": "^7.26.0",
     "npm-run-all": "^4.1.5",
     "postcss": "8.2.15",
+    "postcss-import": "^14.0.2",
     "postcss-loader": "^4.1.0",
     "prettier": "^2.3.0",
     "prettier-plugin-organize-imports": "^2.0.0",
-    "react-i18next": "^11.8.15",
     "scripty": "^2.0.0",
     "storybook-addon-next-router": "^2.0.3",
     "tsconfig-paths-webpack-plugin": "^3.5.1",

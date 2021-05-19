@@ -5,7 +5,6 @@ import {appWithTranslation} from 'next-i18next';
 import {AppProps} from 'next/app';
 import React from 'react';
 import {RecoilRoot} from 'recoil';
-import 'tailwindcss/tailwind.css';
 import {createApolloClient} from '~/graphql/apollo';
 import '~/styles/index.css';
 // eslint-disable-next-line import/extensions

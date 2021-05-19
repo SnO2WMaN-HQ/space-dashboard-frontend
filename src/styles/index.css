@@ -1,3 +1,5 @@
+@import 'tailwindcss/tailwind.css';
+
 :root {
   overflow-y: scroll;
 }
