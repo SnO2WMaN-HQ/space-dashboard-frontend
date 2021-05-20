@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      run: yarn run lint:eslint
+    prettier:
+      run: yarn run lint:prettier
+    secretlint:
+      run: docker run -v `pwd`:`pwd` -w `pwd` --rm -it secretlint/secretlint:latest secretlint "**/*"
