@@ -36,8 +36,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
     if (!loading && Boolean(currentUser)) router.push('/timeline');
   }, [currentUser, loading, router]);
 
-  if (loading || Boolean(currentUser))
-    return <TemplateLoadingPage className={className} />;
+  if (loading) return <TemplateLoadingPage className={className} />;
 
   return (
     <>
