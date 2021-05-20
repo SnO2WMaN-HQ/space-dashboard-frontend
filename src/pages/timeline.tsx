@@ -10,7 +10,7 @@ import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplatePersonalPage, transform} from '~/template/Personal';
 
-export type UrlQuery = {[key: string]: never};
+export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
   locale,
 }: GetServerSidePropsContext<UrlQuery>) => {
