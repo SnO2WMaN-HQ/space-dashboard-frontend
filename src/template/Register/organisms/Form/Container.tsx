@@ -9,7 +9,8 @@ export const schema = z.object({
   uniqueName: z
     .string()
     .min(4, 'register:error.unique_name.min')
-    .max(15, 'register:error.unique_name.max'),
+    .max(15, 'register:error.unique_name.max')
+    .regex(/[A-Za-z0-9_]+/, 'register:error.unique_name.regex'),
   displayName: z.string().max(50, 'register:error.display_name.max'),
 });
 
