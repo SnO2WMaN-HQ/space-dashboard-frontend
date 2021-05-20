@@ -1,4 +1,4 @@
-mutation ($uniqueName: ID!, $displayName: String!, $picture: String!) {
+mutation SignUp($uniqueName: ID!, $displayName: String!, $picture: String!) {
   createUser(
     uniqueName: $uniqueName
     displayName: $displayName

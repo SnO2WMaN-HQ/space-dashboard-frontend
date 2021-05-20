@@ -1,46 +1,55 @@
+import {zodResolver} from '@hookform/resolvers/zod';
 import clsx from 'clsx';
 import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
-import {SubmitButton} from '../../molecules/SubmitButton';
-import {DisplayNameInput, UniqueNameInput} from '../../molecules/TextInput';
+import * as z from 'zod';
+import {Component} from './Component';
 
-export type FormInput = {
-  uniqueName: string;
-  displayName: string;
-  picture: string;
-};
+export const schema = z.object({
+  uniqueName: z
+    .string()
+    .min(4, 'signup:error.unique_name.min')
+    .max(15, 'signup:error.unique_name.max'),
+  displayName: z.string().max(50, 'signup:error.display_name.max'),
+});
+
+export type FormInput = z.infer<typeof schema>;
 
 export type ContainerProps = {
   className?: string;
   onSubmit: SubmitHandler<FormInput>;
+  isSubmitting: boolean;
+  isCompleted: boolean;
 };
-export const Container: React.VFC<ContainerProps> = ({className, onSubmit}) => {
-  const {register, handleSubmit} = useForm<FormInput>();
+export const Container: React.VFC<ContainerProps> = ({
+  className,
+  onSubmit,
+  ...props
+}) => {
+  const {
+    register,
+    handleSubmit,
+    formState: {errors, isValid, isValidating, touchedFields},
+  } = useForm<FormInput>({mode: 'onBlur', resolver: zodResolver(schema)});
 
   return (
-    <form
-      className={clsx(
-        className,
-        'bg-white',
-        ['px-4', 'sm:px-6'],
-        ['py-6', 'sm:py-8'],
-        'shadow-md',
-        'rounded-md',
-        'flex',
-        'flex-col',
-        'items-center',
-      )}
+    <Component
+      className={clsx(className)}
       onSubmit={handleSubmit(onSubmit)}
-    >
-      <UniqueNameInput
-        className={clsx('w-full')}
-        register={register('uniqueName')}
-      />
-      <DisplayNameInput
-        className={clsx('w-full', 'mt-8')}
-        register={register('displayName')}
-      />
-      <SubmitButton className={clsx('mt-8')} />
-    </form>
+      register={{
+        uniqueName: register('uniqueName'),
+        displayName: register('displayName'),
+      }}
+      errors={{
+        uniqueName: errors.uniqueName?.message,
+        displayName: errors.displayName?.message,
+      }}
+      {...{
+        isUntouched: Object.keys(touchedFields).length === 0,
+        isValid,
+        isValidating,
+        ...props,
+      }}
+    />
   );
 };

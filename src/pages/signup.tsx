@@ -1,14 +1,16 @@
 import {withPageAuthRequired} from '@auth0/nextjs-auth0';
-import clsx from 'clsx';
 import {GetServerSidePropsContext, NextPage} from 'next';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
-import React from 'react';
+import {useRouter} from 'next/router';
+import React, {useEffect} from 'react';
+import {useCurrentUser} from '~/hooks/useCurrentUser';
 import {NextI18nextConfig} from '~/i18n';
+import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateSignUpPage} from '~/template/SignUp';
 
-export type UrlQuery = {[key: string]: never};
+export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
   locale,
 }: GetServerSidePropsContext<UrlQuery>) => {
@@ -26,14 +28,23 @@ export const getServerSideProps = async ({
 
 export type PageProps = {className?: string};
 const Page: NextPage<PageProps> = ({className, ...props}) => {
+  const router = useRouter();
+  const {loading, currentUser} = useCurrentUser();
   const {t} = useTranslation();
+
+  useEffect(() => {
+    if (!loading && Boolean(currentUser)) router.push('/timeline');
+  }, [currentUser, loading, router]);
+
+  if (loading || Boolean(currentUser))
+    return <TemplateLoadingPage className={className} />;
 
   return (
     <>
       <Head>
         <title>{t('title.signup')}</title>
       </Head>
-      <TemplateSignUpPage className={clsx()} />
+      <TemplateSignUpPage className={className} />
     </>
   );
 };
