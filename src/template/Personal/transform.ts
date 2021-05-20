@@ -1,28 +1,28 @@
-import {PersonalUserPageQuery} from '~/graphql/apollo';
+import {PersonalPageQuery} from '~/graphql/apollo';
 import {TransformedProps as UserTransformedProps} from '../User';
 
 export type TransformedProps = UserTransformedProps;
-export const transform = ({
-  currentUser: user,
-}: PersonalUserPageQuery): TransformedProps => ({
-  uniqueName: user.uniqueName,
-  displayName: user.displayName,
-  picture: user.picture,
+export const transform = (
+  currentUser: NonNullable<PersonalPageQuery['currentUser']>,
+): TransformedProps => ({
+  uniqueName: currentUser.uniqueName,
+  displayName: currentUser.displayName,
+  picture: currentUser.picture,
   hostedSpaces: {
     pageInfo: {
-      hasMore: user.hostedSpaces.pageInfo.hasNextPage,
-      ...(user.hostedSpaces.pageInfo.endCursor
-        ? {endCursor: user.hostedSpaces.pageInfo.endCursor}
+      hasMore: currentUser.hostedSpaces.pageInfo.hasNextPage,
+      ...(currentUser.hostedSpaces.pageInfo.endCursor
+        ? {endCursor: currentUser.hostedSpaces.pageInfo.endCursor}
         : {}),
     },
-    spaces: user.hostedSpaces.edges.map(({node: {space}}) => ({
+    spaces: currentUser.hostedSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,
       hostedUser: {
-        uniqueName: user.uniqueName,
-        displayName: user.displayName,
-        picture: user.picture,
+        uniqueName: currentUser.uniqueName,
+        displayName: currentUser.displayName,
+        picture: currentUser.picture,
       },
       followingUsers: {
         hasMore: space.followingUsers.pageInfo.hasNextPage,
@@ -36,12 +36,12 @@ export const transform = ({
   },
   followingSpaces: {
     pageInfo: {
-      hasMore: user.followingSpaces.pageInfo.hasNextPage,
-      ...(user.followingSpaces.pageInfo.endCursor
-        ? {endCursor: user.followingSpaces.pageInfo.endCursor}
+      hasMore: currentUser.followingSpaces.pageInfo.hasNextPage,
+      ...(currentUser.followingSpaces.pageInfo.endCursor
+        ? {endCursor: currentUser.followingSpaces.pageInfo.endCursor}
         : {}),
     },
-    spaces: user.followingSpaces.edges.map(({node: {space}}) => ({
+    spaces: currentUser.followingSpaces.edges.map(({node: {space}}) => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,

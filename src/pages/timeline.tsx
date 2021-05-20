@@ -5,7 +5,7 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Error from 'next/error';
 import Head from 'next/head';
 import React from 'react';
-import {usePersonaPageQuery} from '~/graphql/apollo';
+import {usePersonalPageQuery} from '~/graphql/apollo';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplatePersonalPage, transform} from '~/template/Personal';
@@ -30,17 +30,20 @@ export type PageProps = {
   className?: string;
 };
 const Page: NextPage<PageProps> = ({className, ...props}) => {
-  const {data, loading, error} = usePersonaPageQuery();
+  const {data, loading, error} = usePersonalPageQuery();
   const {t} = useTranslation();
 
   if (error) return <Error statusCode={500} />;
-  if (data)
+  if (data && data.currentUser)
     return (
       <>
         <Head>
           <title>{t('title.timeline')}</title>
         </Head>
-        <TemplatePersonalPage className={className} {...transform(data)} />
+        <TemplatePersonalPage
+          className={className}
+          {...transform(data.currentUser)}
+        />
       </>
     );
   if (loading) return <TemplateLoadingPage className={className} />;

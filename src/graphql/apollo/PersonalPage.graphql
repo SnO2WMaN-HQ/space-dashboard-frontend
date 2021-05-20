@@ -1,4 +1,4 @@
-query PersonaPage {
+query PersonalPage {
   currentUser {
     uniqueName
     displayName
