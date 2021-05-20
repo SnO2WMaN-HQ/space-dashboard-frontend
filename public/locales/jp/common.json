@@ -1,10 +1,11 @@
 {
   "title": {
-    "timeline": "タイムライン / twISS",
-    "register": "ユーザー登録 / twISS",
-    "user": "{{displayName}}(@{{uniqueName}}) / twISS",
-    "space": "{{hostName}}の『{{title}}』 / twISS",
-    "loading": "$t(common:loading) / twISS"
+    "index": "twiss",
+    "timeline": "タイムライン / twiss",
+    "register": "ユーザー登録 / twiss",
+    "user": "{{displayName}}(@{{uniqueName}}) / twiss",
+    "space": "{{hostName}}の『{{title}}』 / twiss",
+    "loading": "$t(common:loading) / twiss"
   },
 
   "format": {
