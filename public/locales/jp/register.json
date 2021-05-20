@@ -1,0 +1,26 @@
+{
+  "unique_name": {
+    "label": "$t(common:unique_name)",
+    "description": "@から始まる、4文字以上15文字以下の特別な名前で、ツイッターと同じ文字が使えます。"
+  },
+  "display_name": {
+    "label": "$t(common:display_name)",
+    "description": "主に表示される名前で、50文字以下で入力できます。"
+  },
+  "error": {
+    "unique_name": {
+      "min": "4文字以上でおねがいします。",
+      "max": "15文字以下でおねがいします。",
+      "regex": "使える文字は、AからZの大文字と小文字、数字、アンダーバー(_)のみです。"
+    },
+    "display_name": {
+      "max": "50文字以下でおねがいします。"
+    }
+  },
+  "require_input": "入力してください",
+  "validating": "チェック中です",
+  "invalid": "修正が必要です",
+  "valid": "登録する",
+  "submitting": "登録中です",
+  "completed": "ようこそ！"
+}
