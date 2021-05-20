@@ -1,34 +1,35 @@
+import {useUser} from '@auth0/nextjs-auth0';
 import {useEffect} from 'react';
-import {useEffectOnce} from 'react-use';
 import {atom, useRecoilValue, useSetRecoilState} from 'recoil';
 import {useCurrentUserLazyQuery} from '~/graphql/apollo';
 
-export type CurrentUser = {
-  id: string;
-};
+export type CurrentUser = {id: string};
 export const stateCurrentUser = atom<null | CurrentUser>({
   key: 'CurrentUser',
   default: null,
 });
 
 export const useCurrentUser = () => {
-  const [loadCurrentUser, {data, loading, error}] = useCurrentUserLazyQuery();
+  const {user, isLoading: auth0Loading} = useUser();
+  const [loadCurrentUser, {data, called, loading: apiLoading}] =
+    useCurrentUserLazyQuery();
 
   const currentUser = useRecoilValue(stateCurrentUser);
   const setCurrentUser = useSetRecoilState(stateCurrentUser);
 
-  useEffectOnce(() => {
-    if (!currentUser) loadCurrentUser();
-  });
+  useEffect(() => {
+    if (!currentUser && !auth0Loading && Boolean(user) && !called)
+      loadCurrentUser();
+  }, [auth0Loading, user, called, currentUser, loadCurrentUser]);
 
   useEffect(() => {
-    if (!loading && data?.currentUser && data.currentUser === null) {
+    if (!apiLoading && !data?.currentUser) {
       setCurrentUser(null);
     }
-    if (!loading && data?.currentUser && data.currentUser) {
+    if (!apiLoading && data?.currentUser) {
       setCurrentUser({id: data.currentUser.id});
     }
-  }, [data, loading, setCurrentUser]);
+  }, [data, apiLoading, setCurrentUser]);
 
-  return {currentUser, loading, error};
+  return {currentUser, loading: apiLoading || auth0Loading};
 };
