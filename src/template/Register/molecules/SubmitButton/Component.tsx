@@ -43,7 +43,7 @@ export const Disabled: React.VFC<{
 );
 
 export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
-  const {t} = useTranslation('signup');
+  const {t} = useTranslation();
 
   return (
     <>
@@ -57,7 +57,7 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               fixedWidth
             />
           )}
-          i18n={{text: t('signup:require_input')}}
+          i18n={{text: t('register:require_input')}}
         />
       )}
       {'isValidating' in props && props.isValidating && (
@@ -71,7 +71,7 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               fixedWidth
             />
           )}
-          i18n={{text: t('signup:validating')}}
+          i18n={{text: t('register:validating')}}
         />
       )}
       {'isValid' in props && !props.isValid && (
@@ -84,7 +84,7 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               fixedWidth
             />
           )}
-          i18n={{text: t('signup:invalid')}}
+          i18n={{text: t('register:invalid')}}
         />
       )}
       {'isSubmitting' in props && (
@@ -98,7 +98,7 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               fixedWidth
             />
           )}
-          i18n={{text: t('signup:submitting')}}
+          i18n={{text: t('register:submitting')}}
         />
       )}
       {'isCompleted' in props && (
@@ -111,7 +111,7 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               fixedWidth
             />
           )}
-          i18n={{text: t('signup:completed')}}
+          i18n={{text: t('register:completed')}}
         />
       )}
       {'isValid' in props && props.isValid && (
@@ -130,8 +130,8 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
               'hover:bg-blue-500',
             )}
             type="submit"
-            aria-label={t('signup:valid')}
-            value={t('signup:valid') as string}
+            aria-label={t('register:valid')}
+            value={t('register:valid') as string}
           />
         </label>
       )}

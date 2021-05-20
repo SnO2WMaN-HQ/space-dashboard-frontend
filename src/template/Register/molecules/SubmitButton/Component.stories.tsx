@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateSignUpPage/molecules/SubmitButton',
+  title: 'TemplateRegisterPage/molecules/SubmitButton',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

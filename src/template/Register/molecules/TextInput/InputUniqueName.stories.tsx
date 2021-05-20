@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './InputUniqueName';
 
 export default {
-  title: 'TemplateSignUpPage/molecules/TextInput/InputUniqueName',
+  title: 'TemplateRegisterPage/molecules/TextInput/InputUniqueName',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

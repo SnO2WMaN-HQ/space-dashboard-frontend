@@ -8,7 +8,7 @@ export function withPageSignedIn<T>(Component: React.VFC<T>) {
     const {loading, currentUser} = useCurrentUser();
 
     useEffect(() => {
-      if (!loading && !currentUser) router.push('/signup');
+      if (!loading && !currentUser) router.push('/register');
     }, [currentUser, loading, router]);
 
     if (!loading) return <Component {...props} />;

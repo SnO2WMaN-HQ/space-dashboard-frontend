@@ -8,7 +8,7 @@ import React, {useEffect} from 'react';
 import {useCurrentUser} from '~/hooks/useCurrentUser';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
-import {TemplateSignUpPage} from '~/template/SignUp';
+import {TemplateRegisterPage} from '~/template/Register';
 
 export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
@@ -19,7 +19,7 @@ export const getServerSideProps = async ({
       ...(locale &&
         (await serverSideTranslations(
           locale,
-          ['common', 'signup'],
+          ['common', 'register'],
           NextI18nextConfig,
         ))),
     },
@@ -42,9 +42,9 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   return (
     <>
       <Head>
-        <title>{t('title.signup')}</title>
+        <title>{t('title.register')}</title>
       </Head>
-      <TemplateSignUpPage className={className} />
+      <TemplateRegisterPage className={className} />
     </>
   );
 };

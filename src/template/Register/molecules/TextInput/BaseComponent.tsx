@@ -22,7 +22,7 @@ export const BaseComponent: React.VFC<BaseComponentProps> = ({
   register,
   message,
 }) => {
-  const {t} = useTranslation('signup');
+  const {t} = useTranslation('register');
   return (
     <label className={clsx(className, 'inline-flex', 'flex-col')} htmlFor={id}>
       <div className={clsx('flex', 'items-center')}>

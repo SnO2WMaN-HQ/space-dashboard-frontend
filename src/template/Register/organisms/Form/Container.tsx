@@ -8,9 +8,9 @@ import {Component} from './Component';
 export const schema = z.object({
   uniqueName: z
     .string()
-    .min(4, 'signup:error.unique_name.min')
-    .max(15, 'signup:error.unique_name.max'),
-  displayName: z.string().max(50, 'signup:error.display_name.max'),
+    .min(4, 'register:error.unique_name.min')
+    .max(15, 'register:error.unique_name.max'),
+  displayName: z.string().max(50, 'register:error.display_name.max'),
 });
 
 export type FormInput = z.infer<typeof schema>;

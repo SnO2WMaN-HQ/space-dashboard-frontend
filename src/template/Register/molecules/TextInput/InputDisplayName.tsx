@@ -1,4 +1,4 @@
-import {faAt} from '@fortawesome/free-solid-svg-icons';
+import {faSignature} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
@@ -6,20 +6,20 @@ import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
   className?: string;
-  message?: string;
   register: UseFormRegisterReturn;
+  message?: string;
 };
 export const Component: React.VFC<ComponentProps> = ({...props}) => {
-  const {t} = useTranslation('signup');
+  const {t} = useTranslation();
   return (
     <BaseComponent
       {...props}
       i18n={{
-        label: t('signup:unique_name.label'),
-        description: t('signup:unique_name.description'),
+        label: t('register:display_name.label'),
+        description: t('register:display_name.description'),
       }}
-      id="uniqueName"
-      icon={faAt}
+      id="displayName"
+      icon={faSignature}
     />
   );
 };

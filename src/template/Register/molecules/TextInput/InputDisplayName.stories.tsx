@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './InputDisplayName';
 
 export default {
-  title: 'TemplateSignUpPage/molecules/TextInput/InputDisplayName',
+  title: 'TemplateRegisterPage/molecules/TextInput/InputDisplayName',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
