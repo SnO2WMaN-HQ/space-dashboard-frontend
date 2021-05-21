@@ -9,7 +9,7 @@ export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
   const {t} = useTranslation('index');
   return (
-    <NextLink href="/api/auth/login">
+    <NextLink href="/timeline">
       <a
         className={clsx(
           className,
