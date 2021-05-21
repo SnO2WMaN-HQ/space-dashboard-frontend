@@ -39,7 +39,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
     return (
       <>
         <Head>
-          <title>{t('title.timeline')}</title>
+          <title>{t('head_title.timeline')}</title>
         </Head>
         <TemplateTimelinePage
           className={className}

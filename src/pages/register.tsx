@@ -40,7 +40,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
     return (
       <>
         <Head>
-          <title>{t('title.register')}</title>
+          <title>{t('head_title.register')}</title>
         </Head>
         <TemplateRegisterPage className={className} />
       </>

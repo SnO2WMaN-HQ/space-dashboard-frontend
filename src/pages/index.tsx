@@ -31,7 +31,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   return (
     <>
       <Head>
-        <title>{t('title.index')}</title>
+        <title>{t('head_title.index')}</title>
       </Head>
       <TemplateIndexPage className={clsx(className)} />
     </>
