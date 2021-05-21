@@ -9,27 +9,35 @@ export const stateCurrentUser = atom<null | CurrentUser>({
   default: null,
 });
 
-export const useCurrentUser = () => {
+export type State =
+  | {loading: true}
+  | {loading: false; registered: false}
+  | {loading: false; registered: true};
+export const useCurrentUser = (): State => {
   const {user, isLoading: auth0Loading} = useUser();
-  const [loadCurrentUser, {data, called, loading: apiLoading}] =
+  const [loadCurrentUser, {data, called: apiCalled, loading: apiLoading}] =
     useCurrentUserLazyQuery();
 
   const currentUser = useRecoilValue(stateCurrentUser);
   const setCurrentUser = useSetRecoilState(stateCurrentUser);
 
   useEffect(() => {
-    if (!currentUser && !auth0Loading && Boolean(user) && !called)
-      loadCurrentUser();
-  }, [auth0Loading, user, called, currentUser, loadCurrentUser]);
+    if (!currentUser && !auth0Loading && Boolean(user)) loadCurrentUser();
+  }, [auth0Loading, user, currentUser, loadCurrentUser]);
 
   useEffect(() => {
-    if (!apiLoading && !data?.currentUser) {
-      setCurrentUser(null);
-    }
-    if (!apiLoading && data?.currentUser) {
-      setCurrentUser({id: data.currentUser.id});
-    }
-  }, [data, apiLoading, setCurrentUser]);
+    if (data?.currentUser && data.currentUser !== null)
+      setCurrentUser(data.currentUser);
+  }, [data, setCurrentUser]);
 
-  return {currentUser, loading: apiLoading || auth0Loading};
+  if (
+    apiCalled &&
+    !apiLoading &&
+    data?.currentUser &&
+    data.currentUser !== null
+  ) {
+    return {loading: false, registered: true};
+  } else if (apiCalled && !apiLoading && !data?.currentUser) {
+    return {loading: false, registered: false};
+  } else return {loading: true};
 };
