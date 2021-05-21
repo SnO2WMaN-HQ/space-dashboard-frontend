@@ -6,6 +6,7 @@ import Error from 'next/error';
 import Head from 'next/head';
 import React from 'react';
 import {usePersonalPageQuery} from '~/graphql/apollo';
+import {withPageSignedUp} from '~/hoc/withPageSignedUp';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplatePersonalPage, transform} from '~/template/Personal';
@@ -49,4 +50,4 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   if (loading) return <TemplateLoadingPage className={className} />;
   return <Error statusCode={500} />;
 };
-export default withPageAuthRequired(Page);
+export default withPageSignedUp(withPageAuthRequired(Page));

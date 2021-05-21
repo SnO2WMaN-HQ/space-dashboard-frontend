@@ -29,22 +29,22 @@ export const getServerSideProps = async ({
 export type PageProps = {className?: string};
 const Page: NextPage<PageProps> = ({className, ...props}) => {
   const router = useRouter();
-  const {loading, currentUser} = useCurrentUser();
+  const current = useCurrentUser();
   const {t} = useTranslation();
 
   useEffect(() => {
-    if (!loading && Boolean(currentUser)) router.push('/timeline');
-  }, [currentUser, loading, router]);
+    if ('registered' in current && current.registered) router.push('/timeline');
+  }, [current, router]);
 
-  if (loading) return <TemplateLoadingPage className={className} />;
-
-  return (
-    <>
-      <Head>
-        <title>{t('title.register')}</title>
-      </Head>
-      <TemplateRegisterPage className={className} />
-    </>
-  );
+  if (!current.loading && !current.registered)
+    return (
+      <>
+        <Head>
+          <title>{t('title.register')}</title>
+        </Head>
+        <TemplateRegisterPage className={className} />
+      </>
+    );
+  return <TemplateLoadingPage className={className} />;
 };
 export default withPageAuthRequired(Page);
