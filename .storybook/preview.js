@@ -2,7 +2,7 @@ import {addDecorator} from '@storybook/react';
 import * as nextImage from 'next/image';
 import {I18nextProvider} from 'react-i18next';
 import {withNextRouter} from 'storybook-addon-next-router';
-import '~/styles/index.css';
+import 'tailwindcss/tailwind.css';
 import {i18nInstance} from './i18n';
 
 addDecorator(withNextRouter());
