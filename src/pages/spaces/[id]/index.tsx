@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
     .AllSpacePages()
     .then(({allSpaces}) => allSpaces.map(({id}) => ({params: {id}})))
-    .then((paths) => ({paths, fallback: true}));
+    .then((paths) => ({paths, fallback: 'blocking'}));
 };
 
 export const getStaticProps: GetStaticProps<TransformedProps, UrlQuery> =
