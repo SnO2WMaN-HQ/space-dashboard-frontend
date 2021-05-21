@@ -5,10 +5,6 @@ import {NextApiHandler} from 'next';
 
 const client = new GraphQLClient(process.env.API_GRAPHQL_ENDPOINT!);
 
-export const config = {
-  api: {bodyParser: false},
-};
-
 const handler: NextApiHandler = async (req, res) => {
   try {
     const header = await getAccessToken(req, res, {})
