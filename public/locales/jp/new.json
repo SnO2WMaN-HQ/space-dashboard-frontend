@@ -26,6 +26,14 @@
       "error": {
         "out_of_range": "開催日は今日から1ヶ月以内です。"
       }
+    },
+    "submit": {
+      "untouched": "入力してください",
+      "validating": "チェック中です",
+      "invalid": "修正が必要です",
+      "valid": "追加する",
+      "submitting": "追加中です",
+      "completed": "追加されました！"
     }
   }
 }

@@ -1,11 +1,12 @@
 import clsx from 'clsx';
+import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
+import {StatefulSubmitButton} from '~/components/molecules/StatefulSubmitButton';
 import {InputDescription} from '../../molecules/InputDescription';
 import {InputMinutesUrl} from '../../molecules/InputMinutesUrl';
 import {InputOpenDate} from '../../molecules/InputOpenDate';
 import {InputTitle} from '../../molecules/InputTitle';
-import {SubmitButton} from '../../molecules/SubmitButton';
 
 export type ComponentProps = {
   className?: string;
@@ -39,6 +40,7 @@ export const Component: React.VFC<ComponentProps> = ({
   isSubmitting,
   isCompleted,
 }) => {
+  const {t} = useTranslation();
   return (
     <form
       className={clsx(
@@ -74,8 +76,16 @@ export const Component: React.VFC<ComponentProps> = ({
         register={register.minutesUrl}
         errorMessage={errors.minutesUrl}
       />
-      <SubmitButton
-        className={clsx('mt-8')}
+      <StatefulSubmitButton
+        className={clsx('mt-8', ['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
+        i18n={{
+          untouched: t('new:form.submit.untouched'),
+          validating: t('new:form.submit.validating'),
+          invalid: t('new:form.submit.invalid'),
+          valid: t('new:form.submit.valid'),
+          submitting: t('new:form.submit.submitting'),
+          completed: t('new:form.submit.completed'),
+        }}
         {...{
           isUntouched,
           isValid,
