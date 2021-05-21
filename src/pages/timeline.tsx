@@ -9,7 +9,7 @@ import {usePersonalPageQuery} from '~/graphql/apollo';
 import {withPageSignedUp} from '~/hoc/withPageSignedUp';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
-import {TemplatePersonalPage, transform} from '~/template/Personal';
+import {TemplateTimelinePage, transform} from '~/template/Timeline';
 
 export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
@@ -20,7 +20,7 @@ export const getServerSideProps = async ({
       ...(locale &&
         (await serverSideTranslations(
           locale,
-          ['common', 'user'],
+          ['common', 'user', 'timeline'],
           NextI18nextConfig,
         ))),
     },
@@ -41,7 +41,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
         <Head>
           <title>{t('title.timeline')}</title>
         </Head>
-        <TemplatePersonalPage
+        <TemplateTimelinePage
           className={className}
           {...transform(data.currentUser)}
         />
