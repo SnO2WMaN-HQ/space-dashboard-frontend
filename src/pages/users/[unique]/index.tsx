@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
     )
     .then((paths) => ({
       paths,
-      fallback: true,
+      fallback: 'blocking',
     }));
 };
 
