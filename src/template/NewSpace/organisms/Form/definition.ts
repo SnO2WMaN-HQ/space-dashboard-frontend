@@ -4,8 +4,10 @@ import * as z from 'zod';
 
 dayjs.extend(isBetween);
 
-export const getMinDate = () => dayjs(new Date());
-export const getMaxDate = () => dayjs(new Date()).add(1, 'month');
+export const getMinDate = (now: Date) => dayjs(now);
+export const getMaxDate = (now: Date) => dayjs(now).add(1, 'month');
+export const validOpenDate = (value: string, now: Date) =>
+  dayjs(value).isBetween(getMinDate(now), getMaxDate(now), 'day', '[]');
 
 export const schema = z.object({
   title: z
@@ -21,8 +23,7 @@ export const schema = z.object({
     .string()
     .regex(/\d{4}-\d{2}-\d{2}/)
     .refine(
-      (value) =>
-        dayjs(value).isBetween(getMinDate(), getMaxDate(), 'day', '[]'),
+      (value) => validOpenDate(value, new Date()),
       () => ({message: 'new:form.minutes_url.error.out_of_range'}),
     ),
 });

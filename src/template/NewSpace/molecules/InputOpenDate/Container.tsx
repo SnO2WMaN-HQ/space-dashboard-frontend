@@ -1,7 +1,7 @@
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
-import {getMaxDate, getMinDate} from '../../organisms/Form';
 import {Component} from './Component';
+import {getMinMax} from './range';
 
 export type ContainerProps = {
   className?: string;
@@ -9,11 +9,5 @@ export type ContainerProps = {
   errorMessage?: string;
 };
 export const Container: React.VFC<ContainerProps> = ({...props}) => {
-  return (
-    <Component
-      {...props}
-      minDate={getMinDate().format('YYYY-MM-DD')}
-      maxDate={getMaxDate().format('YYYY-MM-DD')}
-    />
-  );
+  return <Component {...props} {...getMinMax(new Date())} />;
 };
