@@ -1,3 +1,4 @@
+const path = require('path');
 const dayjs = require('dayjs');
 
 module.exports = {
@@ -12,5 +13,6 @@ module.exports = {
         return value;
       },
     },
+    localePath: path.resolve('./public/locales'),
   },
 };
