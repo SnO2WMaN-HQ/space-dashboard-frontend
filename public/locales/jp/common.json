@@ -27,8 +27,11 @@
   "host": "ホスト",
 
   "minutes": "議事録",
-  "minutes_url": "議事録",
+  "minutes_url": "議事録のURL",
 
+  "open_date": "開催日",
+
+  "title": "タイトル",
   "description": "説明",
 
   "host_user": "ホストしているユーザー",
