@@ -10,6 +10,9 @@ node_modules/
 .next/
 dist/
 
+# vercel
+.vercel
+
 # cache
 .eslintcache
 .stylelintcache
