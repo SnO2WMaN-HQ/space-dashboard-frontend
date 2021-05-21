@@ -1,12 +1,14 @@
 {
   "section": {
     "hosted_spaces": {
-      "title_0": "$t(common:following_space)はありません",
-      "title": "$t(common:following_space)"
+      "title_0": "$t(common:hosted_space)はありません",
+      "title": "$t(common:hosted_space)",
+      "title_plural": "$t(common:hosted_space_plural)"
     },
     "following_spaces": {
       "title_0": "$t(common:following_space)はありません",
-      "title": "$t(common:following_space)"
+      "title": "$t(common:following_space)",
+      "title_plural": "$t(common:following_space_plural)"
     },
     "profile": {
       "title": "プロフィール"
