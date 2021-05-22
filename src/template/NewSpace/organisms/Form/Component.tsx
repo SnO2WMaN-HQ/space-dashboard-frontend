@@ -1,7 +1,7 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
+import {tw} from 'twind';
 import {StatefulSubmitButton} from '~/components/molecules/StatefulSubmitButton';
 import {InputDescription} from '../../molecules/InputDescription';
 import {InputMinutesUrl} from '../../molecules/InputMinutesUrl';
@@ -43,7 +43,7 @@ export const Component: React.VFC<ComponentProps> = ({
   const {t} = useTranslation();
   return (
     <form
-      className={clsx(
+      className={tw(
         className,
         'bg-white',
         ['px-4', 'sm:px-6'],
@@ -57,27 +57,27 @@ export const Component: React.VFC<ComponentProps> = ({
       onSubmit={onSubmit}
     >
       <InputTitle
-        className={clsx('w-full')}
+        className={tw('w-full')}
         register={register.title}
         errorMessage={errors.title}
       />
       <InputOpenDate
-        className={clsx('w-full', 'mt-4')}
+        className={tw('w-full', 'mt-4')}
         register={register.openDate}
         errorMessage={errors.openDate}
       />
       <InputDescription
-        className={clsx('w-full', 'mt-4')}
+        className={tw('w-full', 'mt-4')}
         register={register.description}
         errorMessage={errors.description}
       />
       <InputMinutesUrl
-        className={clsx('w-full', 'mt-4')}
+        className={tw('w-full', 'mt-4')}
         register={register.minutesUrl}
         errorMessage={errors.minutesUrl}
       />
       <StatefulSubmitButton
-        className={clsx('mt-8', ['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
+        className={tw('mt-8', ['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
         i18n={{
           untouched: t('new:form.submit.untouched'),
           validating: t('new:form.submit.validating'),

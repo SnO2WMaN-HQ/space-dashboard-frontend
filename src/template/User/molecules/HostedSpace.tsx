@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {
   BlockFollowingUsers,
   BlockTitle,
@@ -17,7 +17,7 @@ export const HostSpace: React.VFC<{
   };
 }> = ({className, id, title, openDate, followingUsers}) => (
   <div
-    className={clsx(
+    className={tw(
       className,
       'bg-white',
       'px-4',
@@ -26,10 +26,10 @@ export const HostSpace: React.VFC<{
       'shadow-md',
     )}
   >
-    <BlockTitle className={clsx()} {...{id, title}} />
-    <BlockDetails className={clsx('mt-1')} {...{openDate}} />
+    <BlockTitle className={tw()} {...{id, title}} />
+    <BlockDetails className={tw('mt-1')} {...{openDate}} />
     <BlockFollowingUsers
-      className={clsx('mt-4')}
+      className={tw('mt-4')}
       {...{users: followingUsers.users, hasMore: followingUsers.hasMore}}
     />
   </div>

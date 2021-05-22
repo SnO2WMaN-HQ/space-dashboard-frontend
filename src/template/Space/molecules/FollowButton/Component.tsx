@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 
 export type ComponentProps = {
   className?: string;
@@ -11,7 +11,7 @@ export const Component: React.VFC<ComponentProps> = ({className, followed}) => {
   return (
     <button
       type="button"
-      className={clsx(
+      className={tw(
         className,
         'py-2',
         'px-4',
@@ -30,7 +30,7 @@ export const Component: React.VFC<ComponentProps> = ({className, followed}) => {
       )}
     >
       <span
-        className={clsx(
+        className={tw(
           {
             'text-white': followed,
             'text-blue-400': !followed,

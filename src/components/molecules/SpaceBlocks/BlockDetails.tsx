@@ -3,9 +3,9 @@ import {
   faExclamationCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {Merge} from 'type-fest';
 import {DateText} from '~/components/atoms/DateText';
 
@@ -21,26 +21,26 @@ export const BlockDetails: React.VFC<ComponentProps> = ({
 }) => {
   const {t} = useTranslation();
   return (
-    <div className={clsx(className, 'grid', 'grid-cols-2', 'gap-y-2')}>
-      <div className={clsx('col-start-1', 'flex', 'items-center')}>
+    <div className={tw(className, 'grid', 'grid-cols-2', 'gap-y-2')}>
+      <div className={tw('col-start-1', 'flex', 'items-center')}>
         <FontAwesomeIcon
           fixedWidth
-          className={clsx('text-sm', 'text-gray-400')}
+          className={tw('text-sm', 'text-gray-400')}
           icon={faCalendarAlt}
         />
         <DateText
-          className={clsx('ml-1', 'text-sm', 'text-gray-500')}
+          className={tw('ml-1', 'text-sm', 'text-gray-500')}
           date={openDate}
         />
       </div>
       {'finished' in props && (
-        <div className={clsx('col-start-1', 'flex', 'items-center')}>
+        <div className={tw('col-start-1', 'flex', 'items-center')}>
           <FontAwesomeIcon
             fixedWidth
-            className={clsx('text-sm', 'text-red-400')}
+            className={tw('text-sm', 'text-red-400')}
             icon={faExclamationCircle}
           />
-          <span className={clsx('ml-1', 'text-sm', 'text-red-500')}>
+          <span className={tw('ml-1', 'text-sm', 'text-red-500')}>
             {t('finished_space')}
           </span>
         </div>

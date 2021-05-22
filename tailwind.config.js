@@ -1,9 +1,6 @@
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: ['src/**/*.jsx', 'src/**/*.tsx'],
-  },
-
+  mode: 'jit',
+  purge: ['./src/**/*.{js,ts,jsx,jsx}'],
   theme: {
     extend: {
       colors: {

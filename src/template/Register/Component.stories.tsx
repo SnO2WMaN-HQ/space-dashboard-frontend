@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {Component, ComponentProps} from './Component';
 
 export default {
@@ -16,7 +16,7 @@ export default {
 } as Meta;
 
 export const Primary: Story<ComponentProps> = (args) => (
-  <Component {...args} className={clsx('w-full', 'min-h-screen')} />
+  <Component {...args} className={tw('w-full', 'min-h-screen')} />
 );
 
 Primary.args = {};

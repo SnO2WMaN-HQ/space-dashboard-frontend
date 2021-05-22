@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 
 export const SubmitButton: React.VFC<{
   className?: string;
@@ -7,7 +7,7 @@ export const SubmitButton: React.VFC<{
 }> = ({className, i18n}) => (
   <input
     id="submit"
-    className={clsx(
+    className={tw(
       className,
       'inline-flex',
       ['font-bold', 'tracking-wider'],

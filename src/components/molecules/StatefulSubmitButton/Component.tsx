@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {
   Completed,
   Invalid,
@@ -30,28 +30,22 @@ export const Component: React.VFC<ComponentProps> = ({
   return (
     <>
       {'isUntouched' in props && (
-        <Untouched className={clsx(className)} i18n={{text: i18n.untouched}} />
+        <Untouched className={tw(className)} i18n={{text: i18n.untouched}} />
       )}
       {'isValidating' in props && props.isValidating && (
-        <Validating
-          className={clsx(className)}
-          i18n={{text: i18n.validating}}
-        />
+        <Validating className={tw(className)} i18n={{text: i18n.validating}} />
       )}
       {'isValid' in props && !props.isValid && (
-        <Invalid className={clsx(className)} i18n={{text: i18n.invalid}} />
+        <Invalid className={tw(className)} i18n={{text: i18n.invalid}} />
       )}
       {'isSubmitting' in props && (
-        <Submitting
-          className={clsx(className)}
-          i18n={{text: i18n.submitting}}
-        />
+        <Submitting className={tw(className)} i18n={{text: i18n.submitting}} />
       )}
       {'isCompleted' in props && (
-        <Completed className={clsx(className)} i18n={{text: i18n.completed}} />
+        <Completed className={tw(className)} i18n={{text: i18n.completed}} />
       )}
       {'isValid' in props && props.isValid && (
-        <SubmitButton className={clsx(className)} i18n={{text: i18n.valid}} />
+        <SubmitButton className={tw(className)} i18n={{text: i18n.valid}} />
       )}
     </>
   );

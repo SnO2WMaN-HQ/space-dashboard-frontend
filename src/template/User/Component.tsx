@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {Merge} from 'type-fest';
 import {SectionFollowingSpaces} from './organisms/SectionFollowingSpaces';
 import {SectionHostedSpaces} from './organisms/SectionHostedSpaces';
@@ -17,22 +17,22 @@ export const Component: React.FC<ComponentProps> = ({
   followingSpaces,
 }) => {
   return (
-    <main className={clsx(className, 'bg-gray-200', 'py-4')}>
+    <main className={tw(className, 'bg-gray-200', 'py-4')}>
       {children}
-      <div className={clsx('w-full', 'px-2')}>
+      <div className={tw('w-full', 'px-2')}>
         <SectionProfile
-          className={clsx('w-full')}
+          className={tw('w-full')}
           {...{displayName, picture, uniqueName}}
         />
       </div>
-      <div className={clsx('mt-4', 'px-2')}>
+      <div className={tw('mt-4', 'px-2')}>
         <SectionHostedSpaces
-          className={clsx('w-full')}
+          className={tw('w-full')}
           spaces={hostedSpaces.spaces}
           pageInfo={hostedSpaces.pageInfo}
         />
         <SectionFollowingSpaces
-          className={clsx('w-full', 'mt-4')}
+          className={tw('w-full', 'mt-4')}
           spaces={followingSpaces.spaces}
           pageInfo={followingSpaces.pageInfo}
         />

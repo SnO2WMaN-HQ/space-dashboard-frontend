@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIcon} from '~/components/atoms/UserIcon';
 
@@ -20,7 +20,7 @@ export const Component: React.VFC<ComponentProps> = ({
 
   return (
     <section
-      className={clsx(
+      className={tw(
         className,
         'px-2',
         'py-4',
@@ -29,11 +29,11 @@ export const Component: React.VFC<ComponentProps> = ({
         'rounded-sm',
       )}
     >
-      <p className={clsx('px-2', 'font-bold')}>
+      <p className={tw('px-2', 'font-bold')}>
         {t('user:section.profile.title')}
       </p>
       <div
-        className={clsx(
+        className={tw(
           'mt-2',
           'flex',
           'bg-white',
@@ -43,13 +43,13 @@ export const Component: React.VFC<ComponentProps> = ({
           'shadow-md',
         )}
       >
-        <div className={clsx('flex', 'items-center', 'justify-center')}>
-          <div className={clsx('w-16', 'h-16')}>
+        <div className={tw('flex', 'items-center', 'justify-center')}>
+          <div className={tw('w-16', 'h-16')}>
             <UserIcon {...{displayName, picture}} />
           </div>
         </div>
         <div
-          className={clsx(
+          className={tw(
             'ml-4',
             'flex-grow',
             'flex',
@@ -57,11 +57,8 @@ export const Component: React.VFC<ComponentProps> = ({
             'justify-center',
           )}
         >
-          <span className={clsx('text-lg', 'font-bold')}>{displayName}</span>
-          <UniqueName
-            className={clsx('text-gray-500')}
-            uniqueName={uniqueName}
-          />
+          <span className={tw('text-lg', 'font-bold')}>{displayName}</span>
+          <UniqueName className={tw('text-gray-500')} uniqueName={uniqueName} />
         </div>
       </div>
     </section>

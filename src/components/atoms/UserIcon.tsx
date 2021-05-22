@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import NextImage from 'next/image';
 import React from 'react';
+import {tw} from 'twind';
 
 export const UserIcon: React.VFC<{
   className?: string;
@@ -8,7 +8,7 @@ export const UserIcon: React.VFC<{
   displayName: string;
 }> = ({className, displayName, picture}) => (
   <NextImage
-    className={clsx(className, 'relative', 'overflow-hidden', 'rounded-full')}
+    className={tw(className, 'relative', 'overflow-hidden', 'rounded-full')}
     src={picture}
     width={128}
     height={128}

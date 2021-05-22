@@ -1,8 +1,8 @@
 import {faUserAstronaut} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {RegisterButton} from '../../molecules';
 
 export type ComponentProps = {className?: string};
@@ -10,7 +10,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
   const {t} = useTranslation('index');
   return (
     <section
-      className={clsx(
+      className={tw(
         className,
         'px-2',
         ['flex', 'flex-col', 'justify-center', 'items-center'],
@@ -19,7 +19,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
       )}
     >
       <div
-        className={clsx(
+        className={tw(
           ['py-12', 'px-8'],
           ['bg-white', 'bg-opacity-75'],
           ['flex', 'flex-col', 'justify-center', 'items-center'],
@@ -27,7 +27,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
         )}
       >
         <div
-          className={clsx(
+          className={tw(
             ['w-20', 'h-20'],
             ['flex', 'justify-center', 'items-center'],
             'bg-gradient-to-tr',
@@ -37,32 +37,30 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
           )}
         >
           <FontAwesomeIcon
-            className={clsx('text-white', 'text-4xl')}
+            className={tw('text-white', 'text-4xl')}
             icon={faUserAstronaut}
           />
         </div>
         <div
-          className={clsx('max-w-sm', 'mt-4', [
+          className={tw('max-w-sm', 'mt-4', [
             'flex',
             'flex-col',
             'justify-center',
           ])}
         >
-          <h1 className={clsx('text-center', 'inline-flex', 'flex-col')}>
-            <span
-              className={clsx('text-3xl', 'font-bold', 'whitespace-nowrap')}
-            >
+          <h1 className={tw('text-center', 'inline-flex', 'flex-col')}>
+            <span className={tw('text-3xl', 'font-bold', 'whitespace-nowrap')}>
               {t('index:title.short')}
             </span>
-            <span className={clsx('text-base', 'whitespace-nowrap')}>
+            <span className={tw('text-base', 'whitespace-nowrap')}>
               {t('index:title.long')}
             </span>
           </h1>
-          <h2 className={clsx('text-center', 'text-sm', 'mt-2')}>
+          <h2 className={tw('text-center', 'text-sm', 'mt-2')}>
             {t('index:description')}
           </h2>
         </div>
-        <RegisterButton className={clsx('mt-8')} />
+        <RegisterButton className={tw('mt-8')} />
       </div>
     </section>
   );
