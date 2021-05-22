@@ -2,13 +2,15 @@ import {withPageAuthRequired} from '@auth0/nextjs-auth0';
 import {GetServerSidePropsContext, NextPage} from 'next';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
+import Error from 'next/error';
 import Head from 'next/head';
-import {useRouter} from 'next/router';
-import React, {useEffect} from 'react';
-import {useCurrentUser} from '~/hooks/useCurrentUser';
+import React from 'react';
+import {useNewSpacePageQuery} from '~/graphql/apollo';
+import {withPageSignedUp} from '~/hoc/withPageSignedUp';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
-import {TemplateRegisterPage} from '~/template/Register';
+import {TemplateNewSpacePage} from '~/template/NewSpace';
+import {transform} from '~/template/NewSpace/transform';
 
 export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
@@ -19,32 +21,34 @@ export const getServerSideProps = async ({
       ...(locale &&
         (await serverSideTranslations(
           locale,
-          ['common', 'register'],
+          ['common', 'new'],
           NextI18nextConfig,
         ))),
     },
   };
 };
 
-export type PageProps = {className?: string};
+export type PageProps = {
+  className?: string;
+};
 const Page: NextPage<PageProps> = ({className, ...props}) => {
-  const router = useRouter();
-  const current = useCurrentUser();
+  const {data, loading, error} = useNewSpacePageQuery();
   const {t} = useTranslation();
 
-  useEffect(() => {
-    if ('registered' in current && current.registered) router.push('/timeline');
-  }, [current, router]);
-
-  if (!current.loading && !current.registered)
+  if (error) return <Error statusCode={500} />;
+  if (data && data.currentUser)
     return (
       <>
         <Head>
-          <title>{t('head_title.register')}</title>
+          <title>{t('head_title.new')}</title>
         </Head>
-        <TemplateRegisterPage className={className} />
+        <TemplateNewSpacePage
+          className={className}
+          {...transform(data.currentUser)}
+        />
       </>
     );
-  return <TemplateLoadingPage className={className} />;
+  if (loading) return <TemplateLoadingPage className={className} />;
+  return <Error statusCode={500} />;
 };
-export default withPageAuthRequired(Page);
+export default withPageSignedUp(withPageAuthRequired(Page));

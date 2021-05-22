@@ -1,5 +1,8 @@
 {
-  "title": {"short": "twiss", "long": "Twitter Space Station"},
-  "description": "twissは、Twitterスペースのなんかあれを、いい感じにするためのサービスらしいです。",
+  "title": {
+    "short": "$t(common:twiss.short)",
+    "long": "$t(common:twiss.long)"
+  },
+  "description": "$t(common:twiss.short)は、Twitterスペースのなんかあれを、いい感じにするためのサービスらしいです。",
   "register": "Twitterで参加する"
 }

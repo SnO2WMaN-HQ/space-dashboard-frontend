@@ -1,0 +1,32 @@
+query NewSpacePage {
+  currentUser {
+    id
+    hostedSpaces(first: 5, finished: false, orderBy: {openDate: ASC}) {
+      edges {
+        node {
+          space {
+            openDate
+          }
+        }
+      }
+    }
+  }
+}
+
+mutation NewSpacePageCreateSpace(
+  $hostUserId: ID!
+  $title: String!
+  $description: String
+  $minutesUrl: String
+  $openDate: LocalDate!
+) {
+  createSpace(
+    hostUserId: $hostUserId
+    title: $title
+    openDate: $openDate
+    description: $description
+    minutesUrl: $minutesUrl
+  ) {
+    id
+  }
+}

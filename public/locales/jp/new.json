@@ -1,0 +1,39 @@
+{
+  "form": {
+    "optional": "(必須ではありません)",
+    "required": "(必須です)",
+    "title": {
+      "label": "$t(common:title)",
+      "error": {
+        "min": "タイトルは必須です。",
+        "max": "40文字以下でおねがいします。"
+      }
+    },
+    "description": {
+      "label": "$t(common:description)",
+      "error": {
+        "max": "200文字以下でおねがいします。"
+      }
+    },
+    "minutes_url": {
+      "label": "$t(common:minutes_url)",
+      "error": {
+        "url": "入力できるのはURLのみです。"
+      }
+    },
+    "open_date": {
+      "label": "$t(common:open_date)",
+      "error": {
+        "out_of_range": "開催日は今日から1ヶ月以内です。"
+      }
+    },
+    "submit": {
+      "untouched": "入力してください",
+      "validating": "チェック中です",
+      "invalid": "修正が必要です",
+      "valid": "追加する",
+      "submitting": "追加中です",
+      "completed": "追加されました！"
+    }
+  }
+}

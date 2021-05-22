@@ -1,11 +1,16 @@
 {
-  "title": {
-    "index": "twiss",
-    "timeline": "タイムライン / twiss",
-    "register": "ユーザー登録 / twiss",
-    "user": "{{displayName}}(@{{uniqueName}}) / twiss",
-    "space": "{{hostName}}の『{{title}}』 / twiss",
-    "loading": "$t(common:loading) / twiss"
+  "twiss": {
+    "short": "twiss",
+    "long": "Twitter Space Station"
+  },
+  "head_title": {
+    "index": "$t(common:twiss.short)",
+    "timeline": "タイムライン / $t(common:twiss.short)",
+    "register": "ユーザー登録 / $t(common:twiss.short)",
+    "user": "{{displayName}}(@{{uniqueName}}) / $t(common:twiss.short)",
+    "space": "{{hostName}}の『{{title}}』 / $t(common:twiss.short)",
+    "new": "新しいスペースをホストする / $t(common:twiss.short)",
+    "loading": "$t(common:loading) / $t(common:twiss.short)"
   },
 
   "format": {
@@ -22,8 +27,11 @@
   "host": "ホスト",
 
   "minutes": "議事録",
-  "minutes_url": "議事録",
+  "minutes_url": "議事録のURL",
 
+  "open_date": "開催日",
+
+  "title": "タイトル",
   "description": "説明",
 
   "host_user": "ホストしているユーザー",

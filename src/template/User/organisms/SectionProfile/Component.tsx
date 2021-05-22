@@ -4,12 +4,18 @@ import React from 'react';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIcon} from '~/components/atoms/UserIcon';
 
-export const SectionProfile: React.VFC<{
+export type ComponentProps = {
   className?: string;
   uniqueName: string;
   displayName: string;
   picture: string;
-}> = ({className, displayName, uniqueName, picture}) => {
+};
+export const Component: React.VFC<ComponentProps> = ({
+  className,
+  displayName,
+  uniqueName,
+  picture,
+}) => {
   const {t} = useTranslation('user');
 
   return (
