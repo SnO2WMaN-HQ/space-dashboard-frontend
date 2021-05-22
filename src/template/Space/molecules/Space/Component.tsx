@@ -20,10 +20,20 @@ export type ComponentProps = {
 
   finished: boolean;
   openDate: string;
-  hostUser: {uniqueName: string; displayName: string; picture: string};
+  hostUser: {
+    id: string;
+    uniqueName: string;
+    displayName: string;
+    picture: string;
+  };
   followingUsers: {
     hasMore: boolean;
-    users: {uniqueName: string; displayName: string; picture: string}[];
+    users: {
+      id: string;
+      uniqueName: string;
+      displayName: string;
+      picture: string;
+    }[];
   };
 };
 
@@ -56,7 +66,13 @@ export const Component: React.VFC<ComponentProps> = ({
         ...(finished ? {finished} : {}),
       }}
     />
-    {!finished && <FollowButton className={tw('mt-4', 'w-full')} />}
+    {!finished && (
+      <FollowButton
+        className={tw('mt-4', 'w-full')}
+        spaceId={id}
+        hostUserId={hostUser.id}
+      />
+    )}
     {description && (
       <BlockDescription className={tw('mt-4')} {...{description}} />
     )}

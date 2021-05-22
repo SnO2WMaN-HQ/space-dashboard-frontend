@@ -10,6 +10,7 @@ export type ContainerProps = {
   finished: boolean;
   openDate: string;
   hostUser: {
+    id: string;
     uniqueName: string;
     displayName: string;
     picture: string;
@@ -17,6 +18,7 @@ export type ContainerProps = {
   followingUsers: {
     pageInfo: {hasMore: boolean; endCursor?: string};
     users: {
+      id: string;
       uniqueName: string;
       displayName: string;
       picture: string;

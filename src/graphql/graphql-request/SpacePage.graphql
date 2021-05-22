@@ -14,6 +14,7 @@ query SpacePages($id: ID!) {
     minutesUrl
     hostUser {
       user {
+        id
         uniqueName
         displayName
         picture
@@ -28,6 +29,7 @@ query SpacePages($id: ID!) {
         cursor
         node {
           user {
+            id
             uniqueName
             displayName
             picture

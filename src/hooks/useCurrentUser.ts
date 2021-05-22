@@ -41,3 +41,21 @@ export const useCurrentUser = (): State => {
     return {loading: false, registered: false};
   } else return {loading: true};
 };
+
+export const useCurrentUser2 = () => {
+  const [loadCurrentUser, {data, loading}] = useCurrentUserLazyQuery();
+
+  const currentUser = useRecoilValue(stateCurrentUser);
+  const setCurrentUser = useSetRecoilState(stateCurrentUser);
+
+  useEffect(() => {
+    if (!currentUser) loadCurrentUser();
+  }, [currentUser, loadCurrentUser]);
+
+  useEffect(() => {
+    if (!loading && data?.currentUser)
+      setCurrentUser({id: data.currentUser.id});
+  }, [data, loading, setCurrentUser]);
+
+  return currentUser;
+};

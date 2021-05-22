@@ -12,13 +12,19 @@ export type TransformedProps = {
   openDate: string;
 
   hostUser: {
+    id: string;
     uniqueName: string;
     displayName: string;
     picture: string;
   };
   followingUsers: {
     pageInfo: {hasMore: boolean; endCursor?: string};
-    users: {uniqueName: string; displayName: string; picture: string}[];
+    users: {
+      id: string;
+      uniqueName: string;
+      displayName: string;
+      picture: string;
+    }[];
   };
 };
 
@@ -33,6 +39,7 @@ export const transform = ({space}: SpacePagesQuery): TransformedProps => ({
 
   finished: space.finished,
   hostUser: {
+    id: space.hostUser.user.id,
     uniqueName: space.hostUser.user.uniqueName,
     displayName: space.hostUser.user.displayName,
     picture: space.hostUser.user.picture,
@@ -47,6 +54,7 @@ export const transform = ({space}: SpacePagesQuery): TransformedProps => ({
       },
     },
     users: space.followingUsers.edges.map(({node: {user: followingUser}}) => ({
+      id: followingUser.id,
       uniqueName: followingUser.uniqueName,
       displayName: followingUser.displayName,
       picture: followingUser.picture,

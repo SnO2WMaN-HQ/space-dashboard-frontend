@@ -7,19 +7,20 @@ export default {
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
+    following: {table: {disable: true}},
+    handlePressed: {table: {disable: true}},
   },
 } as Meta;
 
-export const Followed: Story<ComponentProps> = (args) => (
+export const Following: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-Followed.args = {
-  followed: true,
-};
+Following.args = {following: true};
 
-export const Unfollowed: Story<ComponentProps> = (args) => (
+export const Loading: Story<ComponentProps> = (args) => <Component {...args} />;
+Loading.args = {pressed: true};
+
+export const NotFollowing: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-Unfollowed.args = {
-  followed: false,
-};
+NotFollowing.args = {following: false};
