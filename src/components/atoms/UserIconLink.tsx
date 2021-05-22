@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+import {tw} from 'twind';
 import {UserIcon} from './UserIcon';
 
 export const UserIconLink: React.VFC<{
@@ -10,9 +10,9 @@ export const UserIconLink: React.VFC<{
   displayName: string;
 }> = ({className, uniqueName, displayName, picture}) => (
   <NextLink href={`/users/${uniqueName}`}>
-    <a className={clsx(className)}>
+    <a className={tw(className)}>
       <UserIcon
-        className={clsx('w-full', 'h-full')}
+        className={tw('w-full', 'h-full')}
         {...{picture, displayName}}
       />
     </a>

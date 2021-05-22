@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {
   BlockDescription,
   BlockDetails,
@@ -39,7 +39,7 @@ export const Component: React.VFC<ComponentProps> = ({
   followingUsers,
 }) => (
   <div
-    className={clsx(
+    className={tw(
       className,
       'bg-white',
       'px-4',
@@ -48,22 +48,22 @@ export const Component: React.VFC<ComponentProps> = ({
       'shadow-md',
     )}
   >
-    <BlockTitle className={clsx()} {...{id, title}} />
+    <BlockTitle className={tw()} {...{id, title}} />
     <BlockDetails
-      className={clsx('mt-2')}
+      className={tw('mt-2')}
       {...{
         openDate,
         ...(finished ? {finished} : {}),
       }}
     />
-    {!finished && <FollowButton className={clsx('mt-4', 'w-full')} />}
+    {!finished && <FollowButton className={tw('mt-4', 'w-full')} />}
     {description && (
-      <BlockDescription className={clsx('mt-4')} {...{description}} />
+      <BlockDescription className={tw('mt-4')} {...{description}} />
     )}
-    {minutesUrl && <BlockMinutes className={clsx('mt-4')} {...{minutesUrl}} />}
-    <BlockHostUser className={clsx('mt-4')} {...{user: hostUser}} />
+    {minutesUrl && <BlockMinutes className={tw('mt-4')} {...{minutesUrl}} />}
+    <BlockHostUser className={tw('mt-4')} {...{user: hostUser}} />
     <BlockFollowingUsers
-      className={clsx('mt-4')}
+      className={tw('mt-4')}
       {...{users: followingUsers.users, hasMore: followingUsers.hasMore}}
     />
   </div>

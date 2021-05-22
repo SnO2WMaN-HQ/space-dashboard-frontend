@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+import {tw} from 'twind';
 
 export const BlockTitle: React.VFC<{
   className?: string;
@@ -8,6 +8,6 @@ export const BlockTitle: React.VFC<{
   title: string;
 }> = ({className, id, title}) => (
   <NextLink href={`/spaces/${id}`}>
-    <a className={clsx(className, 'block', 'text-lg', 'font-bold')}>{title}</a>
+    <a className={tw(className, 'block', 'text-lg', 'font-bold')}>{title}</a>
   </NextLink>
 );

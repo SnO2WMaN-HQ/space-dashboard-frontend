@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
+import {tw} from 'twind';
 import {SubmitButton} from '../../molecules/SubmitButton';
 import {DisplayNameInput, UniqueNameInput} from '../../molecules/TextInput';
 
@@ -30,7 +30,7 @@ export const Component: React.VFC<ComponentProps> = ({
 }) => {
   return (
     <form
-      className={clsx(
+      className={tw(
         className,
         'bg-white',
         ['px-4', 'sm:px-6'],
@@ -44,17 +44,17 @@ export const Component: React.VFC<ComponentProps> = ({
       onSubmit={onSubmit}
     >
       <UniqueNameInput
-        className={clsx('w-full')}
+        className={tw('w-full')}
         register={register.uniqueName}
         message={errors.uniqueName}
       />
       <DisplayNameInput
-        className={clsx('w-full', 'mt-8')}
+        className={tw('w-full', 'mt-8')}
         register={register.displayName}
         message={errors.displayName}
       />
       <SubmitButton
-        className={clsx('mt-8')}
+        className={tw('mt-8')}
         {...{
           isUntouched,
           isValid,

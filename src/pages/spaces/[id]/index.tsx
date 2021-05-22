@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import {
   GetStaticPaths,
   GetStaticProps,
@@ -10,6 +9,7 @@ import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React from 'react';
+import {tw} from 'twind';
 import {Merge} from 'type-fest';
 import {graphqlSdk} from '~/graphql/graphql-request';
 import {NextI18nextConfig} from '~/i18n';
@@ -55,7 +55,7 @@ export const Page: NextPage<PageProps> = ({className, ...props}) => {
   const {t} = useTranslation();
 
   if (router.isFallback)
-    return <TemplateLoadingPage className={clsx(className)} />;
+    return <TemplateLoadingPage className={tw(className)} />;
   return (
     <>
       <Head>
@@ -66,7 +66,7 @@ export const Page: NextPage<PageProps> = ({className, ...props}) => {
           })}
         </title>
       </Head>
-      <TemplateSpacePage className={clsx(className)} {...props} />
+      <TemplateSpacePage className={tw(className)} {...props} />
     </>
   );
 };

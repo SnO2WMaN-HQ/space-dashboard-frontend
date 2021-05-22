@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {NewSpaceButton} from '../../molecules/NewSpaceButton';
 
 export type ContainerProps = {
@@ -19,7 +19,7 @@ export const Container: React.VFC<ContainerProps> = ({
 
   return (
     <section
-      className={clsx(
+      className={tw(
         className,
         'px-2',
         'py-4',
@@ -28,7 +28,7 @@ export const Container: React.VFC<ContainerProps> = ({
         'rounded-sm',
       )}
     >
-      <NewSpaceButton className={clsx('w-full')} />
+      <NewSpaceButton className={tw('w-full')} />
     </section>
   );
 };

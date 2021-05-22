@@ -1,9 +1,9 @@
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import NextLink from 'next/link';
 import React from 'react';
+import {tw} from 'twind';
 
 export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
@@ -11,7 +11,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
   return (
     <NextLink href="/new">
       <a
-        className={clsx(
+        className={tw(
           className,
           'px-6',
           'py-4',
@@ -31,10 +31,10 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
       >
         <FontAwesomeIcon
           icon={faPlus}
-          className={clsx('text-white', 'text-lg')}
+          className={tw('text-white', 'text-lg')}
         />
         <span
-          className={clsx('ml-4', 'text-white', 'font-bold', 'tracking-wider')}
+          className={tw('ml-4', 'text-white', 'font-bold', 'tracking-wider')}
         >
           {t('timeline:new_space')}
         </span>

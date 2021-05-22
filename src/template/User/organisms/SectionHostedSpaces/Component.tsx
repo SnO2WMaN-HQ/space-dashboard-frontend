@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {HostSpace} from '../../molecules/HostedSpace';
 
 export type ComponentProps = {
@@ -25,7 +25,7 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
 
   return (
     <section
-      className={clsx(
+      className={tw(
         className,
         'bg-gray-50',
         'px-2',
@@ -34,12 +34,12 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
         'shadow-sm',
       )}
     >
-      <p className={clsx('px-2', 'font-bold')}>
+      <p className={tw('px-2', 'font-bold')}>
         {t('user:section.hosted_spaces.title', {count: spaces.length})}
       </p>
-      <div className={clsx('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
+      <div className={tw('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
         {spaces.map(({id, ...props}) => (
-          <HostSpace className={clsx('w-full')} key={id} {...{id, ...props}} />
+          <HostSpace className={tw('w-full')} key={id} {...{id, ...props}} />
         ))}
       </div>
     </section>

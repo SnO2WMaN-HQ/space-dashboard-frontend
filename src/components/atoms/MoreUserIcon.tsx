@@ -1,11 +1,11 @@
 import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 
 export const MoreUserIcon: React.VFC<{className?: string}> = ({className}) => (
   <div
-    className={clsx(
+    className={tw(
       className,
       'flex',
       'items-center',
@@ -19,7 +19,7 @@ export const MoreUserIcon: React.VFC<{className?: string}> = ({className}) => (
     <FontAwesomeIcon
       icon={faEllipsisH}
       fixedWidth
-      className={clsx('text-white', 'text-sm', 'font-bold', 'leading-none')}
+      className={tw('text-white', 'text-sm', 'font-bold', 'leading-none')}
     />
   </div>
 );

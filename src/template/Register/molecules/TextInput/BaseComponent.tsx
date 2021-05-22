@@ -1,9 +1,9 @@
 import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
+import {tw} from 'twind';
 
 export type BaseComponentProps = {
   className?: string;
@@ -24,18 +24,18 @@ export const BaseComponent: React.VFC<BaseComponentProps> = ({
 }) => {
   const {t} = useTranslation('register');
   return (
-    <label className={clsx(className, 'inline-flex', 'flex-col')} htmlFor={id}>
-      <div className={clsx('flex', 'items-center')}>
+    <label className={tw(className, 'inline-flex', 'flex-col')} htmlFor={id}>
+      <div className={tw('flex', 'items-center')}>
         <FontAwesomeIcon
-          className={clsx('text-base', 'text-blue-400')}
+          className={tw('text-base', 'text-blue-400')}
           icon={icon}
           fixedWidth
         />
-        <span className={clsx('ml-2')}>{i18n.label}</span>
+        <span className={tw('ml-2')}>{i18n.label}</span>
       </div>
       <input
         id={id}
-        className={clsx(
+        className={tw(
           'w-full',
           'mt-3',
           'px-4',
@@ -45,12 +45,10 @@ export const BaseComponent: React.VFC<BaseComponentProps> = ({
         )}
         {...register}
       />
-      <div className={clsx('mt-2')}>
-        <p className={clsx('tracking-wide', 'text-xs')}>{i18n.description}</p>
+      <div className={tw('mt-2')}>
+        <p className={tw('tracking-wide', 'text-xs')}>{i18n.description}</p>
         {message && (
-          <p className={clsx('mt-1', 'text-xs', 'text-red-600')}>
-            {t(message)}
-          </p>
+          <p className={tw('mt-1', 'text-xs', 'text-red-600')}>{t(message)}</p>
         )}
       </div>
     </label>

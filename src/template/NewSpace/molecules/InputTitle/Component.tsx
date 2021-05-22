@@ -1,9 +1,9 @@
 import {faSignature} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
+import {tw} from 'twind';
 
 export type ComponentProps = {
   className?: string;
@@ -18,24 +18,21 @@ export const Component: React.VFC<ComponentProps> = ({
 }) => {
   const {t} = useTranslation('register');
   return (
-    <label
-      className={clsx(className, 'inline-flex', 'flex-col')}
-      htmlFor="title"
-    >
-      <div className={clsx('flex', 'items-center', 'select-none')}>
+    <label className={tw(className, 'inline-flex', 'flex-col')} htmlFor="title">
+      <div className={tw('flex', 'items-center', 'select-none')}>
         <FontAwesomeIcon
-          className={clsx('text-base', 'text-blue-400')}
+          className={tw('text-base', 'text-blue-400')}
           icon={faSignature}
           fixedWidth
         />
-        <span className={clsx('ml-2')}>{t('new:form.title.label')}</span>
-        <span className={clsx('ml-1', 'text-xs', 'text-gray-500')}>
+        <span className={tw('ml-2')}>{t('new:form.title.label')}</span>
+        <span className={tw('ml-1', 'text-xs', 'text-gray-500')}>
           {t('new:form.required')}
         </span>
       </div>
       <input
         id="title"
-        className={clsx(
+        className={tw(
           'w-full',
           'mt-3',
           'px-4',
@@ -45,9 +42,9 @@ export const Component: React.VFC<ComponentProps> = ({
         )}
         {...register}
       />
-      <div className={clsx('mt-2')}>
+      <div className={tw('mt-2')}>
         {errorMessage && (
-          <p className={clsx('mt-1', 'text-xs', 'text-red-600')}>
+          <p className={tw('mt-1', 'text-xs', 'text-red-600')}>
             {t(errorMessage)}
           </p>
         )}

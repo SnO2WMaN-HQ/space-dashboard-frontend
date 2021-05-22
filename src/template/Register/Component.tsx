@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {Form, FormProps} from './organisms/Form';
 
 export type ComponentProps = {
@@ -16,7 +16,7 @@ export const Component: React.VFC<ComponentProps> = ({
 }) => {
   return (
     <main
-      className={clsx(
+      className={tw(
         className,
         'bg-gray-200',
         'flex',
@@ -26,7 +26,7 @@ export const Component: React.VFC<ComponentProps> = ({
       )}
     >
       <Form
-        className={clsx('w-full', 'max-w-sm')}
+        className={tw('w-full', 'max-w-sm')}
         onSubmit={onSubmit}
         {...{isCompleted, isSubmitting}}
       />

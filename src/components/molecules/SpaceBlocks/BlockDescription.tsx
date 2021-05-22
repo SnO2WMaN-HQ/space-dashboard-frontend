@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 
 export const BlockDescription: React.VFC<{
   className?: string;
@@ -8,9 +8,9 @@ export const BlockDescription: React.VFC<{
 }> = ({className, description}) => {
   const {t} = useTranslation();
   return (
-    <div className={clsx(className)}>
-      <p className={clsx('font-bold')}>{t('space_block.description.title')}</p>
-      <p className={clsx('mt-2')}>{description}</p>
+    <div className={tw(className)}>
+      <p className={tw('font-bold')}>{t('space_block.description.title')}</p>
+      <p className={tw('mt-2')}>{description}</p>
     </div>
   );
 };

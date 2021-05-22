@@ -1,7 +1,7 @@
 import {zodResolver} from '@hookform/resolvers/zod';
-import clsx from 'clsx';
 import React from 'react';
 import {SubmitHandler, useForm} from 'react-hook-form';
+import {tw} from 'twind';
 import {Component} from './Component';
 import {FormInput, schema} from './definition';
 
@@ -24,7 +24,7 @@ export const Container: React.VFC<ContainerProps> = ({
 
   return (
     <Component
-      className={clsx(className)}
+      className={tw(className)}
       onSubmit={handleSubmit(onSubmit)}
       register={{
         title: register('title', {required: true}),

@@ -5,9 +5,9 @@ import {
   faPen,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 
 export type ExpectedState =
   | {isUntouched: true}
@@ -24,7 +24,7 @@ export const Disabled: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, Icon, i18n}) => (
   <div
-    className={clsx(
+    className={tw(
       className,
       'inline-flex',
       'items-center',
@@ -35,8 +35,8 @@ export const Disabled: React.VFC<{
     )}
     aria-label={i18n.text}
   >
-    <Icon className={clsx('text-lg')} />
-    <span className={clsx('ml-2', 'font-bold', 'tracking-wider')}>
+    <Icon className={tw('text-lg')} />
+    <span className={tw('ml-2', 'font-bold', 'tracking-wider')}>
       {i18n.text}
     </span>
   </div>
@@ -49,10 +49,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
     <>
       {'isUntouched' in props && (
         <Disabled
-          className={clsx(className, 'bg-gray-300', 'text-gray-400')}
+          className={tw(className, 'bg-gray-300', 'text-gray-400')}
           Icon={({className}) => (
             <FontAwesomeIcon
-              className={clsx(className)}
+              className={tw(className)}
               icon={faPen}
               fixedWidth
             />
@@ -62,10 +62,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
       )}
       {'isValidating' in props && props.isValidating && (
         <Disabled
-          className={clsx(className, 'bg-gray-300', 'text-gray-400')}
+          className={tw(className, 'bg-gray-300', 'text-gray-400')}
           Icon={({className}) => (
             <FontAwesomeIcon
-              className={clsx(className)}
+              className={tw(className)}
               icon={faCircleNotch}
               spin
               fixedWidth
@@ -76,10 +76,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
       )}
       {'isValid' in props && !props.isValid && (
         <Disabled
-          className={clsx(className, 'bg-red-400', 'text-white')}
+          className={tw(className, 'bg-red-400', 'text-white')}
           Icon={({className}) => (
             <FontAwesomeIcon
-              className={clsx(className)}
+              className={tw(className)}
               icon={faExclamationCircle}
               fixedWidth
             />
@@ -89,10 +89,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
       )}
       {'isSubmitting' in props && (
         <Disabled
-          className={clsx(className, 'bg-purple-400', 'text-white')}
+          className={tw(className, 'bg-purple-400', 'text-white')}
           Icon={({className}) => (
             <FontAwesomeIcon
-              className={clsx(className)}
+              className={tw(className)}
               icon={faCircleNotch}
               spin
               fixedWidth
@@ -103,10 +103,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
       )}
       {'isCompleted' in props && (
         <Disabled
-          className={clsx(className, 'bg-pink-400', 'text-white')}
+          className={tw(className, 'bg-pink-400', 'text-white')}
           Icon={({className}) => (
             <FontAwesomeIcon
-              className={clsx(className)}
+              className={tw(className)}
               icon={faLaughBeam}
               fixedWidth
             />
@@ -115,10 +115,10 @@ export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
         />
       )}
       {'isValid' in props && props.isValid && (
-        <label className={clsx(className, 'inline-flex')} htmlFor="submit">
+        <label className={tw(className, 'inline-flex')} htmlFor="submit">
           <input
             id="submit"
-            className={clsx(
+            className={tw(
               'py-3',
               'px-6',
               'rounded-sm',

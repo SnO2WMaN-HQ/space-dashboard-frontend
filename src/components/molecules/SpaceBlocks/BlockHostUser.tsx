@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
+import {tw} from 'twind';
 import {UniqueName} from '~/components/atoms/UniqueName';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
 
@@ -10,10 +10,10 @@ export const BlockHostUser: React.VFC<{
 }> = ({className, user}) => {
   const {t} = useTranslation();
   return (
-    <div className={clsx(className)}>
-      <p className={clsx('font-bold')}>{t('space_block.host_user.title')}</p>
-      <div className={clsx('mt-2', 'flex', 'px-0', 'sm:px-2')}>
-        <div className={clsx('w-16', 'h-16')}>
+    <div className={tw(className)}>
+      <p className={tw('font-bold')}>{t('space_block.host_user.title')}</p>
+      <div className={tw('mt-2', 'flex', 'px-0', 'sm:px-2')}>
+        <div className={tw('w-16', 'h-16')}>
           <UserIconLink
             {...{
               uniqueName: user.uniqueName,
@@ -23,7 +23,7 @@ export const BlockHostUser: React.VFC<{
           />
         </div>
         <div
-          className={clsx(
+          className={tw(
             'ml-4',
             'flex-grow',
             'flex',
@@ -31,11 +31,9 @@ export const BlockHostUser: React.VFC<{
             'justify-center',
           )}
         >
-          <span className={clsx('text-lg', 'font-bold')}>
-            {user.displayName}
-          </span>
+          <span className={tw('text-lg', 'font-bold')}>{user.displayName}</span>
           <UniqueName
-            className={clsx('text-gray-500', 'truncate')}
+            className={tw('text-gray-500', 'truncate')}
             uniqueName={user.uniqueName}
           />
         </div>

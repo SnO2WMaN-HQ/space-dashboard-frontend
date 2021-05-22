@@ -5,8 +5,8 @@ import {
   faPen,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 
 export const Disabled: React.VFC<{
   className?: string;
@@ -14,11 +14,11 @@ export const Disabled: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, Icon, i18n}) => (
   <div
-    className={clsx(className, ['inline-flex', 'items-center'])}
+    className={tw(className, ['inline-flex', 'items-center'])}
     aria-label={i18n.text}
   >
-    <Icon className={clsx('text-lg')} />
-    <span className={clsx('ml-2', 'font-bold', 'tracking-wider')}>
+    <Icon className={tw('text-lg')} />
+    <span className={tw('ml-2', 'font-bold', 'tracking-wider')}>
       {i18n.text}
     </span>
   </div>
@@ -29,9 +29,9 @@ export const Untouched: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, i18n}) => (
   <Disabled
-    className={clsx(className, 'bg-gray-300', 'text-gray-400')}
+    className={tw(className, 'bg-gray-300', 'text-gray-400')}
     Icon={({className}) => (
-      <FontAwesomeIcon className={clsx(className)} icon={faPen} fixedWidth />
+      <FontAwesomeIcon className={tw(className)} icon={faPen} fixedWidth />
     )}
     i18n={{text: i18n.text}}
   />
@@ -42,10 +42,10 @@ export const Validating: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, i18n}) => (
   <Disabled
-    className={clsx(className, 'bg-gray-300', 'text-gray-400')}
+    className={tw(className, 'bg-gray-300', 'text-gray-400')}
     Icon={({className}) => (
       <FontAwesomeIcon
-        className={clsx(className)}
+        className={tw(className)}
         icon={faCircleNotch}
         spin
         fixedWidth
@@ -60,10 +60,10 @@ export const Invalid: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, i18n}) => (
   <Disabled
-    className={clsx(className, 'bg-red-400', 'text-white')}
+    className={tw(className, 'bg-red-400', 'text-white')}
     Icon={({className}) => (
       <FontAwesomeIcon
-        className={clsx(className)}
+        className={tw(className)}
         icon={faExclamationCircle}
         fixedWidth
       />
@@ -77,10 +77,10 @@ export const Submitting: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, i18n}) => (
   <Disabled
-    className={clsx(className, 'bg-purple-400', 'text-white')}
+    className={tw(className, 'bg-purple-400', 'text-white')}
     Icon={({className}) => (
       <FontAwesomeIcon
-        className={clsx(className)}
+        className={tw(className)}
         icon={faCircleNotch}
         spin
         fixedWidth
@@ -95,10 +95,10 @@ export const Completed: React.VFC<{
   i18n: Record<'text', string>;
 }> = ({className, i18n}) => (
   <Disabled
-    className={clsx(className, 'bg-pink-400', 'text-white')}
+    className={tw(className, 'bg-pink-400', 'text-white')}
     Icon={({className}) => (
       <FontAwesomeIcon
-        className={clsx(className)}
+        className={tw(className)}
         icon={faLaughBeam}
         fixedWidth
       />

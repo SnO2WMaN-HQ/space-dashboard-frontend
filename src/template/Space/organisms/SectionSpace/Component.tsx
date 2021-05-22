@@ -1,5 +1,5 @@
-import clsx from 'clsx';
 import React from 'react';
+import {tw} from 'twind';
 import {Space} from '../../molecules/Space';
 
 export type ComponentProps = {
@@ -37,7 +37,7 @@ export const Component: React.VFC<ComponentProps> = ({
 }) => {
   return (
     <section
-      className={clsx(
+      className={tw(
         className,
         'bg-gray-50',
         'px-2',
@@ -46,7 +46,7 @@ export const Component: React.VFC<ComponentProps> = ({
         'shadow-sm',
       )}
     >
-      <div className={clsx('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
+      <div className={tw('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
         <Space
           {...{
             id,
