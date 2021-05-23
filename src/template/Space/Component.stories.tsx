@@ -28,6 +28,7 @@ Primary.args = {
   openDate: '2020-01-01',
   minutesUrl: 'https://scrapbox.io/space/2020.01.01',
   hostUser: {
+    id: '1',
     displayName: 'Test User',
     uniqueName: 'testuser',
     picture: random.icon(),
@@ -35,6 +36,7 @@ Primary.args = {
   followingUsers: {
     pageInfo: {hasMore: true, endCursor: 'A'},
     users: Array.from({length: 23}).map((_, j) => ({
+      id: `${j + 1}`,
       displayName: `Test User ${j + 1}`,
       uniqueName: `testuser${j + 1}`,
       picture: random.icon(j + 1),

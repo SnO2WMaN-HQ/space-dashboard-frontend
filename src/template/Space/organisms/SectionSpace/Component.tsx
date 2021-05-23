@@ -11,6 +11,7 @@ export type ComponentProps = {
   finished: boolean;
   openDate: string;
   hostUser: {
+    id: string;
     uniqueName: string;
     displayName: string;
     picture: string;
@@ -18,6 +19,7 @@ export type ComponentProps = {
   followingUsers: {
     pageInfo: {hasMore: boolean; endCursor?: string};
     users: {
+      id: string;
       uniqueName: string;
       displayName: string;
       picture: string;

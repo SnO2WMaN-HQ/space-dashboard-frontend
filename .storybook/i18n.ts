@@ -10,7 +10,7 @@ i18n
     debug: true,
     fallbackLng: i18nConfig.defaultLocale,
     defaultNS: i18nConfig.defaultNS,
-    ns: ['common', 'index', 'new', 'register', 'timeline', 'user'],
+    ns: ['common', 'index', 'new', 'register', 'space', 'timeline', 'user'],
     interpolation: i18nConfig.interpolation,
     react: {
       useSuspense: false,
