@@ -1,4 +1,4 @@
-import {withPageAuthRequired} from '@auth0/nextjs-auth0';
+import {useUser, withPageAuthRequired} from '@auth0/nextjs-auth0';
 import {GetServerSidePropsContext, NextPage} from 'next';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
@@ -8,7 +8,7 @@ import React, {useEffect} from 'react';
 import {useCurrentUser} from '~/hooks/useCurrentUser';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
-import {TemplateRegisterPage} from '~/template/Register';
+import {TemplateRegisterPage, transform} from '~/template/Register';
 
 export type UrlQuery = Record<string, never>;
 export const getServerSideProps = async ({
@@ -31,6 +31,7 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   const router = useRouter();
   const current = useCurrentUser();
   const {t} = useTranslation();
+  const {user: auth0Profile} = useUser();
 
   useEffect(() => {
     if ('registered' in current && current.registered) router.push('/timeline');
@@ -42,7 +43,10 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
         <Head>
           <title>{t('head_title.register')}</title>
         </Head>
-        <TemplateRegisterPage className={className} />
+        <TemplateRegisterPage
+          className={className}
+          {...transform(auth0Profile)}
+        />
       </>
     );
   return <TemplateLoadingPage className={className} />;

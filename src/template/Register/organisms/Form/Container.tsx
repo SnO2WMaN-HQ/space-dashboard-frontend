@@ -12,6 +12,7 @@ export const schema = z.object({
     .max(15, 'register:error.unique_name.max')
     .regex(/[A-Za-z0-9_]+/, 'register:error.unique_name.regex'),
   displayName: z.string().max(50, 'register:error.display_name.max'),
+  picture: z.string().url(),
 });
 
 export type FormInput = z.infer<typeof schema>;
@@ -21,17 +22,25 @@ export type ContainerProps = {
   onSubmit: SubmitHandler<FormInput>;
   isSubmitting: boolean;
   isCompleted: boolean;
+  initialValues: Partial<
+    Record<'uniqueName' | 'displayName' | 'picture', string>
+  >;
 };
 export const Container: React.VFC<ContainerProps> = ({
   className,
   onSubmit,
+  initialValues,
   ...props
 }) => {
   const {
     register,
     handleSubmit,
     formState: {errors, isValid, isValidating, touchedFields},
-  } = useForm<FormInput>({mode: 'onBlur', resolver: zodResolver(schema)});
+  } = useForm<FormInput>({
+    mode: 'onBlur',
+    resolver: zodResolver(schema),
+    defaultValues: initialValues,
+  });
 
   return (
     <Component

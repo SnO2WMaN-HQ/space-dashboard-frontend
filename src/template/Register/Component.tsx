@@ -4,12 +4,16 @@ import {Form, FormProps} from './organisms/Form';
 
 export type ComponentProps = {
   className?: string;
+
+  initialValues: FormProps['initialValues'];
+
   onSubmit: FormProps['onSubmit'];
   isSubmitting: boolean;
   isCompleted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
+  initialValues,
   onSubmit,
   isSubmitting,
   isCompleted,
@@ -28,7 +32,7 @@ export const Component: React.VFC<ComponentProps> = ({
       <Form
         className={tw('w-full', 'max-w-sm')}
         onSubmit={onSubmit}
-        {...{isCompleted, isSubmitting}}
+        {...{isCompleted, isSubmitting, initialValues}}
       />
     </main>
   );
