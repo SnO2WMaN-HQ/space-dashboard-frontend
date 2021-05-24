@@ -17,7 +17,9 @@ export const App: React.FC<AppProps> = ({Component, pageProps}) => {
     <UserProvider user={user}>
       <ApolloProvider client={createApolloClient()}>
         <RecoilRoot>
-          <Component {...pageProps} className={tw('min-h-screen')} />
+          <div className={tw('w-full', 'min-h-screen')}>
+            <Component {...pageProps} className={tw()} />
+          </div>
         </RecoilRoot>
       </ApolloProvider>
     </UserProvider>

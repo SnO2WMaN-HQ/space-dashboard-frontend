@@ -16,7 +16,7 @@ export const Component: React.VFC<ComponentProps> = ({
   uniqueName,
   picture,
 }) => {
-  const {t} = useTranslation('user');
+  const {t} = useTranslation();
 
   return (
     <section
