@@ -1,13 +1,13 @@
-import {faSignature} from '@fortawesome/free-solid-svg-icons';
+import {faAt} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
-import {BaseComponent} from './BaseComponent';
+import {BaseComponent} from '../TextInput';
 
 export type ComponentProps = {
   className?: string;
-  register: UseFormRegisterReturn;
   message?: string;
+  register: UseFormRegisterReturn;
 };
 export const Component: React.VFC<ComponentProps> = ({...props}) => {
   const {t} = useTranslation();
@@ -15,11 +15,11 @@ export const Component: React.VFC<ComponentProps> = ({...props}) => {
     <BaseComponent
       {...props}
       i18n={{
-        label: t('register:display_name.label'),
-        description: t('register:display_name.description'),
+        label: t('register:unique_name.label'),
+        description: t('register:unique_name.description'),
       }}
-      id="displayName"
-      icon={faSignature}
+      id="uniqueName"
+      icon={faAt}
     />
   );
 };

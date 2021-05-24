@@ -1,30 +1,19 @@
 import React from 'react';
-import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {InputDisplayName} from '../../molecules/InputDisplayName';
+import {InputPicture} from '../../molecules/InputPicture';
+import {InputUniqueName} from '../../molecules/InputUniqueName';
 import {SubmitButton} from '../../molecules/SubmitButton';
-import {DisplayNameInput, UniqueNameInput} from '../../molecules/TextInput';
 
 export type ComponentProps = {
   className?: string;
-
   onSubmit(): Promise<void>;
-  register: Record<'uniqueName' | 'displayName', UseFormRegisterReturn>;
-  errors: {uniqueName?: string; displayName?: string};
-
-  isUntouched: boolean;
-  isValid: boolean;
-  isValidating: boolean;
   isSubmitting: boolean;
   isCompleted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
   onSubmit,
-  register,
-  errors,
-  isUntouched,
-  isValid,
-  isValidating,
   isSubmitting,
   isCompleted,
 }) => {
@@ -43,22 +32,12 @@ export const Component: React.VFC<ComponentProps> = ({
       )}
       onSubmit={onSubmit}
     >
-      <UniqueNameInput
-        className={tw('w-full')}
-        register={register.uniqueName}
-        message={errors.uniqueName}
-      />
-      <DisplayNameInput
-        className={tw('w-full', 'mt-8')}
-        register={register.displayName}
-        message={errors.displayName}
-      />
+      <InputPicture className={tw('w-full')} />
+      <InputUniqueName className={tw('w-full', 'mt-4')} />
+      <InputDisplayName className={tw('w-full', 'mt-8')} />
       <SubmitButton
         className={tw('mt-8')}
         {...{
-          isUntouched,
-          isValid,
-          isValidating,
           isSubmitting,
           isCompleted,
         }}
