@@ -1,6 +1,7 @@
 import React from 'react';
 import {tw} from 'twind';
 import {Merge} from 'type-fest';
+import {PageLayout} from '~/components/layouts/PageLayout';
 import {SectionFollowingSpaces} from '../User/organisms/SectionFollowingSpaces';
 import {SectionHostedSpaces} from '../User/organisms/SectionHostedSpaces';
 import {SectionProfile} from '../User/organisms/SectionProfile';
@@ -17,27 +18,36 @@ export const Component: React.VFC<ComponentProps> = ({
   followingSpaces,
 }) => {
   return (
-    <main className={tw(className, 'bg-gray-200', 'py-4')}>
-      <div className={tw('w-full', 'px-2', 'grid', 'grid-cols-1', 'gap-y-4')}>
+    <PageLayout className={tw(className)}>
+      <main
+        className={tw(
+          className,
+          'w-full',
+          ['grid'],
+          ['grid-cols-1', 'md:grid-cols-2'],
+          ['md:gap-x-4'],
+          ['gap-y-4'],
+        )}
+      >
         <SectionProfile
-          className={tw()}
+          className={tw('col-span-2')}
           {...{displayName, picture, uniqueName}}
         />
         <SectionNewSpace
-          className={tw()}
+          className={tw('col-span-2')}
           {...{displayName, picture, uniqueName}}
         />
         <SectionHostedSpaces
-          className={tw()}
+          className={tw('col-span-1', 'col-start-1')}
           spaces={hostedSpaces.spaces}
           pageInfo={hostedSpaces.pageInfo}
         />
         <SectionFollowingSpaces
-          className={tw()}
+          className={tw('col-span-1', 'col-start-2')}
           spaces={followingSpaces.spaces}
           pageInfo={followingSpaces.pageInfo}
         />
-      </div>
-    </main>
+      </main>
+    </PageLayout>
   );
 };

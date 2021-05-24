@@ -17,29 +17,31 @@ export const Component: React.VFC<ComponentProps> = ({
   followingSpaces,
 }) => {
   return (
-    <PageLayout
-      className={tw(
-        className,
-        ['grid'],
-        ['grid-cols-1', 'md:grid-cols-2'],
-        ['md:gap-x-4'],
-        ['gap-y-4'],
-      )}
-    >
-      <SectionProfile
-        className={tw('col-span-2')}
-        {...{displayName, picture, uniqueName}}
-      />
-      <SectionHostedSpaces
-        className={tw('col-span-1')}
-        spaces={hostedSpaces.spaces}
-        pageInfo={hostedSpaces.pageInfo}
-      />
-      <SectionFollowingSpaces
-        className={tw('col-span-1')}
-        spaces={followingSpaces.spaces}
-        pageInfo={followingSpaces.pageInfo}
-      />
+    <PageLayout className={tw(className)}>
+      <main
+        className={tw(
+          'w-full',
+          ['grid'],
+          ['grid-cols-1', 'md:grid-cols-2'],
+          ['md:gap-x-4'],
+          ['gap-y-4'],
+        )}
+      >
+        <SectionProfile
+          className={tw('col-span-2')}
+          {...{displayName, picture, uniqueName}}
+        />
+        <SectionHostedSpaces
+          className={tw('col-span-1')}
+          spaces={hostedSpaces.spaces}
+          pageInfo={hostedSpaces.pageInfo}
+        />
+        <SectionFollowingSpaces
+          className={tw('col-span-1')}
+          spaces={followingSpaces.spaces}
+          pageInfo={followingSpaces.pageInfo}
+        />
+      </main>
     </PageLayout>
   );
 };

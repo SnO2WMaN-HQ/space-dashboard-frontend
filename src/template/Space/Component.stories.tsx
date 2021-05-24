@@ -17,7 +17,7 @@ export default {
 } as Meta;
 
 export const Primary: Story<ComponentProps> = (args) => (
-  <Component {...args} className={tw('w-full', 'min-h-screen')} />
+  <Component {...args} className={tw('w-full')} />
 );
 
 Primary.args = {
