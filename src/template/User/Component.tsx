@@ -2,9 +2,9 @@ import React from 'react';
 import {tw} from 'twind';
 import {Merge} from 'type-fest';
 import {PageLayout} from '~/components/layouts/PageLayout';
+import {Header} from './organisms/Header';
 import {SectionFollowingSpaces} from './organisms/SectionFollowingSpaces';
 import {SectionHostedSpaces} from './organisms/SectionHostedSpaces';
-import {SectionProfile} from './organisms/SectionProfile';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<{className?: string}, TransformedProps>;
@@ -27,17 +27,17 @@ export const Component: React.VFC<ComponentProps> = ({
           ['gap-y-4'],
         )}
       >
-        <SectionProfile
-          className={tw('col-span-2')}
+        <Header
+          className={tw(['col-span-1', 'md:col-span-2'])}
           {...{displayName, picture, uniqueName}}
         />
         <SectionHostedSpaces
-          className={tw('col-span-1')}
+          className={tw(['col-span-1'])}
           spaces={hostedSpaces.spaces}
           pageInfo={hostedSpaces.pageInfo}
         />
         <SectionFollowingSpaces
-          className={tw('col-span-1')}
+          className={tw(['col-span-1'])}
           spaces={followingSpaces.spaces}
           pageInfo={followingSpaces.pageInfo}
         />

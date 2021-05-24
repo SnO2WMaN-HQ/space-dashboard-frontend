@@ -27,17 +27,29 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
     <section
       className={tw(
         className,
-        'bg-gray-50',
-        'px-2',
-        'py-4',
-        'rounded-sm',
-        'shadow-sm',
+        ['shadow-sm', 'rounded-sm'],
+        ['px-4'],
+        ['py-4', 'md:py-4'],
+        ['bg-opacity-50', 'bg-white'],
       )}
     >
-      <p className={tw('px-2', 'font-bold')}>
+      <p
+        className={tw(
+          ['pl-2', 'md:pl-4'],
+          ['text-lg', 'md:text-xl'],
+          'font-bold',
+        )}
+      >
         {t('user:section.hosted_spaces.title', {count: spaces.length})}
       </p>
-      <div className={tw('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
+      <div
+        className={tw(
+          'w-full',
+          ['mt-2', 'md:mt-4'],
+          ['flex', 'flex-col'],
+          'space-y-4',
+        )}
+      >
         {spaces.map(({id, ...props}) => (
           <HostSpace className={tw('w-full')} key={id} {...{id, ...props}} />
         ))}

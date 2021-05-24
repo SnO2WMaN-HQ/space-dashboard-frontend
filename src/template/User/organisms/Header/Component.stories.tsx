@@ -4,7 +4,7 @@ import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateUserPage/organisms/SectionProfule',
+  title: 'TemplateUserPage/organisms/Header',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

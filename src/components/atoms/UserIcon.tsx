@@ -7,11 +7,13 @@ export const UserIcon: React.VFC<{
   picture: string;
   displayName: string;
 }> = ({className, displayName, picture}) => (
-  <NextImage
-    className={tw(className, 'relative', 'overflow-hidden', 'rounded-full')}
-    src={picture}
-    width={128}
-    height={128}
-    alt={displayName}
-  />
+  <div className={tw(className)}>
+    <NextImage
+      className={tw('relative', 'overflow-hidden', 'rounded-full')}
+      src={picture}
+      width={256}
+      height={256}
+      alt={displayName}
+    />
+  </div>
 );

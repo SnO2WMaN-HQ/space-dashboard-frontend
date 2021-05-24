@@ -6,6 +6,7 @@ import {
   BlockHostUser,
   BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
+import {SpaceFrame} from './HostedSpace';
 
 export const FollowingSpace: React.VFC<{
   className?: string;
@@ -18,7 +19,7 @@ export const FollowingSpace: React.VFC<{
     users: {uniqueName: string; displayName: string; picture: string}[];
   };
 }> = ({className, id, title, openDate, hostedUser, followingUsers}) => (
-  <div
+  <SpaceFrame
     className={tw(
       className,
       'bg-white',
@@ -35,5 +36,5 @@ export const FollowingSpace: React.VFC<{
       className={tw('mt-4')}
       {...{users: followingUsers.users, hasMore: followingUsers.hasMore}}
     />
-  </div>
+  </SpaceFrame>
 );

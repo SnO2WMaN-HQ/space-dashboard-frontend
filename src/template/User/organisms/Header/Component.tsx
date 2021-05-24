@@ -19,48 +19,44 @@ export const Component: React.VFC<ComponentProps> = ({
   const {t} = useTranslation();
 
   return (
-    <section
+    <header
       className={tw(
         className,
-        'px-2',
-        'py-4',
-        'bg-gray-50',
-        'shadow-sm',
-        'rounded-sm',
+        ['shadow-sm', 'rounded-sm'],
+        ['py-4', 'md:py-8'],
+        ['bg-opacity-60', 'bg-white'],
       )}
     >
-      <p className={tw('px-2', 'font-bold')}>
-        {t('user:section.profile.title')}
-      </p>
       <div
         className={tw(
-          'mt-2',
+          'mx-auto',
+          'max-w-screen-sm',
+          ['px-4', 'md:px-0'],
           'flex',
-          'bg-white',
-          'px-4',
-          'py-3',
-          'rounded-md',
-          'shadow-md',
         )}
       >
         <div className={tw('flex', 'items-center', 'justify-center')}>
-          <div className={tw('w-16', 'h-16')}>
-            <UserIcon {...{displayName, picture}} />
-          </div>
+          <UserIcon
+            className={tw(['w-16', 'h-16'], ['md:w-20', 'md:h-20'])}
+            {...{displayName, picture}}
+          />
         </div>
         <div
-          className={tw(
-            'ml-4',
-            'flex-grow',
+          className={tw(['ml-2', 'md:ml-4'], 'flex-grow', [
             'flex',
             'flex-col',
             'justify-center',
-          )}
+          ])}
         >
-          <span className={tw('text-lg', 'font-bold')}>{displayName}</span>
-          <UniqueName className={tw('text-gray-500')} uniqueName={uniqueName} />
+          <span className={tw(['text-xl', 'md:text-2xl'], 'font-bold')}>
+            {displayName}
+          </span>
+          <UniqueName
+            className={tw('text-gray-700', ['text-sm', 'md:text-base'])}
+            uniqueName={uniqueName}
+          />
         </div>
       </div>
-    </section>
+    </header>
   );
 };
