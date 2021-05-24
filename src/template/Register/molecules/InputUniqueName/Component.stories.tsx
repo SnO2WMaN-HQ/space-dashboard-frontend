@@ -1,9 +1,9 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import React from 'react';
-import {Component, ComponentProps} from './InputUniqueName';
+import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateRegisterPage/molecules/TextInput/InputUniqueName',
+  title: 'TemplateRegisterPage/molecules/InputUniqueName',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
