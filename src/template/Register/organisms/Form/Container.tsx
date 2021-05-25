@@ -8,7 +8,7 @@ export type ContainerProps = {
   className?: string;
   onSubmit: SubmitHandler<FormValues>;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
   initialValues: Partial<
     Record<'uniqueName' | 'displayName' | 'picture', string>
   >;

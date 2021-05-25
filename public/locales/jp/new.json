@@ -33,7 +33,7 @@
       "invalid": "修正が必要です",
       "valid": "追加する",
       "submitting": "追加中です",
-      "completed": "追加されました！"
+      "submitted": "追加されました！"
     }
   }
 }

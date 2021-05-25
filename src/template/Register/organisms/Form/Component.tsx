@@ -9,13 +9,13 @@ export type ComponentProps = {
   className?: string;
   onSubmit(): Promise<void>;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
   onSubmit,
   isSubmitting,
-  isCompleted,
+  isSubmitted,
 }) => {
   return (
     <form
@@ -40,9 +40,10 @@ export const Component: React.VFC<ComponentProps> = ({
         ])}
       >
         <SubmitButton
+          className={tw(['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
           {...{
             isSubmitting,
-            isCompleted,
+            isCompleted: isSubmitted,
           }}
         />
       </div>

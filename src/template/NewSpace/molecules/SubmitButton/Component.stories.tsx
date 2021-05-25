@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateRegisterPage/molecules/SubmitButton',
+  title: 'TemplateNewSpacePage/molecules/SubmitButton',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
@@ -46,9 +46,9 @@ Submitting.args = {
   isSubmitting: true,
 };
 
-export const Completed: Story<ComponentProps> = (args) => (
+export const Submitted: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-Completed.args = {
+Submitted.args = {
   isSubmitted: true,
 };

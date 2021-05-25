@@ -8,7 +8,7 @@ export type ContainerProps = {
   className?: string;
   onSubmit: SubmitHandler<FormValues>;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Container: React.VFC<ContainerProps> = ({
   className,

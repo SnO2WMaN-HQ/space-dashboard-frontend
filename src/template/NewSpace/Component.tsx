@@ -11,7 +11,7 @@ export type ComponentProps = {
   picture: string;
   onSubmit: FormProps['onSubmit'];
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
@@ -20,7 +20,7 @@ export const Component: React.VFC<ComponentProps> = ({
   picture,
   onSubmit,
   isSubmitting,
-  isCompleted,
+  isSubmitted,
 }) => {
   return (
     <PageLayout className={tw(className)}>
@@ -40,7 +40,7 @@ export const Component: React.VFC<ComponentProps> = ({
         <Form
           className={tw(['col-span-1', 'md:col-span-2'])}
           onSubmit={onSubmit}
-          {...{isCompleted, isSubmitting}}
+          {...{isSubmitted, isSubmitting}}
         />
       </main>
     </PageLayout>

@@ -17,10 +17,14 @@
       "max": "50文字以下でおねがいします。"
     }
   },
-  "require_input": "入力してください",
-  "validating": "チェック中です",
-  "invalid": "修正が必要です",
-  "valid": "登録する",
-  "submitting": "登録中です",
-  "completed": "ようこそ！"
+  "form": {
+    "submit": {
+      "untouched": "入力してください",
+      "validating": "チェック中です",
+      "invalid": "修正が必要です",
+      "valid": "登録する",
+      "submitting": "登録中です",
+      "submitted": "ようこそ！"
+    }
+  }
 }

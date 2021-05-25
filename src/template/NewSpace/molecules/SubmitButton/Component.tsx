@@ -1,6 +1,6 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {StatefulSubmitButton} from '~/components/molecules/StatefulSubmitButton';
+import {SubmitButton} from '~/components/atoms/SubmitButton';
 
 export type ComponentProps = {
   className?: string;
@@ -8,19 +8,12 @@ export type ComponentProps = {
   isValidating: boolean;
   isValid: boolean;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
-export const Component: React.VFC<ComponentProps> = ({
-  isUntouched,
-  isValid,
-  isValidating,
-  isSubmitting,
-  isCompleted,
-  ...props
-}) => {
+export const Component: React.VFC<ComponentProps> = ({...props}) => {
   const {t} = useTranslation();
   return (
-    <StatefulSubmitButton
+    <SubmitButton
       {...props}
       i18n={{
         untouched: t('new:form.submit.untouched'),
@@ -28,14 +21,7 @@ export const Component: React.VFC<ComponentProps> = ({
         invalid: t('new:form.submit.invalid'),
         valid: t('new:form.submit.valid'),
         submitting: t('new:form.submit.submitting'),
-        completed: t('new:form.submit.completed'),
-      }}
-      {...{
-        isUntouched,
-        isValid,
-        isValidating,
-        isSubmitting,
-        isCompleted,
+        submitted: t('new:form.submit.submitted'),
       }}
     />
   );

@@ -12,13 +12,13 @@ export type ComponentProps = {
 
   onSubmit(): Promise<void>;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
   onSubmit,
   isSubmitting,
-  isCompleted,
+  isSubmitted,
 }) => {
   const {t} = useTranslation();
   return (
@@ -55,7 +55,7 @@ export const Component: React.VFC<ComponentProps> = ({
           className={tw(['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
           {...{
             isSubmitting,
-            isCompleted,
+            isSubmitted,
           }}
         />
       </div>

@@ -10,14 +10,14 @@ export type ComponentProps = {
 
   onSubmit: FormProps['onSubmit'];
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
   initialValues,
   onSubmit,
   isSubmitting,
-  isCompleted,
+  isSubmitted,
 }) => {
   return (
     <PageLayout
@@ -26,7 +26,7 @@ export const Component: React.VFC<ComponentProps> = ({
       <Form
         className={tw('w-full', 'max-w-sm')}
         onSubmit={onSubmit}
-        {...{isCompleted, isSubmitting, initialValues}}
+        {...{isSubmitted, isSubmitting, initialValues}}
       />
     </PageLayout>
   );

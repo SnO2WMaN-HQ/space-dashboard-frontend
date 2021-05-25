@@ -6,11 +6,11 @@ import {Component} from './Component';
 export type ContainerProps = {
   className?: string;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Container: React.VFC<ContainerProps> = ({
   isSubmitting,
-  isCompleted,
+  isSubmitted,
   ...props
 }) => {
   const {
@@ -24,7 +24,7 @@ export const Container: React.VFC<ContainerProps> = ({
         isValidating,
         isUntouched: Object.keys(touchedFields).length === 0,
         isSubmitting,
-        isCompleted,
+        isSubmitted,
       }}
     />
   );

@@ -1,27 +1,7 @@
 import React from 'react';
 import {useFormContext} from 'react-hook-form';
 import {FormValues} from '../../organisms/Form';
-import {Component, ExpectedState} from './Component';
-
-export const resolveExpectedState = ({
-  isUntouched,
-  isValid,
-  isValidating,
-  isSubmitting,
-  isCompleted,
-}: {
-  isUntouched: boolean;
-  isValid: boolean;
-  isValidating: boolean;
-  isSubmitting: boolean;
-  isCompleted: boolean;
-}): ExpectedState => {
-  if (isCompleted) return {isCompleted: true};
-  else if (isSubmitting) return {isSubmitting: true};
-  else if (isValidating) return {isValidating: true};
-  else if (isUntouched) return {isUntouched: true};
-  else return {isValid};
-};
+import {Component} from './Component';
 
 export type ContainerProps = {
   className?: string;
@@ -39,13 +19,13 @@ export const Container: React.VFC<ContainerProps> = ({
   return (
     <Component
       {...props}
-      {...resolveExpectedState({
-        isUntouched: Object.keys(touchedFields).length === 0,
+      {...{
         isValid,
         isValidating,
+        isUntouched: Object.keys(touchedFields).length === 0,
         isSubmitting,
-        isCompleted,
-      })}
+        isSubmitted: isCompleted,
+      }}
     />
   );
 };
