@@ -24,7 +24,7 @@ export const Component: React.VFC<ComponentProps> = ({
       id="description"
       className={tw(className)}
       icon={faQuestion}
-      i18n={{header: t('new:form.description.label')}}
+      i18n={{label: t('new:form.description.label')}}
       Input={({className, ...props}) => (
         <TextArea
           className={tw(className)}

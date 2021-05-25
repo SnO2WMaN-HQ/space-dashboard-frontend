@@ -29,7 +29,7 @@ export const Component: React.VFC<ComponentProps> = ({
       id="open-date"
       className={tw(className)}
       icon={faCalendarDay}
-      i18n={{header: t('new:form.open_date.label')}}
+      i18n={{label: t('new:form.open_date.label')}}
       Input={({className, ...props}) => (
         <InputDate
           className={tw(className)}

@@ -11,7 +11,7 @@ export type ComponentProps = {
   className?: string;
   required: boolean;
   id: string;
-  i18n: Record<'header', string>;
+  i18n: {label: string; description?: string};
   icon: IconDefinition;
   Input: React.VFC<{className?: string; id: string}>;
   errorMessage?: string;
@@ -28,9 +28,13 @@ export const Component: React.VFC<ComponentProps> = ({
   const {t} = useTranslation();
   return (
     <label className={tw(className, 'inline-flex', 'flex-col')} htmlFor={id}>
-      <FieldHeader icon={icon} i18n={{text: i18n.header}} required={required} />
+      <FieldHeader icon={icon} i18n={{text: i18n.label}} required={required} />
       <Input id={id} className={tw('mt-4', ['px-4', 'py-2'])} />
-      <FieldFooter className={tw('mt-2')} {...{errorMessage}} />
+      <FieldFooter
+        className={tw('mt-2')}
+        i18n={{description: i18n.description}}
+        {...{errorMessage}}
+      />
     </label>
   );
 };

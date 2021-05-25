@@ -24,7 +24,7 @@ export const Component: React.VFC<ComponentProps> = ({
       id="minutes-url"
       className={tw(className)}
       icon={faFileSignature}
-      i18n={{header: t('new:form.minutes_url.label')}}
+      i18n={{label: t('new:form.minutes_url.label')}}
       Input={({className, ...props}) => (
         <InputUrl className={tw(className)} register={register} {...props} />
       )}
