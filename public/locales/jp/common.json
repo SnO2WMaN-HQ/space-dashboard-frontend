@@ -15,8 +15,12 @@
 
   "format": {
     "open_date": "{{date, YYYY年M月D日}}",
+
+    "days_before": "{{days}}日前",
     "days_after": "{{days}}日後",
+    "weeks_before": "{{weeks}}週間前",
     "weeks_after": "{{weeks}}週間後",
+    "months_before": "{{months}}ヶ月前",
     "months_after": "{{months}}ヶ月後"
   },
 
