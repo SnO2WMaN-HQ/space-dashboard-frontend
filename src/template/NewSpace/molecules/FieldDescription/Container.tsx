@@ -8,7 +8,6 @@ export const Container: React.VFC<ContainerProps> = ({...props}) => {
     register,
     formState: {errors},
   } = useNewSpaceForm();
-
   return (
     <Component
       {...props}

@@ -1,0 +1,39 @@
+import {faQuestion} from '@fortawesome/free-solid-svg-icons';
+import {useTranslation} from 'next-i18next';
+import React from 'react';
+import {UseFormRegisterReturn} from 'react-hook-form';
+import {tw} from 'twind';
+import {TextArea} from '~/components/atoms/TextArea';
+import {FieldFrame} from '../../atoms/FieldFrame';
+
+export type ComponentProps = {
+  className?: string;
+  register: UseFormRegisterReturn;
+  errorMessage?: string;
+};
+
+export const Component: React.VFC<ComponentProps> = ({
+  className,
+  register,
+  errorMessage,
+}) => {
+  const {t} = useTranslation('register');
+  return (
+    <FieldFrame
+      {...{errorMessage}}
+      id="description"
+      className={tw(className)}
+      icon={faQuestion}
+      i18n={{header: t('new:form.description.label')}}
+      Input={({className, ...props}) => (
+        <TextArea
+          className={tw(className)}
+          register={register}
+          rows={5}
+          {...props}
+        />
+      )}
+      required={false}
+    />
+  );
+};

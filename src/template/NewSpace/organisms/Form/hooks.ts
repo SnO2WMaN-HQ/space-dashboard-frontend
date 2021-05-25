@@ -26,7 +26,7 @@ export const zodSchema = z.object({
     .regex(/\d{4}-\d{2}-\d{2}/)
     .refine(
       (value) => validOpenDate(value, new Date()),
-      () => ({message: 'new:form.minutes_url.error.out_of_range'}),
+      () => ({message: 'new:form.open_date.error.out_of_range'}),
     ),
 });
 
