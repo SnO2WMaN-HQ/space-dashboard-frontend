@@ -10,7 +10,7 @@ export const SpaceFrame: React.FC<{className?: string}> = ({
       className,
       ['bg-white'],
       ['bg-opacity-70', 'hover:bg-opacity-90'],
-      ['transition-color', 'duration-200'],
+      ['transition-colors', 'duration-200'],
       ['px-4', 'py-2'],
       ['rounded-md', 'shadow-md'],
     )}

@@ -1,11 +1,11 @@
 import React from 'react';
 import {tw} from 'twind';
 import {
-  IconInvalid,
   IconLoading,
   IconSubmitted,
   IconUntouched,
   IconValid,
+  IconWarning,
 } from '../Icon';
 
 export type State =
@@ -23,7 +23,7 @@ export type ButtonState =
 export const Icons = {
   untouched: IconUntouched,
   validating: IconLoading,
-  invalid: IconInvalid,
+  invalid: IconWarning,
   valid: IconValid,
   submitting: IconLoading,
   submitted: IconSubmitted,

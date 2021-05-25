@@ -1,8 +1,7 @@
-import {faCircleNotch} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {IconLoading} from '~/components/atoms/Icon';
 
 export type ComponentProps = {
   className?: string;
@@ -20,11 +19,7 @@ export const Component: React.FC<ComponentProps> = ({children, className}) => {
         'items-center',
       )}
     >
-      <FontAwesomeIcon
-        className={tw('text-blue-500', 'text-6xl')}
-        icon={faCircleNotch}
-        spin
-      />
+      <IconLoading className={tw('text-blue-500', 'text-6xl')} />
       <span
         className={tw(
           'mt-2',

@@ -1,8 +1,8 @@
-import {faFileSignature} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {IconMinutes} from '~/components/atoms/Icon';
 import {InputUrl} from '~/components/atoms/InputUrl';
 import {FieldFrame} from '../../atoms/FieldFrame';
 
@@ -23,7 +23,7 @@ export const Component: React.VFC<ComponentProps> = ({
       {...{errorMessage}}
       id="minutes-url"
       className={tw(className)}
-      icon={faFileSignature}
+      Icon={IconMinutes}
       i18n={{label: t('new:form.minutes_url.label')}}
       Input={({className, ...props}) => (
         <InputUrl className={tw(className)} register={register} {...props} />

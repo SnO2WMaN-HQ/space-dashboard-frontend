@@ -1,8 +1,7 @@
-import {faUserAstronaut} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {IconTwiss} from '~/components/atoms/Icon';
 import {RegisterButton} from '../../molecules';
 
 export type ComponentProps = {className?: string};
@@ -36,10 +35,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
             'rounded-full',
           )}
         >
-          <FontAwesomeIcon
-            className={tw('text-white', 'text-4xl')}
-            icon={faUserAstronaut}
-          />
+          <IconTwiss className={tw('text-white', 'text-4xl')} />
         </div>
         <div
           className={tw('max-w-sm', 'mt-4', [

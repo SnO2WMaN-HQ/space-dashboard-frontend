@@ -1,8 +1,8 @@
-import {faSignature} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {IconTitle} from '~/components/atoms/Icon';
 import {InputText} from '~/components/atoms/InputText';
 import {FieldFrame} from '../../atoms/FieldFrame';
 
@@ -23,7 +23,7 @@ export const Component: React.VFC<ComponentProps> = ({
       {...{errorMessage}}
       id="title"
       className={tw(className)}
-      icon={faSignature}
+      Icon={IconTitle}
       i18n={{label: t('new:form.title.label')}}
       Input={({className, ...props}) => (
         <InputText className={tw(className)} register={register} {...props} />

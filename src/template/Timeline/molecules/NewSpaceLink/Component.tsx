@@ -1,9 +1,8 @@
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useTranslation} from 'next-i18next';
 import NextLink from 'next/link';
 import React from 'react';
 import {tw} from 'twind';
+import {IconAdd} from '~/components/atoms/Icon';
 
 export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
@@ -27,7 +26,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
           ['text-white', 'text-lg'],
         )}
       >
-        <FontAwesomeIcon icon={faPlus} className={tw()} />
+        <IconAdd className={tw()} />
         <span className={tw('ml-4', ['font-bold', 'tracking-wider'])}>
           {t('timeline:new_space')}
         </span>

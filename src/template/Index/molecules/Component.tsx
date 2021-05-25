@@ -1,9 +1,8 @@
-import {faTwitter} from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useTranslation} from 'next-i18next';
 import NextLink from 'next/link';
 import React from 'react';
 import {tw} from 'twind';
+import {IconTwitter} from '~/components/atoms/Icon';
 
 export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
@@ -29,10 +28,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
           'shadow-sm',
         )}
       >
-        <FontAwesomeIcon
-          icon={faTwitter}
-          className={tw('text-white', 'text-lg')}
-        />
+        <IconTwitter className={tw('text-white', 'text-lg')} />
         <span
           className={tw('ml-4', 'text-white', 'font-bold', 'tracking-wider')}
         >

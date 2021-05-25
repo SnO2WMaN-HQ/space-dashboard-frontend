@@ -1,8 +1,7 @@
-import {faCircleNotch} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {IconLoading} from '~/components/atoms/Icon';
 
 export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
@@ -17,7 +16,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
       )}
       aria-label={t('space:follow.loading')}
     >
-      <FontAwesomeIcon className={tw()} icon={faCircleNotch} spin fixedWidth />
+      <IconLoading className={tw()} />
       <span className={tw('ml-2', 'font-bold', 'tracking-wider')}>
         {t('space:follow.loading')}
       </span>

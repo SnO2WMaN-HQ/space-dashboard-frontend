@@ -1,8 +1,8 @@
-import {faAt} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {IconUniqueName} from '~/components/atoms/Icon';
 import {InputText} from '~/components/atoms/InputText';
 import {FieldFrame} from '~/template/NewSpace/atoms/FieldFrame';
 
@@ -22,7 +22,7 @@ export const Component: React.VFC<ComponentProps> = ({
       {...{errorMessage: message}}
       id="unique-name"
       className={tw(className)}
-      icon={faAt}
+      Icon={IconUniqueName}
       i18n={{
         label: t('register:form.unique_name.label'),
         description: t('register:form.unique_name.description'),

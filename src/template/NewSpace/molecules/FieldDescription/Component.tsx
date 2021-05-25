@@ -1,8 +1,8 @@
-import {faQuestion} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {IconDescription} from '~/components/atoms/Icon';
 import {TextArea} from '~/components/atoms/TextArea';
 import {FieldFrame} from '../../atoms/FieldFrame';
 
@@ -23,7 +23,7 @@ export const Component: React.VFC<ComponentProps> = ({
       {...{errorMessage}}
       id="description"
       className={tw(className)}
-      icon={faQuestion}
+      Icon={IconDescription}
       i18n={{label: t('new:form.description.label')}}
       Input={({className, ...props}) => (
         <TextArea

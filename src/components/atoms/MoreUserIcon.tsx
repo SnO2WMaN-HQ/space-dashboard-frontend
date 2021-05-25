@@ -1,7 +1,6 @@
-import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import React from 'react';
 import {tw} from 'twind';
+import {IconMore} from './Icon';
 
 export const MoreUserIcon: React.VFC<{className?: string}> = ({className}) => (
   <div
@@ -16,9 +15,7 @@ export const MoreUserIcon: React.VFC<{className?: string}> = ({className}) => (
       'rounded-full',
     )}
   >
-    <FontAwesomeIcon
-      icon={faEllipsisH}
-      fixedWidth
+    <IconMore
       className={tw('text-white', 'text-sm', 'font-bold', 'leading-none')}
     />
   </div>

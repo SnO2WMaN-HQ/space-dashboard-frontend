@@ -1,8 +1,8 @@
-import {faCalendarDay} from '@fortawesome/free-solid-svg-icons';
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
+import {IconOpenDate} from '~/components/atoms/Icon';
 import {InputDate} from '~/components/atoms/InputDate';
 import {FieldFrame} from '../../atoms/FieldFrame';
 
@@ -28,7 +28,7 @@ export const Component: React.VFC<ComponentProps> = ({
       {...{errorMessage}}
       id="open-date"
       className={tw(className)}
-      icon={faCalendarDay}
+      Icon={IconOpenDate}
       i18n={{label: t('new:form.open_date.label')}}
       Input={({className, ...props}) => (
         <InputDate
