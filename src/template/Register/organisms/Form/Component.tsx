@@ -1,8 +1,8 @@
 import React from 'react';
 import {tw} from 'twind';
-import {InputDisplayName} from '../../molecules/InputDisplayName';
+import {FieldDisplayName} from '../../molecules/FieldDisplayName';
+import {FieldUniqueName} from '../../molecules/FieldUniqueName';
 import {InputPicture} from '../../molecules/InputPicture';
-import {InputUniqueName} from '../../molecules/InputUniqueName';
 import {SubmitButton} from '../../molecules/SubmitButton';
 
 export type ComponentProps = {
@@ -21,27 +21,31 @@ export const Component: React.VFC<ComponentProps> = ({
     <form
       className={tw(
         className,
-        'bg-white',
+        ['bg-opacity-60', 'bg-white'],
         ['px-4', 'sm:px-6'],
         ['py-6', 'sm:py-8'],
-        'shadow-md',
-        'rounded-md',
-        'flex',
-        'flex-col',
-        'items-center',
+        ['shadow-sm', 'rounded-sm'],
+        ['grid', ['grid-cols-1'], 'gap-y-8'],
       )}
       onSubmit={onSubmit}
     >
-      <InputPicture className={tw('w-full')} />
-      <InputUniqueName className={tw('w-full', 'mt-4')} />
-      <InputDisplayName className={tw('w-full', 'mt-8')} />
-      <SubmitButton
-        className={tw('mt-8')}
-        {...{
-          isSubmitting,
-          isCompleted,
-        }}
-      />
+      <InputPicture className={tw(['col-span-full'])} />
+      <FieldUniqueName className={tw(['col-span-full'])} />
+      <FieldDisplayName className={tw(['col-span-full'])} />
+      <div
+        className={tw('col-span-full', [
+          'flex',
+          'justify-center',
+          'items-center',
+        ])}
+      >
+        <SubmitButton
+          {...{
+            isSubmitting,
+            isCompleted,
+          }}
+        />
+      </div>
     </form>
   );
 };

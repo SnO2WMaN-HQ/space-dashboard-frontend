@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateRegisterPage/molecules/InputDisplayName',
+  title: 'TemplateRegisterPage/molecules/FieldUniqueName',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
