@@ -1,7 +1,5 @@
 {
   "form": {
-    "optional": "(必須ではありません)",
-    "required": "(必須です)",
     "title": {
       "label": "$t(common:title)",
       "error": {

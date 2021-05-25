@@ -27,12 +27,12 @@ export const Component: React.VFC<ComponentProps> = ({
       <span className={tw('ml-2')}>{i18n.text}</span>{' '}
       {required && (
         <span className={tw('ml-1', 'text-xs', 'font-bold', 'text-gray-700')}>
-          {t('new:form.required')}
+          {t('common:form.required')}
         </span>
       )}
       {!required && (
         <span className={tw('ml-1', 'text-xs', 'text-gray-500')}>
-          {t('new:form.optional')}
+          {t('common:form.optional')}
         </span>
       )}
     </div>

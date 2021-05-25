@@ -78,5 +78,10 @@
     "description": {
       "title": "$t(common:description)"
     }
+  },
+
+  "form": {
+    "optional": "(必須ではありません)",
+    "required": "(必須です)"
   }
 }

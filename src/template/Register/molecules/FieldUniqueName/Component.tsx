@@ -24,8 +24,8 @@ export const Component: React.VFC<ComponentProps> = ({
       className={tw(className)}
       icon={faAt}
       i18n={{
-        label: t('register:unique_name.label'),
-        description: t('register:unique_name.description'),
+        label: t('register:form.unique_name.label'),
+        description: t('register:form.unique_name.description'),
       }}
       Input={({className, ...props}) => (
         <InputText className={tw(className)} register={register} {...props} />
