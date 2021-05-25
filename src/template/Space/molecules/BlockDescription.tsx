@@ -29,7 +29,7 @@ export const BlockDescription: React.VFC<ComponentProps> = ({
           ['mt-2', 'md:mt-4'],
           ['bg-white', 'bg-opacity-75'],
           ['px-4'],
-          ['py-2'],
+          ['py-4'],
           ['rounded-md', 'shadow-md'],
         )}
       >
