@@ -1,13 +1,12 @@
-import {zodResolver} from '@hookform/resolvers/zod';
 import React from 'react';
-import {SubmitHandler, useForm} from 'react-hook-form';
+import {FormProvider, SubmitHandler} from 'react-hook-form';
 import {tw} from 'twind';
 import {Component} from './Component';
-import {FormInput, schema} from './definition';
+import {FormValues, useNewSpaceForm} from './hooks';
 
 export type ContainerProps = {
   className?: string;
-  onSubmit: SubmitHandler<FormInput>;
+  onSubmit: SubmitHandler<FormValues>;
   isSubmitting: boolean;
   isCompleted: boolean;
 };
@@ -16,34 +15,15 @@ export const Container: React.VFC<ContainerProps> = ({
   onSubmit,
   ...props
 }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: {errors, isValid, isValidating, touchedFields},
-  } = useForm<FormInput>({mode: 'onBlur', resolver: zodResolver(schema)});
+  const methods = useNewSpaceForm();
 
   return (
-    <Component
-      className={tw(className)}
-      onSubmit={handleSubmit(onSubmit)}
-      register={{
-        title: register('title', {required: true}),
-        description: register('description', {required: false}),
-        minutesUrl: register('minutesUrl', {required: false}),
-        openDate: register('openDate', {required: true}),
-      }}
-      errors={{
-        title: errors.title?.message,
-        description: errors.description?.message,
-        minutesUrl: errors.minutesUrl?.message,
-        openDate: errors.openDate?.message,
-      }}
-      {...{
-        isUntouched: Object.keys(touchedFields).length === 0,
-        isValid,
-        isValidating,
-        ...props,
-      }}
-    />
+    <FormProvider {...methods}>
+      <Component
+        className={tw(className)}
+        onSubmit={methods.handleSubmit(onSubmit)}
+        {...props}
+      />
+    </FormProvider>
   );
 };
