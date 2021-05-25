@@ -47,6 +47,7 @@ export const Component: React.VFC<ComponentProps> = ({
       disabled={disabled}
       className={tw(
         className,
+        ['disabled:cursor-default'],
         state === 'untouched' ? ['bg-gray-300', 'text-gray-400'] : [],
         state === 'validating' ? ['bg-gray-300', 'text-gray-400'] : [],
         state === 'invalid' ? ['bg-red-400', 'text-white'] : [],
