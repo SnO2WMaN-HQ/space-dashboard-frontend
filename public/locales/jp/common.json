@@ -14,8 +14,13 @@
   },
 
   "format": {
-    "open_date": "{{date, YYYY年M月D日}}"
+    "open_date": "{{date, YYYY年M月D日}}",
+    "days_after": "{{days}}日後",
+    "weeks_after": "{{weeks}}週間後",
+    "months_after": "{{months}}ヶ月後"
   },
+
+  "today": "今日",
 
   "unique_name": "スクリーンネーム",
   "display_name": "ハンドルネーム",
@@ -26,19 +31,23 @@
   "loading": "ロード中",
   "host": "ホスト",
 
-  "minutes": "議事録",
-  "minutes_url": "議事録のURL",
-
   "open_date": "開催日",
 
   "title": "タイトル",
+
   "description": "説明",
+  "no_description": "（説明はありません）",
+
+  "minutes": "議事録",
+  "minutes_url": "議事録のURL",
+  "no_minutes_url": "（議事録のURLはありません）",
 
   "host_user": "ホストしているユーザー",
   "host_user_prural": "ホストしているユーザー",
 
   "following_user": "気になっているユーザー",
   "following_user_plural": "気になっているユーザー",
+  "no_following_users": "（気になっているユーザーはいません）",
 
   "hosted_space": "ホストしているスペース",
   "hosted_space_prural": "ホストしているスペース",

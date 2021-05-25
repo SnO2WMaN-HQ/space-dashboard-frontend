@@ -42,7 +42,7 @@ export const Component: React.VFC<ComponentProps> = ({
           />
         </div>
         <div
-          className={tw(['ml-2', 'md:ml-4'], 'flex-grow', [
+          className={tw(['ml-2', 'sm:ml-4'], 'flex-grow', [
             'flex',
             'flex-col',
             'justify-center',

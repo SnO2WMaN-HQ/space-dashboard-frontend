@@ -1,6 +1,7 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {SectionFrame} from '../../atoms/SectionFrame';
 import {HostSpace} from '../../molecules/HostedSpace';
 
 export type ComponentProps = {
@@ -24,16 +25,8 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
   const {t} = useTranslation('user');
 
   return (
-    <section
-      className={tw(
-        className,
-        ['shadow-sm', 'rounded-sm'],
-        ['px-4'],
-        ['py-4', 'md:py-4'],
-        ['bg-opacity-50', 'bg-white'],
-      )}
-    >
-      <p
+    <SectionFrame className={tw(className)}>
+      <h2
         className={tw(
           ['pl-2', 'md:pl-4'],
           ['text-lg', 'md:text-xl'],
@@ -41,19 +34,19 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
         )}
       >
         {t('user:section.hosted_spaces.title', {count: spaces.length})}
-      </p>
+      </h2>
       <div
         className={tw(
           'w-full',
           ['mt-2', 'md:mt-4'],
           ['flex', 'flex-col'],
-          'space-y-4',
+          ['space-y-4'],
         )}
       >
         {spaces.map(({id, ...props}) => (
           <HostSpace className={tw('w-full')} key={id} {...{id, ...props}} />
         ))}
       </div>
-    </section>
+    </SectionFrame>
   );
 };

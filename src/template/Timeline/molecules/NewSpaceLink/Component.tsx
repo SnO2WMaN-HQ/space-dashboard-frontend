@@ -13,29 +13,22 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
       <a
         className={tw(
           className,
-          'px-6',
-          'py-4',
-          'inline-flex',
-          'items-center',
-          'justify-center',
-          'bg-gradient-to-r',
-          ['from-blue-400', 'via-indigo-400', 'to-purple-400'],
+          ['inline-flex', 'items-center', 'justify-center'],
           [
-            'hover:from-blue-500',
-            'hover:via-indigo-500',
-            'hover:to-purple-500',
+            'bg-gradient-to-r',
+            ['from-blue-400', 'via-indigo-400', 'to-purple-400'],
+            [
+              'hover:from-blue-500',
+              'hover:via-indigo-500',
+              'hover:to-purple-500',
+            ],
           ],
-          'rounded-md',
-          'shadow-sm',
+          ['rounded-md', 'shadow-sm'],
+          ['text-white', 'text-lg'],
         )}
       >
-        <FontAwesomeIcon
-          icon={faPlus}
-          className={tw('text-white', 'text-lg')}
-        />
-        <span
-          className={tw('ml-4', 'text-white', 'font-bold', 'tracking-wider')}
-        >
+        <FontAwesomeIcon icon={faPlus} className={tw()} />
+        <span className={tw('ml-4', ['font-bold', 'tracking-wider'])}>
           {t('timeline:new_space')}
         </span>
       </a>

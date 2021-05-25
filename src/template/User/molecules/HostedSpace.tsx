@@ -5,22 +5,7 @@ import {
   BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
 import {BlockDetails} from '~/components/molecules/SpaceBlocks/BlockDetails';
-
-export const SpaceFrame: React.FC<{className?: string}> = ({
-  className,
-  children,
-}) => (
-  <div
-    className={tw(
-      className,
-      ['bg-opacity-75', 'bg-white'],
-      ['px-4', 'py-3'],
-      ['rounded-md', 'shadow-md'],
-    )}
-  >
-    {children}
-  </div>
-);
+import {SpaceFrame} from '../atoms/SpaceFrame';
 
 export const HostSpace: React.VFC<{
   className?: string;

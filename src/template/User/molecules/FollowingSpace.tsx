@@ -6,7 +6,7 @@ import {
   BlockHostUser,
   BlockTitle,
 } from '~/components/molecules/SpaceBlocks';
-import {SpaceFrame} from './HostedSpace';
+import {SpaceFrame} from '../atoms/SpaceFrame';
 
 export const FollowingSpace: React.VFC<{
   className?: string;
