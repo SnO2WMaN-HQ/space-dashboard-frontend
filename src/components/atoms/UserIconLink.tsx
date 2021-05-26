@@ -1,6 +1,6 @@
-import NextLink from 'next/link';
 import React from 'react';
 import {tw} from 'twind';
+import {LinkUser} from './Link';
 import {UserIcon} from './UserIcon';
 
 export const UserIconLink: React.VFC<{
@@ -9,12 +9,7 @@ export const UserIconLink: React.VFC<{
   picture: string;
   displayName: string;
 }> = ({className, uniqueName, displayName, picture}) => (
-  <NextLink href={`/users/${uniqueName}`}>
-    <a className={tw(className)}>
-      <UserIcon
-        className={tw('w-full', 'h-full')}
-        {...{picture, displayName}}
-      />
-    </a>
-  </NextLink>
+  <LinkUser className={tw(className)} query={{unique: uniqueName}}>
+    <UserIcon className={tw('w-full', 'h-full')} {...{picture, displayName}} />
+  </LinkUser>
 );
