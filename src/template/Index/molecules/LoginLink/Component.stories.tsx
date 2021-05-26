@@ -3,7 +3,7 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'TemplateIndexPage/molecules/RegisterButton',
+  title: 'TemplateIndexPage/molecules/LoginLink',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

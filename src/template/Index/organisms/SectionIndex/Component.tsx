@@ -2,7 +2,7 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
 import {IconTwiss} from '~/components/atoms/Icon';
-import {RegisterButton} from '../../molecules';
+import {LoginLink} from '../../molecules/LoginLink';
 
 export type ComponentProps = {className?: string};
 export const Component: React.VFC<ComponentProps> = ({className}) => {
@@ -56,7 +56,7 @@ export const Component: React.VFC<ComponentProps> = ({className}) => {
             {t('index:description')}
           </h2>
         </div>
-        <RegisterButton className={tw('mt-8')} />
+        <LoginLink className={tw('mt-8', ['px-6', 'py-4'])} />
       </div>
     </section>
   );
