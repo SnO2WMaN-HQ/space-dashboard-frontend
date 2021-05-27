@@ -49,6 +49,7 @@ export const Component: React.VFC<ComponentProps> = ({
         <SectionUsers
           className={tw('col-span-1')}
           {...{
+            id,
             hostUser,
             followingUsers,
           }}

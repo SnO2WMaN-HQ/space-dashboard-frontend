@@ -15,12 +15,12 @@ export default {
 export const Following: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-Following.args = {following: true};
+Following.args = {state: 'following'};
 
 export const Loading: Story<ComponentProps> = (args) => <Component {...args} />;
-Loading.args = {pressed: true};
+Loading.args = {state: 'loading'};
 
-export const NotFollowing: Story<ComponentProps> = (args) => (
+export const Unfollowing: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-NotFollowing.args = {following: false};
+Unfollowing.args = {state: 'unfollowing'};

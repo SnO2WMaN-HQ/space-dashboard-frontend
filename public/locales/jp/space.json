@@ -1,4 +1,9 @@
 {
+  "blocks": {
+    "follow": {
+      "title": "気になる"
+    }
+  },
   "follow": {
     "not_following": "気になる！",
     "following": "気になっています",

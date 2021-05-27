@@ -20,7 +20,7 @@ export type ButtonState =
   | {state: Extract<State, 'valid'>; disabled: false}
   | {state: Exclude<State, 'valid'>; disabled: true};
 
-export const Icons = {
+export const Icons: Record<State, React.VFC<{className?: string}>> = {
   untouched: IconUntouched,
   validating: IconLoading,
   invalid: IconWarning,

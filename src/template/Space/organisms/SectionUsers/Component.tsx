@@ -2,11 +2,13 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
 import {SectionFrame} from '~/template/User/atoms/SectionFrame';
+import {BlockFollow} from '../../molecules/BlockFollow';
 import {BlockFollowingUsers} from '../../molecules/BlockFollowingUsers';
 import {BlockHostUser} from '../../molecules/BlockHostUser';
 
 export type ComponentProps = {
   className?: string;
+  id: string;
   hostUser: {
     uniqueName: string;
     displayName: string;
@@ -24,6 +26,7 @@ export type ComponentProps = {
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
+  id,
   hostUser,
   followingUsers,
 }) => {
@@ -36,6 +39,7 @@ export const Component: React.VFC<ComponentProps> = ({
         ['space-y-4', 'md:space-y-6'],
       )}
     >
+      <BlockFollow className={tw()} {...{id}} />
       <BlockHostUser className={tw()} {...{hostUser}} />
       <BlockFollowingUsers className={tw()} {...{followingUsers}} />
     </SectionFrame>

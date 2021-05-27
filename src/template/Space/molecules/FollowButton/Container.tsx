@@ -1,46 +1,10 @@
-import {useRouter} from 'next/router';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
-  useFollowSpaceMutation,
-  useIsSpaceFollowingLazyQuery,
+  useSpacePageFollowSpaceMutation,
+  useSpacePageIsFollowingSpaceQuery,
 } from '~/graphql/apollo';
-import {useCurrentUser2} from '~/hooks/useCurrentUser';
-import {Component} from './Component';
 
-export const useIsCurrentUserFollowingSpace = ({
-  spaceId,
-  hostUserId,
-}: {
-  spaceId: string;
-  hostUserId: string;
-}):
-  | {spaceId: string; userId: string; isFollowing: boolean}
-  | {spaceId: string; userId: string; isHost: true}
-  | null => {
-  const currentUser = useCurrentUser2();
-
-  const [isFollowingSpace, {data, loading, called}] =
-    useIsSpaceFollowingLazyQuery();
-
-  useEffect(() => {
-    if (!called && currentUser) isFollowingSpace({variables: {spaceId}});
-  }, [spaceId, called, currentUser, isFollowingSpace, hostUserId]);
-
-  if (currentUser && currentUser.id === hostUserId)
-    return {
-      spaceId,
-      userId: currentUser.id,
-      isHost: true,
-    };
-  else if (currentUser && !loading && data?.currentUser)
-    return {
-      spaceId,
-      userId: currentUser.id,
-      isFollowing: data.currentUser.isFollowingSpace,
-    };
-  else return null;
-};
-
+/*
 export type ContainerProps = {
   className?: string;
   spaceId: string;
@@ -75,4 +39,30 @@ export const Container: React.VFC<ContainerProps> = ({
       />
     );
   else return <></>;
+};
+*/
+export const useIsFollowingSpace = (spaceId: string) => {
+  const {data, loading} = useSpacePageIsFollowingSpaceQuery({
+    variables: {spaceId},
+  });
+  return data?.currentUser?.isFollowingSpace;
+};
+
+export const useFollowSpace = () => {
+  const [mutation] = useSpacePageFollowSpaceMutation();
+
+  const followSpace = mutation;
+
+  return [followSpace];
+};
+
+export type ContainerProps = {
+  className?: string;
+  spaceId: string;
+};
+export const Container: React.VFC<ContainerProps> = ({spaceId, ...props}) => {
+  const isFollowingSpace = useIsFollowingSpace(spaceId);
+  const [followSpace] = useFollowSpace();
+
+  return <div />;
 };
