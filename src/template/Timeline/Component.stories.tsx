@@ -51,7 +51,7 @@ Primary.args = {
       id: `${i}`,
       title: `タイトル ${i}`,
       openDate: '2020-01-01',
-      hostedUser: {
+      hostUser: {
         displayName: 'Test User',
         uniqueName: 'testuser',
         picture: random.icon(),

@@ -10,22 +10,15 @@ export type ComponentProps = {
     id: string;
     title: string;
     openDate: string;
-    hostedUser: {
-      uniqueName: string;
-      displayName: string;
-      picture: string;
-    };
+    hostUser: {uniqueName: string; displayName: string; picture: string};
     followingUsers: {
       hasMore: boolean;
-      users: {
-        uniqueName: string;
-        displayName: string;
-        picture: string;
-      }[];
+      users: {uniqueName: string; displayName: string; picture: string}[];
     };
   }[];
   pageInfo: {hasMore: boolean};
 };
+
 export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
   const {t} = useTranslation('user');
 
@@ -49,11 +42,7 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
         )}
       >
         {spaces.map(({id, ...props}) => (
-          <FollowingSpace
-            className={tw('w-full')}
-            key={id}
-            {...{id, ...props}}
-          />
+          <FollowingSpace key={id} {...{id, ...props}} />
         ))}
       </div>
     </SectionFrame>

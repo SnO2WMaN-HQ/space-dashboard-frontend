@@ -45,7 +45,7 @@ export const transform = (
       id: space.id,
       title: space.title,
       openDate: space.openDate,
-      hostedUser: {
+      hostUser: {
         uniqueName: space.hostUser.user.uniqueName,
         displayName: space.hostUser.user.displayName,
         picture: space.hostUser.user.picture,

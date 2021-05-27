@@ -2,13 +2,14 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
 import {SectionFrame} from '../../atoms/SectionFrame';
-import {HostSpace} from '../../molecules/HostedSpace';
+import {HostedSpace} from '../../molecules/HostedSpace';
 
 export type ComponentProps = {
   className?: string;
   spaces: {
     id: string;
     title: string;
+    description?: string;
     openDate: string;
     followingUsers: {
       hasMore: boolean;
@@ -44,7 +45,7 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
         )}
       >
         {spaces.map(({id, ...props}) => (
-          <HostSpace className={tw('w-full')} key={id} {...{id, ...props}} />
+          <HostedSpace key={id} {...{id, ...props}} />
         ))}
       </div>
     </SectionFrame>
