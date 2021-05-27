@@ -59,3 +59,9 @@ export const useCurrentUser2 = () => {
 
   return currentUser;
 };
+
+export const useAuthenticated = () => {
+  const currentUser = useRecoilValue(stateCurrentUser);
+
+  return {currentUser};
+};

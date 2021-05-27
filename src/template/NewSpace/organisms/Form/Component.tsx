@@ -1,99 +1,64 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
-import {UseFormRegisterReturn} from 'react-hook-form';
 import {tw} from 'twind';
-import {StatefulSubmitButton} from '~/components/molecules/StatefulSubmitButton';
-import {InputDescription} from '../../molecules/InputDescription';
-import {InputMinutesUrl} from '../../molecules/InputMinutesUrl';
-import {InputOpenDate} from '../../molecules/InputOpenDate';
-import {InputTitle} from '../../molecules/InputTitle';
+import {FieldDescription} from '../../molecules/FieldDescription';
+import {FieldMinutesUrl} from '../../molecules/FieldMinutesUrl';
+import {FieldOpenDate} from '../../molecules/FieldOpenDate';
+import {FieldTitle} from '../../molecules/FieldTitle';
+import {SubmitButton} from '../../molecules/SubmitButton';
 
 export type ComponentProps = {
   className?: string;
 
   onSubmit(): Promise<void>;
-  register: Record<
-    'title' | 'description' | 'minutesUrl' | 'openDate',
-    UseFormRegisterReturn
-  >;
-  errors: {
-    title?: string;
-    description?: string;
-    minutesUrl?: string;
-    openDate?: string;
-  };
-
-  isUntouched: boolean;
-  isValid: boolean;
-  isValidating: boolean;
   isSubmitting: boolean;
-  isCompleted: boolean;
+  isSubmitted: boolean;
 };
 export const Component: React.VFC<ComponentProps> = ({
   className,
   onSubmit,
-  register,
-  errors,
-  isUntouched,
-  isValid,
-  isValidating,
   isSubmitting,
-  isCompleted,
+  isSubmitted,
 }) => {
   const {t} = useTranslation();
   return (
     <form
       className={tw(
         className,
-        'bg-white',
+        ['bg-opacity-60', 'bg-white'],
         ['px-4', 'sm:px-6'],
         ['py-6', 'sm:py-8'],
-        'shadow-md',
-        'rounded-md',
-        'flex',
-        'flex-col',
-        'items-center',
+        ['shadow-sm', 'rounded-sm'],
+        [
+          'grid',
+          ['grid-cols-1', 'md:grid-cols-3'],
+          'gap-x-6',
+          ['gap-y-6', 'md:gap-y-8'],
+        ],
       )}
       onSubmit={onSubmit}
     >
-      <InputTitle
-        className={tw('w-full')}
-        register={register.title}
-        errorMessage={errors.title}
-      />
-      <InputOpenDate
-        className={tw('w-full', 'mt-4')}
-        register={register.openDate}
-        errorMessage={errors.openDate}
-      />
-      <InputDescription
-        className={tw('w-full', 'mt-4')}
-        register={register.description}
-        errorMessage={errors.description}
-      />
-      <InputMinutesUrl
-        className={tw('w-full', 'mt-4')}
-        register={register.minutesUrl}
-        errorMessage={errors.minutesUrl}
-      />
-      <StatefulSubmitButton
-        className={tw('mt-8', ['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
-        i18n={{
-          untouched: t('new:form.submit.untouched'),
-          validating: t('new:form.submit.validating'),
-          invalid: t('new:form.submit.invalid'),
-          valid: t('new:form.submit.valid'),
-          submitting: t('new:form.submit.submitting'),
-          completed: t('new:form.submit.completed'),
-        }}
-        {...{
-          isUntouched,
-          isValid,
-          isValidating,
-          isSubmitting,
-          isCompleted,
-        }}
-      />
+      <FieldTitle className={tw(['col-span-1', 'md:col-span-2'])} />
+      <div className={tw(['col-span-1'], ['flex', 'gap-y-4'])}>
+        <FieldOpenDate className={tw('w-full')} />
+      </div>
+      <FieldDescription className={tw(['col-span-1', 'md:col-span-full'])} />
+      <FieldMinutesUrl className={tw(['col-span-1', 'md:col-span-full'])} />
+      <div
+        className={tw('col-span-full', [
+          'flex',
+          'justify-center',
+          'items-center',
+        ])}
+      >
+        <SubmitButton
+          className={tw(['py-3', 'px-6'], ['rounded-sm', 'shadow-sm'])}
+          {...{
+            isSubmitting,
+            isSubmitted,
+          }}
+        />
+      </div>
     </form>
   );
 };

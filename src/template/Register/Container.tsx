@@ -25,7 +25,7 @@ export const Container: React.VFC<ContainerProps> = ({
       onSubmit={onSubmit}
       {...{
         isSubmitting: loading,
-        isCompleted: completed,
+        isSubmitted: completed,
         initialValues: initial,
       }}
     />

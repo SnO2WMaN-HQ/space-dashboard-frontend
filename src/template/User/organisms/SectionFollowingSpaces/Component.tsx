@@ -1,6 +1,7 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {SectionFrame} from '../../atoms/SectionFrame';
 import {FollowingSpace} from '../../molecules/FollowingSpace';
 
 export type ComponentProps = {
@@ -9,48 +10,41 @@ export type ComponentProps = {
     id: string;
     title: string;
     openDate: string;
-    hostedUser: {
-      uniqueName: string;
-      displayName: string;
-      picture: string;
-    };
+    hostUser: {uniqueName: string; displayName: string; picture: string};
     followingUsers: {
       hasMore: boolean;
-      users: {
-        uniqueName: string;
-        displayName: string;
-        picture: string;
-      }[];
+      users: {uniqueName: string; displayName: string; picture: string}[];
     };
   }[];
   pageInfo: {hasMore: boolean};
 };
+
 export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
   const {t} = useTranslation('user');
 
   return (
-    <section
-      className={tw(
-        className,
-        'bg-gray-50',
-        'px-2',
-        'py-4',
-        'rounded-sm',
-        'shadow-sm',
-      )}
-    >
-      <p className={tw('px-2', 'font-bold')}>
+    <SectionFrame className={tw(className)}>
+      <h2
+        className={tw(
+          ['pl-2', 'md:pl-4'],
+          ['text-lg', 'md:text-xl'],
+          'font-bold',
+        )}
+      >
         {t('user:section.following_spaces.title', {count: spaces.length})}
-      </p>
-      <div className={tw('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
+      </h2>
+      <div
+        className={tw(
+          'w-full',
+          ['mt-2', 'md:mt-4'],
+          ['flex', 'flex-col'],
+          ['space-y-4'],
+        )}
+      >
         {spaces.map(({id, ...props}) => (
-          <FollowingSpace
-            className={tw('w-full')}
-            key={id}
-            {...{id, ...props}}
-          />
+          <FollowingSpace key={id} {...{id, ...props}} />
         ))}
       </div>
-    </section>
+    </SectionFrame>
   );
 };

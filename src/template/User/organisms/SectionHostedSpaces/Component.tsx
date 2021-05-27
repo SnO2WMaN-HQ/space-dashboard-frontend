@@ -1,13 +1,15 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
-import {HostSpace} from '../../molecules/HostedSpace';
+import {SectionFrame} from '../../atoms/SectionFrame';
+import {HostedSpace} from '../../molecules/HostedSpace';
 
 export type ComponentProps = {
   className?: string;
   spaces: {
     id: string;
     title: string;
+    description?: string;
     openDate: string;
     followingUsers: {
       hasMore: boolean;
@@ -24,24 +26,28 @@ export const Component: React.VFC<ComponentProps> = ({className, spaces}) => {
   const {t} = useTranslation('user');
 
   return (
-    <section
-      className={tw(
-        className,
-        'bg-gray-50',
-        'px-2',
-        'py-4',
-        'rounded-sm',
-        'shadow-sm',
-      )}
-    >
-      <p className={tw('px-2', 'font-bold')}>
+    <SectionFrame className={tw(className)}>
+      <h2
+        className={tw(
+          ['pl-2', 'md:pl-4'],
+          ['text-lg', 'md:text-xl'],
+          'font-bold',
+        )}
+      >
         {t('user:section.hosted_spaces.title', {count: spaces.length})}
-      </p>
-      <div className={tw('mt-2', 'flex', 'flex-col', 'w-full', 'space-y-4')}>
+      </h2>
+      <div
+        className={tw(
+          'w-full',
+          ['mt-2', 'md:mt-4'],
+          ['flex', 'flex-col'],
+          ['space-y-4'],
+        )}
+      >
         {spaces.map(({id, ...props}) => (
-          <HostSpace className={tw('w-full')} key={id} {...{id, ...props}} />
+          <HostedSpace key={id} {...{id, ...props}} />
         ))}
       </div>
-    </section>
+    </SectionFrame>
   );
 };

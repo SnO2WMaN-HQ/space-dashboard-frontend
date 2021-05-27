@@ -1,7 +1,5 @@
 {
   "form": {
-    "optional": "(必須ではありません)",
-    "required": "(必須です)",
     "title": {
       "label": "$t(common:title)",
       "error": {
@@ -33,7 +31,7 @@
       "invalid": "修正が必要です",
       "valid": "追加する",
       "submitting": "追加中です",
-      "completed": "追加されました！"
+      "submitted": "追加されました！"
     }
   }
 }

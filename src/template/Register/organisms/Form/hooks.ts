@@ -5,10 +5,10 @@ import * as z from 'zod';
 export const zodSchema = z.object({
   uniqueName: z
     .string()
-    .min(4, 'register:error.unique_name.min')
-    .max(15, 'register:error.unique_name.max')
-    .regex(/[A-Za-z0-9_]+/, 'register:error.unique_name.regex'),
-  displayName: z.string().max(50, 'register:error.display_name.max'),
+    .min(4, 'register:form.unique_name.error.min')
+    .max(15, 'register:form.unique_name.error.max')
+    .regex(/[A-Za-z0-9_]+/, 'register:form.unique_name.error.regex'),
+  displayName: z.string().max(50, 'register:form.display_name.error.max'),
   picture: z.string().url(),
 });
 

@@ -66,7 +66,7 @@ export const Page: NextPage<PageProps> = (props) => {
     <>
       <Head>
         <title>
-          {t('title.user', {
+          {t('head_title.user', {
             uniqueName: props.uniqueName,
             displayName: props.displayName,
           })}

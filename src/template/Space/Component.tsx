@@ -1,12 +1,14 @@
 import React from 'react';
 import {tw} from 'twind';
 import {Merge} from 'type-fest';
-import {SectionSpace} from './organisms/SectionSpace';
+import {PageLayout} from '~/components/layouts/PageLayout';
+import {Header} from './organisms/Header';
+import {SectionDetails} from './organisms/SectionDetails';
+import {SectionUsers} from './organisms/SectionUsers';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<{className?: string}, TransformedProps>;
-export const Component: React.FC<ComponentProps> = ({
-  children,
+export const Component: React.VFC<ComponentProps> = ({
   className,
   id,
   title,
@@ -18,22 +20,41 @@ export const Component: React.FC<ComponentProps> = ({
   followingUsers,
 }) => {
   return (
-    <main className={tw(className, 'bg-gray-200', 'py-4')}>
-      {children}
-      <div className={tw('px-2')}>
-        <SectionSpace
+    <PageLayout className={tw(className)}>
+      <main
+        className={tw(
+          'w-full',
+          ['grid'],
+          ['grid-cols-1', 'md:grid-cols-2'],
+          ['md:gap-x-4'],
+          ['gap-y-4'],
+        )}
+      >
+        <Header
+          className={tw(['col-span-1', 'md:col-span-2'])}
           {...{
-            id,
             title,
+            hostUser,
+          }}
+        />
+        <SectionDetails
+          className={tw('col-span-1')}
+          {...{
             description,
             minutesUrl,
             finished,
             openDate,
+          }}
+        />
+        <SectionUsers
+          className={tw('col-span-1')}
+          {...{
+            id,
             hostUser,
             followingUsers,
           }}
         />
-      </div>
-    </main>
+      </main>
+    </PageLayout>
   );
 };

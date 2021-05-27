@@ -28,13 +28,9 @@ Primary.args = {
     pageInfo: {endCursor: '1', hasMore: true},
     spaces: Array.from({length: 2}).map((_, i) => ({
       id: `${i}`,
+      description: '説明が入ります',
       title: `タイトル ${i}`,
       openDate: '2020-01-01',
-      hostedUser: {
-        displayName: 'Test User',
-        uniqueName: 'testuser',
-        picture: random.icon(),
-      },
       followingUsers: {
         hasMore: true,
         users: Array.from({length: 11}).map((_, j) => ({
@@ -50,8 +46,9 @@ Primary.args = {
     spaces: Array.from({length: 2}).map((_, i) => ({
       id: `${i}`,
       title: `タイトル ${i}`,
+      description: '説明が入ります',
       openDate: '2020-01-01',
-      hostedUser: {
+      hostUser: {
         displayName: 'Test User',
         uniqueName: 'testuser',
         picture: random.icon(),

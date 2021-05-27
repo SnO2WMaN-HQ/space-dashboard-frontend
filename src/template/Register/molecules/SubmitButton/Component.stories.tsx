@@ -50,5 +50,5 @@ export const Completed: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
 Completed.args = {
-  isCompleted: true,
+  isSubmitted: true,
 };

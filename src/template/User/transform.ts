@@ -10,7 +10,7 @@ export type TransformedProps = {
       id: string;
       title: string;
       openDate: string;
-      hostedUser: {uniqueName: string; displayName: string; picture: string};
+      description?: string;
       followingUsers: {
         hasMore: boolean;
         users: {uniqueName: string; displayName: string; picture: string}[];
@@ -23,7 +23,8 @@ export type TransformedProps = {
       id: string;
       title: string;
       openDate: string;
-      hostedUser: {uniqueName: string; displayName: string; picture: string};
+      description?: string;
+      hostUser: {uniqueName: string; displayName: string; picture: string};
       followingUsers: {
         hasMore: boolean;
         users: {uniqueName: string; displayName: string; picture: string}[];
@@ -47,11 +48,7 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,
-      hostedUser: {
-        uniqueName: user.uniqueName,
-        displayName: user.displayName,
-        picture: user.picture,
-      },
+      ...(space.description ? {description: space.description} : {}),
       followingUsers: {
         hasMore: space.followingUsers.pageInfo.hasNextPage,
         users: space.followingUsers.edges.map(({node: {user}}) => ({
@@ -73,7 +70,8 @@ export const transform = ({user}: UserPageQuery): TransformedProps => ({
       id: space.id,
       title: space.title,
       openDate: space.openDate,
-      hostedUser: {
+      ...(space.description ? {description: space.description} : {}),
+      hostUser: {
         uniqueName: space.hostUser.user.uniqueName,
         displayName: space.hostUser.user.displayName,
         picture: space.hostUser.user.picture,

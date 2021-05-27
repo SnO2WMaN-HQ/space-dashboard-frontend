@@ -1,6 +1,9 @@
 query NewSpacePage {
   currentUser {
     id
+    displayName
+    uniqueName
+    picture
     hostedSpaces(first: 5, finished: false, orderBy: {openDate: ASC}) {
       edges {
         node {

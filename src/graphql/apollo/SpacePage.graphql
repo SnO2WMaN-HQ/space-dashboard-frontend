@@ -1,10 +1,10 @@
-query IsSpaceFollowing($spaceId: ID!) {
+query SpacePageIsFollowingSpace($spaceId: ID!) {
   currentUser {
     isFollowingSpace(spaceId: $spaceId)
   }
 }
 
-mutation FollowSpace($spaceId: ID!, $userId: ID!) {
+mutation SpacePageFollowSpace($spaceId: ID!, $userId: ID!) {
   followSpace(spaceId: $spaceId, userId: $userId) {
     user {
       id

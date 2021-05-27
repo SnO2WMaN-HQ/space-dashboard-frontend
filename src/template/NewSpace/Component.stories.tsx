@@ -1,6 +1,7 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import React from 'react';
 import {tw} from 'twind';
+import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
@@ -18,5 +19,8 @@ export default {
 export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={tw('w-full', 'min-h-screen')} />
 );
-
-Primary.args = {};
+Primary.args = {
+  displayName: 'Test User 1',
+  uniqueName: 'testuser1',
+  picture: random.icon(),
+};

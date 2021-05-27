@@ -60,7 +60,7 @@ export const Page: NextPage<PageProps> = ({className, ...props}) => {
     <>
       <Head>
         <title>
-          {t('title.space', {
+          {t('head_title.space', {
             hostName: props.hostUser.displayName,
             title: props.title,
           })}
