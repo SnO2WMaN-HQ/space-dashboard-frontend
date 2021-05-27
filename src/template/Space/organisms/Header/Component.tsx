@@ -1,7 +1,6 @@
-import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
-import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {UserPictureLink} from '~/components/atoms/UserPictureLink';
 
 export type ComponentProps = {
   className?: string;
@@ -17,8 +16,6 @@ export const Component: React.VFC<ComponentProps> = ({
   title,
   hostUser,
 }) => {
-  const {t} = useTranslation();
-
   return (
     <header
       className={tw(
@@ -36,13 +33,11 @@ export const Component: React.VFC<ComponentProps> = ({
           ['flex', ['flex-col']],
         )}
       >
-        <h1
-          className={tw(['text-lg', 'sm:text-xl', 'md:text-2xl'], 'font-bold')}
-        >
+        <h1 className={tw(['text-2xl', 'md:text-3xl'], 'font-bold')}>
           {title}
         </h1>
         <div className={tw(['mt-2', 'md:mt-4'], ['flex', 'items-center'])}>
-          <UserIconLink className={tw('w-8', 'h-8')} {...hostUser} />
+          <UserPictureLink className={tw('w-8', 'h-8')} {...hostUser} />
           <span className={tw(['ml-2', 'md:ml-4'])}>
             {hostUser.displayName}
           </span>

@@ -3,7 +3,7 @@ import {tw} from 'twind';
 import {DisplayName} from '~/components/atoms/DisplayName';
 import {MoreUserIcon} from '~/components/atoms/MoreUserIcon';
 import {UniqueName} from '~/components/atoms/UniqueName';
-import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {UserPictureLink} from '~/components/atoms/UserPictureLink';
 import {ProfileSet} from '~/components/molecules/ProfileSet';
 import {SpaceCardFrame} from '~/components/molecules/SpaceCardFrame';
 import {UsersGrid} from '~/components/molecules/UsersGrid';
@@ -34,7 +34,7 @@ export const FollowingSpaceHostBlock: React.VFC<{
   <ProfileSet
     className={tw(className)}
     UserIcon={({className, ...props}) => (
-      <UserIconLink className={tw(className, 'w-12', 'h-12')} {...props} />
+      <UserPictureLink className={tw(className, 'w-12', 'h-12')} {...props} />
     )}
     DisplayName={({className, ...props}) => (
       <DisplayName className={tw(className, ['text-xl'])} {...props} />
@@ -58,7 +58,7 @@ export const FollowingSpaceFollowingBlock: React.VFC<{
     {...props}
     className={tw(className, [['grid-cols-6', 'sm:grid-cols-8'], 'gap-y-4'])}
     UserIcon={({className, ...props}) => (
-      <UserIconLink className={tw(className, 'w-8', 'h-8')} {...props} />
+      <UserPictureLink className={tw(className, 'w-8', 'h-8')} {...props} />
     )}
     MoreUserIcon={({className, ...props}) => (
       <MoreUserIcon className={tw(className, 'w-8', 'h-8')} {...props} />

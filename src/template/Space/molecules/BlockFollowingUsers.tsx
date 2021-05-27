@@ -2,7 +2,7 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
 import {MoreUserIcon} from '~/components/atoms/MoreUserIcon';
-import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {UserPictureLink} from '~/components/atoms/UserPictureLink';
 
 export const BlockFollowingUsers: React.VFC<{
   className?: string;
@@ -63,7 +63,7 @@ export const BlockFollowingUsers: React.VFC<{
                 key={uniqueName}
                 className={tw('flex', 'justify-center', 'items-center')}
               >
-                <UserIconLink
+                <UserPictureLink
                   className={tw('w-8', 'h-8')}
                   {...{uniqueName, displayName, picture}}
                 />

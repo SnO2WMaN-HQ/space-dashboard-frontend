@@ -1,15 +1,18 @@
 import React from 'react';
 import {tw} from 'twind';
 import {LinkUser} from './Link';
-import {UserIcon} from './UserIcon';
+import {UserPicture} from './UserPicture';
 
-export const UserIconLink: React.VFC<{
+export const UserPictureLink: React.VFC<{
   className?: string;
   uniqueName: string;
   picture: string;
   displayName: string;
 }> = ({className, uniqueName, displayName, picture}) => (
   <LinkUser className={tw(className)} query={{unique: uniqueName}}>
-    <UserIcon className={tw('w-full', 'h-full')} {...{picture, displayName}} />
+    <UserPicture
+      className={tw('w-full', 'h-full')}
+      {...{picture, displayName}}
+    />
   </LinkUser>
 );

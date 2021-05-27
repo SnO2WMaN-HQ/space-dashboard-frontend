@@ -1,8 +1,10 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
+import {DisplayName} from '~/components/atoms/DisplayName';
 import {UniqueName} from '~/components/atoms/UniqueName';
-import {UserIcon} from '~/components/atoms/UserIcon';
+import {UserPictureLink} from '~/components/atoms/UserPictureLink';
+import {ProfileSet} from '~/components/molecules/ProfileSet';
 
 export type ComponentProps = {
   className?: string;
@@ -27,36 +29,35 @@ export const Component: React.VFC<ComponentProps> = ({
         ['bg-opacity-60', 'bg-white'],
       )}
     >
-      <div
-        className={tw(
-          'mx-auto',
-          'max-w-screen-sm',
-          ['px-4', 'md:px-0'],
-          'flex',
+      <ProfileSet
+        className={tw(className, 'mx-auto', 'max-w-screen-sm', [
+          'px-4',
+          'md:px-0',
+        ])}
+        user={{
+          displayName,
+          uniqueName,
+          picture,
+        }}
+        UserIcon={({className, ...props}) => (
+          <UserPictureLink
+            className={tw(className, ['w-16', 'h-16'], ['md:w-20', 'md:h-20'])}
+            {...props}
+          />
         )}
-      >
-        <div className={tw('flex', 'items-center', 'justify-center')}>
-          <UserIcon
-            className={tw(['w-16', 'h-16'], ['md:w-20', 'md:h-20'])}
-            {...{displayName, picture}}
+        DisplayName={({className, ...props}) => (
+          <DisplayName
+            className={tw(className, ['text-xl', 'md:text-2xl'])}
+            {...props}
           />
-        </div>
-        <div
-          className={tw(['ml-2', 'sm:ml-4'], 'flex-grow', [
-            'flex',
-            'flex-col',
-            'justify-center',
-          ])}
-        >
-          <span className={tw(['text-xl', 'md:text-2xl'], 'font-bold')}>
-            {displayName}
-          </span>
+        )}
+        UniqueName={({className, ...props}) => (
           <UniqueName
-            className={tw('text-gray-700', ['text-sm', 'md:text-base'])}
-            uniqueName={uniqueName}
+            className={tw(className, ['text-sm', 'md:text-base'])}
+            {...props}
           />
-        </div>
-      </div>
+        )}
+      />
     </header>
   );
 };

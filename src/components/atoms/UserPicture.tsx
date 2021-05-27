@@ -2,7 +2,7 @@ import NextImage from 'next/image';
 import React from 'react';
 import {tw} from 'twind';
 
-export const UserIcon: React.VFC<{
+export const UserPicture: React.VFC<{
   className?: string;
   picture: string;
   displayName: string;

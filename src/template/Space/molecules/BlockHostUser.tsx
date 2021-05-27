@@ -2,7 +2,7 @@ import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
 import {UniqueName} from '~/components/atoms/UniqueName';
-import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {UserPictureLink} from '~/components/atoms/UserPictureLink';
 
 export const BlockHostUser: React.VFC<{
   className?: string;
@@ -36,7 +36,7 @@ export const BlockHostUser: React.VFC<{
         )}
       >
         <div className={tw('flex', 'items-center', 'justify-center')}>
-          <UserIconLink
+          <UserPictureLink
             className={tw(['w-16', 'h-16'], ['md:w-16', 'md:h-16'])}
             {...hostUser}
           />
