@@ -31,19 +31,19 @@ export const DateDiffText: React.VFC<{className: string; date: string}> = ({
     <span className={tw(className)}>
       {'days' in diff &&
         diff.days < 0 &&
-        t('common:format.days_before', {days: diff.days})}
+        t('common:format.days_before', {days: Math.abs(diff.days)})}
       {'days' in diff &&
         diff.days > 0 &&
         t('common:format.days_after', {days: diff.days})}
       {'weeks' in diff &&
         diff.weeks < 0 &&
-        t('common:format.weeks_before', {weeks: diff.weeks})}
+        t('common:format.weeks_before', {weeks: Math.abs(diff.weeks)})}
       {'weeks' in diff &&
         diff.weeks > 0 &&
         t('common:format.weeks_after', {weeks: diff.weeks})}
       {'months' in diff &&
         diff.months < 0 &&
-        t('common:format.months_before', {months: diff.months})}
+        t('common:format.months_before', {months: Math.abs(diff.months)})}
       {'months' in diff &&
         diff.months > 0 &&
         t('common:format.months_after', {months: diff.months})}
