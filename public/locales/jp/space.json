@@ -1,12 +1,14 @@
 {
   "blocks": {
     "follow": {
-      "title": "気になる"
+      "title": "気になる",
+      "require_login": "ログインしてください"
     }
   },
   "follow": {
-    "not_following": "気になる！",
+    "unfollowing": "気になる！",
     "following": "気になっています",
-    "loading": "追加中です"
+    "changing": "変更中です",
+    "host_same": "あなたがホストです"
   }
 }

@@ -76,6 +76,7 @@ type User {
   hostedSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserHostedSpacesArgsOrderBy = {openDate: DESC}): UserHostedSpacesConnection!
   followingSpaces(after: String, first: Int!, finished: Boolean = false, orderBy: UserFollowingSpacesArgsOrderBy = {updatedAt: DESC}): UserFollowingSpacesConnection!
   isFollowingSpace(spaceId: ID!): Boolean!
+  isHostSpace(spaceId: ID!): Boolean!
 }
 
 input UserFollowingSpacesArgsOrderBy {

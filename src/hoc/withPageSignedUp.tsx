@@ -8,7 +8,7 @@ export function withPageSignedUp<T>(Component: React.VFC<T>) {
     const current = useCurrentUser();
 
     useEffect(() => {
-      if ('registered' in current && !current.registered)
+      if ('status' in current && current.status !== 'unregistered')
         router.push('/register');
     }, [current, router]);
 

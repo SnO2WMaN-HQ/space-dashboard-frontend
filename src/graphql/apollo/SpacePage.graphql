@@ -1,6 +1,8 @@
-query SpacePageIsFollowingSpace($spaceId: ID!) {
+query SpacePageSpaceStatus($spaceId: ID!) {
   currentUser {
+    id
     isFollowingSpace(spaceId: $spaceId)
+    isHostSpace(spaceId: $spaceId)
   }
 }
 
