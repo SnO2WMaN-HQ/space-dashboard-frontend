@@ -6,7 +6,7 @@ import {stateCurrentUser} from './useCurrentUser';
 
 export const AppUser = () => {
   const {user: auth0User, isLoading: auth0Loading} = useUser();
-  const [loadCurrentUser, {data}] = useCurrentUserLazyQuery();
+  const [loadCurrentUser, {data, loading}] = useCurrentUserLazyQuery();
 
   const currentUser = useRecoilValue(stateCurrentUser);
   const setCurrentUser = useSetRecoilState(stateCurrentUser);
@@ -25,12 +25,12 @@ export const AppUser = () => {
   }, [auth0Loading, currentUser, loadCurrentUser, setCurrentUser, auth0User]);
 
   useEffect(() => {
-    if (data?.currentUser) {
+    if (!loading && data?.currentUser) {
       setCurrentUser({loading: false, currentUser: {id: data.currentUser.id}});
-    } else {
+    } else if (!loading && !data?.currentUser) {
       setCurrentUser({loading: false, currentUser: null});
     }
-  }, [data, setCurrentUser]);
+  }, [data, loading, setCurrentUser]);
 
   return <></>;
 };
