@@ -34,10 +34,11 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   const {user: auth0Profile} = useUser();
 
   useEffect(() => {
-    if ('registered' in current && current.registered) router.push('/timeline');
+    if ('status' in current && current.status === 'registered')
+      router.push('/timeline');
   }, [current, router]);
 
-  if (!current.loading && !current.registered)
+  if ('status' in current && current.status === 'unregistered')
     return (
       <>
         <Head>

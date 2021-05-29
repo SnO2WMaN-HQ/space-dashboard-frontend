@@ -15,7 +15,7 @@ export const useRegister = () => {
       if (errors) throw errors;
       else if (data) {
         setCompleted(true);
-        setCurrentUser({id: data.createUser.id});
+        setCurrentUser({loading: false, currentUser: {id: data.createUser.id}});
       }
     });
 

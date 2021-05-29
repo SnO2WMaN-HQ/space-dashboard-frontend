@@ -7,6 +7,7 @@ import {RecoilRoot} from 'recoil';
 import 'tailwindcss/tailwind.css';
 import {tw} from 'twind';
 import {createApolloClient} from '~/graphql/apollo';
+import {AppUser} from '~/hooks/AppCurrentUser';
 import {NextI18nextConfig} from '~/i18n';
 import '~/styles/index.css';
 
@@ -17,6 +18,7 @@ export const App: React.FC<AppProps> = ({Component, pageProps}) => {
     <UserProvider user={user}>
       <ApolloProvider client={createApolloClient()}>
         <RecoilRoot>
+          <AppUser />
           <div className={tw('w-full', 'min-h-screen', ['flex', 'flex-col'])}>
             <Component {...pageProps} className={tw('flex-grow')} />
           </div>

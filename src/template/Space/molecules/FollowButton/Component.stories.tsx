@@ -12,15 +12,22 @@ export default {
   },
 } as Meta;
 
+export const Unfollowing: Story<ComponentProps> = (args) => (
+  <Component {...args} />
+);
+Unfollowing.args = {state: 'unfollowing'};
+
+export const Changing: Story<ComponentProps> = (args) => (
+  <Component {...args} />
+);
+Changing.args = {state: 'changing'};
+
 export const Following: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
 Following.args = {state: 'following'};
 
-export const Loading: Story<ComponentProps> = (args) => <Component {...args} />;
-Loading.args = {state: 'loading'};
-
-export const Unfollowing: Story<ComponentProps> = (args) => (
+export const HostSame: Story<ComponentProps> = (args) => (
   <Component {...args} />
 );
-Unfollowing.args = {state: 'unfollowing'};
+HostSame.args = {state: 'hostSame'};

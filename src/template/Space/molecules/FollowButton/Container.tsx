@@ -1,59 +1,74 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   useSpacePageFollowSpaceMutation,
-  useSpacePageIsFollowingSpaceQuery,
+  useSpacePageSpaceStatusQuery,
 } from '~/graphql/apollo';
+import {Component} from './Component';
 
-/*
-export type ContainerProps = {
-  className?: string;
-  spaceId: string;
-  hostUserId: string;
-};
-export const Container: React.VFC<ContainerProps> = ({
+export const useSpaceStatus = ({
   spaceId,
-  hostUserId,
-  ...props
-}) => {
-  const router = useRouter();
-  const status = useIsCurrentUserFollowingSpace({spaceId, hostUserId});
-  const [followSpace, {called}] = useFollowSpaceMutation();
-
-  if (status && 'isHost' in status) return <></>;
-  else if (called) return <Component {...props} pressed={called} />;
-  else if (status && 'isFollowing' in status && status.isFollowing)
-    return <Component {...props} following />;
-  else if (status && 'isFollowing' in status && !status.isFollowing)
-    return (
-      <Component
-        {...props}
-        following={false}
-        handlePressed={async () =>
-          followSpace({
-            variables: {
-              spaceId: status.spaceId,
-              userId: status.userId,
-            },
-          }).then(() => router.reload())
-        }
-      />
-    );
-  else return <></>;
-};
-*/
-export const useIsFollowingSpace = (spaceId: string) => {
-  const {data, loading} = useSpacePageIsFollowingSpaceQuery({
+}: {
+  spaceId: string;
+}):
+  | {loading: true}
+  | {loading: false; isHost: true}
+  | {loading: false; isHost: false; isFollowing: true}
+  | {
+      loading: false;
+      isHost: false;
+      isFollowing: false;
+      onClick(): void;
+      changing: boolean;
+    } => {
+  const {data} = useSpacePageSpaceStatusQuery({
     variables: {spaceId},
   });
-  return data?.currentUser?.isFollowingSpace;
-};
+  const [followMutation, {loading: followLoading}] =
+    useSpacePageFollowSpaceMutation();
 
-export const useFollowSpace = () => {
-  const [mutation] = useSpacePageFollowSpaceMutation();
+  const [status, setStatus] =
+    useState<
+      | undefined
+      | {userId: string; isHost: true}
+      | {userId: string; isHost: false; isFollowing: true}
+      | {userId: string; isHost: false; isFollowing: false}
+    >();
 
-  const followSpace = mutation;
+  useEffect(() => {
+    if (data?.currentUser && data.currentUser.isHostSpace)
+      setStatus({
+        userId: data.currentUser.id,
+        isHost: true,
+      });
+    else if (data?.currentUser && !data.currentUser.isHostSpace)
+      setStatus({
+        userId: data.currentUser.id,
+        isHost: false,
+        isFollowing: data.currentUser.isFollowingSpace,
+      });
+  }, [data]);
 
-  return [followSpace];
+  if (!status) return {loading: true};
+  else if (status.isHost) return {loading: false, isHost: true};
+  else if (status.isFollowing)
+    return {loading: false, isHost: false, isFollowing: true};
+  else
+    return {
+      loading: false,
+      isHost: false,
+      isFollowing: false,
+      changing: followLoading,
+      onClick: () =>
+        followMutation({variables: {spaceId, userId: status.userId}}).then(
+          () => {
+            setStatus({
+              isHost: false,
+              isFollowing: true,
+              userId: status.userId,
+            });
+          },
+        ),
+    };
 };
 
 export type ContainerProps = {
@@ -61,8 +76,21 @@ export type ContainerProps = {
   spaceId: string;
 };
 export const Container: React.VFC<ContainerProps> = ({spaceId, ...props}) => {
-  const isFollowingSpace = useIsFollowingSpace(spaceId);
-  const [followSpace] = useFollowSpace();
+  const status = useSpaceStatus({spaceId});
 
-  return <div />;
+  if ('changing' in status && status.changing)
+    return <Component {...props} state="changing" />;
+  else if ('isHost' in status && status.isHost)
+    return <Component {...props} state="hostSame" />;
+  else if ('isFollowing' in status && !status.isFollowing)
+    return (
+      <Component
+        {...props}
+        state="unfollowing"
+        handlePressed={status.onClick}
+      />
+    );
+  else if ('isFollowing' in status && status.isFollowing)
+    return <Component {...props} state="following" />;
+  return <></>;
 };

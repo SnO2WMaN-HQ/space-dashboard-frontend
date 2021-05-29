@@ -1,15 +1,27 @@
 import {useTranslation} from 'next-i18next';
 import React from 'react';
 import {tw} from 'twind';
-import {LinkSpace} from '~/components/atoms/Link';
+import {Merge} from 'type-fest';
+import {GradationLink} from '~/components/atoms/GradationLink';
+import {IconTwitter} from '~/components/atoms/Icon';
+import {LinkTimeline} from '~/components/atoms/Link';
 import {FollowButton} from '../FollowButton';
 
-export const Component: React.VFC<{
-  className?: string;
-  id: string;
-
-  requireLogin: boolean;
-}> = ({className, id, requireLogin}) => {
+export type ComponentProps = Merge<
+  {
+    className?: string;
+    id: string;
+    // components
+    Follow: typeof FollowButton;
+  },
+  {loading: true} | {loading: false; requireLogin: boolean}
+>;
+export const Component: React.VFC<ComponentProps> = ({
+  className,
+  id,
+  Follow,
+  ...props
+}) => {
   const {t} = useTranslation();
 
   return (
@@ -21,7 +33,7 @@ export const Component: React.VFC<{
           'font-bold',
         )}
       >
-        {t('blocks:follow.title')}
+        {t('space:blocks.follow.title')}
       </h2>
       <div
         className={tw(
@@ -33,8 +45,20 @@ export const Component: React.VFC<{
           ['flex', 'items-center'],
         )}
       >
-        {requireLogin && <LinkSpace query={{id}} />}
-        {!requireLogin && <FollowButton {...{spaceId: id}} />}
+        {!props.loading && props.requireLogin && (
+          <GradationLink
+            className={tw('w-full', 'py-4')}
+            Link={(props) => <LinkTimeline {...props} />}
+            Icon={(props) => <IconTwitter {...props} />}
+            i18n={{label: t('space:blocks.follow.require_login')}}
+          />
+        )}
+        {!props.loading && !props.requireLogin && (
+          <Follow
+            className={tw('w-full', 'py-4', ['rounded-md', 'shadow-sm'])}
+            {...{spaceId: id}}
+          />
+        )}
       </div>
     </div>
   );
