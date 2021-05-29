@@ -6,7 +6,7 @@ import Error from 'next/error';
 import Head from 'next/head';
 import React from 'react';
 import {useNewSpacePageQuery} from '~/graphql/apollo';
-import {withPageSignedUp} from '~/hoc/withPageSignedUp';
+import {withPageRegisterRequired} from '~/hoc/withPageRegisterRequired';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateNewSpacePage} from '~/template/NewSpace';
@@ -51,4 +51,4 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   if (loading) return <TemplateLoadingPage className={className} />;
   return <Error statusCode={500} />;
 };
-export default withPageSignedUp(withPageAuthRequired(Page));
+export default withPageRegisterRequired(withPageAuthRequired(Page));

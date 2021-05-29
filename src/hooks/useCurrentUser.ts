@@ -13,7 +13,8 @@ export const stateCurrentUser = atom<
 
 export const useCurrentUser = ():
   | {loading: true}
-  | {loading: false; status: 'unauthenticated' | 'unregistered'}
+  | {loading: false; status: 'unauthenticated'}
+  | {loading: false; status: 'unregistered'}
   | {loading: false; status: 'registered'; currentUser: CurrentUser} => {
   const {loading, ...state} = useRecoilValue(stateCurrentUser);
   if (loading)

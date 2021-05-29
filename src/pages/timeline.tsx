@@ -1,4 +1,4 @@
-import {withPageAuthRequired} from '@auth0/nextjs-auth0';
+import {withPageAuthRequired} from '@auth0/nextjs-auth0/dist/frontend';
 import {GetServerSidePropsContext, NextPage} from 'next';
 import {useTranslation} from 'next-i18next';
 import {serverSideTranslations} from 'next-i18next/serverSideTranslations';
@@ -6,7 +6,7 @@ import Error from 'next/error';
 import Head from 'next/head';
 import React from 'react';
 import {usePersonalPageQuery} from '~/graphql/apollo';
-import {withPageSignedUp} from '~/hoc/withPageSignedUp';
+import {withPageRegisterRequired} from '~/hoc/withPageRegisterRequired';
 import {NextI18nextConfig} from '~/i18n';
 import {TemplateLoadingPage} from '~/template/Loading';
 import {TemplateTimelinePage, transform} from '~/template/Timeline';
@@ -50,4 +50,4 @@ const Page: NextPage<PageProps> = ({className, ...props}) => {
   if (loading) return <TemplateLoadingPage className={className} />;
   return <Error statusCode={500} />;
 };
-export default withPageSignedUp(withPageAuthRequired(Page));
+export default withPageRegisterRequired(withPageAuthRequired(Page));
